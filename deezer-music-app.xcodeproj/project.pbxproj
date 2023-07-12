@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		93350E082A5C200D00FB8C8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93350E072A5C200D00FB8C8F /* AppDelegate.swift */; };
 		93350E0A2A5C200D00FB8C8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93350E092A5C200D00FB8C8F /* SceneDelegate.swift */; };
-		93350E0F2A5C200D00FB8C8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93350E0D2A5C200D00FB8C8F /* Main.storyboard */; };
+		93350E0F2A5C200D00FB8C8F /* GenreList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93350E0D2A5C200D00FB8C8F /* GenreList.storyboard */; };
 		93350E122A5C200D00FB8C8F /* deezer_music_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93350E102A5C200D00FB8C8F /* deezer_music_app.xcdatamodeld */; };
 		93350E142A5C200F00FB8C8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93350E132A5C200F00FB8C8F /* Assets.xcassets */; };
 		93350E172A5C200F00FB8C8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93350E152A5C200F00FB8C8F /* LaunchScreen.storyboard */; };
@@ -61,7 +61,7 @@
 		93350E042A5C200D00FB8C8F /* deezer-music-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "deezer-music-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93350E072A5C200D00FB8C8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93350E092A5C200D00FB8C8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		93350E0E2A5C200D00FB8C8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		93350E0E2A5C200D00FB8C8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GenreList.storyboard; sourceTree = "<group>"; };
 		93350E112A5C200D00FB8C8F /* deezer_music_app.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = deezer_music_app.xcdatamodel; sourceTree = "<group>"; };
 		93350E132A5C200F00FB8C8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93350E162A5C200F00FB8C8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -150,11 +150,10 @@
 				93350E072A5C200D00FB8C8F /* AppDelegate.swift */,
 				93350E092A5C200D00FB8C8F /* SceneDelegate.swift */,
 				93350E3C2A5C208A00FB8C8F /* Utils */,
-				93350ED92A5ECD0400FB8C8F /* Helpers */,
 				93350E552A5C253900FB8C8F /* Coordinators */,
 				93350E612A5C2FA000FB8C8F /* Models */,
-				93350E3A2A5C206E00FB8C8F /* Service */,
-				93350E3B2A5C207300FB8C8F /* Scene */,
+				93350E3A2A5C206E00FB8C8F /* Services */,
+				93350E3B2A5C207300FB8C8F /* Scenes */,
 				93350E132A5C200F00FB8C8F /* Assets.xcassets */,
 				93350E152A5C200F00FB8C8F /* LaunchScreen.storyboard */,
 				93350E182A5C200F00FB8C8F /* Info.plist */,
@@ -180,26 +179,24 @@
 			path = "deezer-music-appUITests";
 			sourceTree = "<group>";
 		};
-		93350E3A2A5C206E00FB8C8F /* Service */ = {
+		93350E3A2A5C206E00FB8C8F /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				93350E662A5C35C500FB8C8F /* ServiceHelper.swift */,
 				93350E642A5C35A200FB8C8F /* Service.swift */,
 				93350E602A5C2CB500FB8C8F /* GenreListService */,
 			);
-			path = Service;
+			path = Services;
 			sourceTree = "<group>";
 		};
-		93350E3B2A5C207300FB8C8F /* Scene */ = {
+		93350E3B2A5C207300FB8C8F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				93350EDE2A5ECE9F00FB8C8F /* Tabbar */,
-				93350ED32A5EAE9D00FB8C8F /* TabbarController.swift */,
-				93350EDC2A5ECE9900FB8C8F /* TabbarCoordinator.swift */,
 				93350E402A5C213B00FB8C8F /* GenreList */,
 				93350E412A5C214300FB8C8F /* Favorites */,
 			);
-			path = Scene;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		93350E3C2A5C208A00FB8C8F /* Utils */ = {
@@ -243,7 +240,7 @@
 		93350E422A5C214D00FB8C8F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				93350E0D2A5C200D00FB8C8F /* Main.storyboard */,
+				93350E0D2A5C200D00FB8C8F /* GenreList.storyboard */,
 				93350E532A5C24BD00FB8C8F /* Cell */,
 				93350E452A5C216300FB8C8F /* GenreListViewController.swift */,
 			);
@@ -286,6 +283,7 @@
 		93350E552A5C253900FB8C8F /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				93350EDA2A5ECD1900FB8C8F /* Coordinator.swift */,
 				93350E702A5C8F7F00FB8C8F /* Storyboarded.swift */,
 			);
 			path = Coordinators;
@@ -328,17 +326,11 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		93350ED92A5ECD0400FB8C8F /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				93350EDA2A5ECD1900FB8C8F /* Coordinator.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		93350EDE2A5ECE9F00FB8C8F /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
+				93350EDC2A5ECE9900FB8C8F /* TabbarCoordinator.swift */,
+				93350ED32A5EAE9D00FB8C8F /* TabbarController.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -458,7 +450,7 @@
 				93350E5F2A5C2C7E00FB8C8F /* CategoryCollectionViewCell.xib in Resources */,
 				93350E172A5C200F00FB8C8F /* LaunchScreen.storyboard in Resources */,
 				93350E142A5C200F00FB8C8F /* Assets.xcassets in Resources */,
-				93350E0F2A5C200D00FB8C8F /* Main.storyboard in Resources */,
+				93350E0F2A5C200D00FB8C8F /* GenreList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,12 +533,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		93350E0D2A5C200D00FB8C8F /* Main.storyboard */ = {
+		93350E0D2A5C200D00FB8C8F /* GenreList.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				93350E0E2A5C200D00FB8C8F /* Base */,
 			);
-			name = Main.storyboard;
+			name = GenreList.storyboard;
 			sourceTree = "<group>";
 		};
 		93350E152A5C200F00FB8C8F /* LaunchScreen.storyboard */ = {
@@ -686,7 +678,6 @@
 				INFOPLIST_FILE = "deezer-music-app/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -715,7 +706,6 @@
 				INFOPLIST_FILE = "deezer-music-app/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

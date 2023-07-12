@@ -20,7 +20,7 @@ class GenreListCoordinator: Coordinator {
     }
     
     func start() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "GenreList", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "GenreListViewController") as! GenreListViewController
         let service = GenreListService()
         viewController.viewModel = GenreListViewModel(service: service)

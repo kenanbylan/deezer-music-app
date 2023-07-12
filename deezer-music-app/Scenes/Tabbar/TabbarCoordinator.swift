@@ -31,9 +31,12 @@ final class TabbarCoordinator: Coordinator {
         let genreCoordinator = GenreListCoordinator(navigationController: navigationController)
         childCoordinators.append(genreCoordinator)
         genreCoordinator.start()
+        
         let genreVC = genreCoordinator.rootViewController
+    
         let tabbarItem = UITabBarItem(title: "Genre", image: UIImage(named: "home"), selectedImage: UIImage(named: "home"))
         genreVC?.tabBarItem = tabbarItem
+        
         if let genreVC = genreVC {
             viewControllers.append(genreVC)
         }

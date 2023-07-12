@@ -9,11 +9,15 @@ import Foundation
 
 protocol GenreListViewModelProtocol: AnyObject {
     
-    var delegate: GenreListViewModelDelegate? { get set }
+   var delegate: GenreListViewModelDelegate? { get set }
     var genreItems: [GenreResponse] { get set}
     
     func viewDidLoad()
-    func didSelectGenre(_ genre: GenreResponse)
+   //func didSelectGenre(_ genre: GenreResponse)
+    
+    func numberOfGenres() -> Int
+    func genreAtIndex(_ index: Int) -> GenreResponse?
+    func didSelectGenreAtIndex(_ index: Int)
     
 }
 
