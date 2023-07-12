@@ -5,12 +5,9 @@
 //  Created by Kenan Baylan on 10.07.2023.
 //
 
-import Foundation
-import UIKit
-
+import UIKit.UICollectionViewCell
 
 extension UICollectionViewCell {
-
     static var identifier: String {
         return String(describing: self)
     }

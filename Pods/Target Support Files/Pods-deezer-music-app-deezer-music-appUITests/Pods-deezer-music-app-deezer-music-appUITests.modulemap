@@ -1,6 +1,0 @@
-framework module Pods_deezer_music_app_deezer_music_appUITests {
-  umbrella header "Pods-deezer-music-app-deezer-music-appUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

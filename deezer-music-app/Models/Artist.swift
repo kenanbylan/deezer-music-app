@@ -7,24 +7,21 @@
 
 import Foundation
 
-
-struct ArtistData: Codable {
-    let data: [Artist]
-    
+struct ArtistData: Decodable {
+    let data: [ArtistResponse]
 }
 
-
-struct Artist: Codable {
+struct ArtistResponse: Decodable {
     let id: Int
-    let name: String
-    let picture: String
-    let pictureSmall: String
-    let pictureMedium: URL //to be changes
-    let pictureBig: String
-    let pictureXL: String
-    let radio: Bool
-    let tracklist: String
-    let type: String
+    let name: String?
+    let picture: String?
+    let pictureSmall: URL?
+    let pictureMedium: URL? //to be changes
+    let pictureBig: URL?
+    let pictureXL: URL?
+    let radio: Bool?
+    let tracklist: String?
+    let type: String?
     
     enum CodingKeys: String, CodingKey {
         case id, name, picture, radio, tracklist, type

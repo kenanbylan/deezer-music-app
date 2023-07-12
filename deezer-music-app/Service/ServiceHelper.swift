@@ -5,20 +5,28 @@
 //  Created by Kenan Baylan on 10.07.2023.
 //
 
+import Alamofire
 import Foundation
 
-
-enum ErrorMessage: String, Error {
-    case invalidData = "Invalid data"
-    case invalidURL = "Invalid url"
-    case generalError = "An error happened"
+enum APIError: Error {
+    case invalidURL
+    case invalidResponse
+    case requestFailed(Error)
+    case decodingFailed(Error)
 }
 
-class ServiceHelper {
+struct Endpoint {
+    let url: URL?
+    let method: HTTPMethod
+    let parameters: Parameters?
+    let encoding: ParameterEncoding
+    let headers: HTTPHeaders?
     
-    static let shared = ServiceHelper()
-    
-    let baseUrl = ""
-    
-    
+    init(url: URL?, method: HTTPMethod = .get, parameters: Parameters? = nil, encoding: ParameterEncoding = JSONEncoding.default, headers: HTTPHeaders? = nil) {
+        self.url = url
+        self.method = method
+        self.parameters = parameters
+        self.encoding = encoding
+        self.headers = headers
+    }
 }

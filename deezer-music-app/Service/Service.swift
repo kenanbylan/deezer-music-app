@@ -8,34 +8,38 @@
 import Foundation
 import Alamofire
 
-class Service {
+struct NetworkService {
     
-    static let shared = Service()
+    static let shared = NetworkService()
+    private init() {}
+    
     
     func request<T: Codable>(type: T.Type,
                              url: String,
                              method: HTTPMethod,
-                             completion: @escaping((Result<T, ErrorMessage>)->())) {
-        
-        
+                             completion: @escaping((Result<T, APIError>)->())) {
         AF.request(url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "", method: method).responseData { response in
             switch response.result {
             case .success(let data):
                 self.handleResponse(data: data) { response in
                     completion(response)
                 }
-            case .failure(let _):
-                completion(.failure(.generalError))
+                
+            case .failure(let error):
+                completion(.failure(.requestFailed(error)))
             }
         }
     }
     
-    fileprivate func handleResponse<T: Codable>(data: Data, completion: @escaping((Result<T, ErrorMessage>)->())) {
+    fileprivate func handleResponse<T: Codable>(data: Data, completion: @escaping((Result<T, APIError>)->())) {
+        
         do {
             let result = try JSONDecoder().decode(T.self, from: data)
             completion(.success(result))
+            
         } catch {
-            completion(.failure(.invalidData))
+            completion(.failure(.decodingFailed(error)))
         }
     }
+    
 }
