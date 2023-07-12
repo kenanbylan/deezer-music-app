@@ -12,9 +12,11 @@ class GenreListViewModel: GenreListViewModelProtocol {
     var delegate: GenreListViewModelDelegate?
     private let service: GenreListServiceProtocol
     internal var genreItems: [GenreResponse] = []
-
-    init(service: GenreListServiceProtocol) {
+    var artistCoordinator: ArtistListCoordinator?
+   
+    init(service: GenreListServiceProtocol, artistCoordinator: ArtistListCoordinator) {
         self.service = service
+        self.artistCoordinator = artistCoordinator
     }
     
     func viewDidLoad() {
@@ -50,6 +52,9 @@ class GenreListViewModel: GenreListViewModelProtocol {
         guard let genre = genreAtIndex(index) else {
             return
         }
+        
         // TODO: Handle genre selection
+        //artistCoordinator?.start()
+        
     }
 }

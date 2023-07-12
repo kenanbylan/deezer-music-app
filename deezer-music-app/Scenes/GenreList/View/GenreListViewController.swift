@@ -6,15 +6,16 @@
 
 import UIKit
 
-final class GenreListViewController: UIViewController, Storyboarded {
+final class GenreListViewController: UIViewController {
     
     @IBOutlet private weak var genreCollectionView: UICollectionView!
     weak var coordinator: GenreListCoordinator?
-    
     var viewModel: GenreListViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        genreCollectionView.delegate = self
         
         viewModel.delegate = self
         viewModel?.viewDidLoad()
@@ -55,6 +56,12 @@ extension GenreListViewController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected index : ",indexPath)
         viewModel.didSelectGenreAtIndex(indexPath.item)
     }
+}
+
+
+extension GenreListViewController: UICollectionViewDelegateFlowLayout {
+    
 }

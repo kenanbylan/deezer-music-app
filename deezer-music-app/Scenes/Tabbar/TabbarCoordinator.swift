@@ -33,7 +33,7 @@ final class TabbarCoordinator: Coordinator {
         genreCoordinator.start()
         
         let genreVC = genreCoordinator.rootViewController
-    
+        
         let tabbarItem = UITabBarItem(title: "Genre", image: UIImage(named: "home"), selectedImage: UIImage(named: "home"))
         genreVC?.tabBarItem = tabbarItem
         

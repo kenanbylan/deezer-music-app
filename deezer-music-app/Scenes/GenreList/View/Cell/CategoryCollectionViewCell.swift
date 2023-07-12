@@ -22,8 +22,8 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 12
         layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.5
-        layer.shadowRadius = 4.0
+        layer.shadowOpacity = 0.3
+        layer.shadowRadius = 2.0
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
     }
 
@@ -34,7 +34,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     
     public func setupArtistConfig(artist: ArtistResponse) {
-        
         categoryTitle.text = artist.name
         categoryImageView.kf.setImage(with: artist.pictureMedium)
     }
