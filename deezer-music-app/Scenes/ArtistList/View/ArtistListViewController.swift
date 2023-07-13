@@ -15,16 +15,15 @@ class ArtistListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //viewModel.delegate = self
+        viewModel.delegate = self
         viewModel.viewDidLoad()
         
         //TODO: register collectionView
-        
-        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButtonTapped))
-        navigationItem.leftBarButtonItem = backButton
     }
-    
-    @objc private func backButtonTapped() {
-        coordinator?.goBack()
+}
+
+extension ArtistListViewController: ArtistListViewModelDelegate {
+    func handleViewModelOutput(_ output: ArtistListViewModelOutput) {
+        //TODO:
     }
 }

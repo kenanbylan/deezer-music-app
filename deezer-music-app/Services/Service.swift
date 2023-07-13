@@ -13,8 +13,7 @@ struct NetworkService {
     static let shared = NetworkService()
     private init() {}
     
-    
-    func request<T: Codable>(type: T.Type,
+    func request<T: Decodable>(type: T.Type,
                              url: String,
                              method: HTTPMethod,
                              completion: @escaping((Result<T, APIError>)->())) {
@@ -31,7 +30,7 @@ struct NetworkService {
         }
     }
     
-    fileprivate func handleResponse<T: Codable>(data: Data, completion: @escaping((Result<T, APIError>)->())) {
+    fileprivate func handleResponse<T: Decodable>(data: Data, completion: @escaping((Result<T, APIError>)->())) {
         
         do {
             let result = try JSONDecoder().decode(T.self, from: data)

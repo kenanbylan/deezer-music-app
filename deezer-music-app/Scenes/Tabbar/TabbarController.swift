@@ -8,18 +8,14 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-    
     var coordinator: TabbarCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
-        
         coordinator = TabbarCoordinator(tabbarController: self, navigationController: UINavigationController())
         coordinator?.start()
     }
-    
-    
 }
 
 extension TabBarController: UITabBarControllerDelegate {

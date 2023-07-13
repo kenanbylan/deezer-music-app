@@ -9,10 +9,8 @@ import Foundation
 
 final class GenreListService : GenreListServiceProtocol {
     
-    static let shared = GenreListService()
-    
     func getGenre(completion: @escaping ((GenreData?, Error?) -> ())) {
-        let url = GenreListEndpoints.genre
+        let url =  Endpoints.baseURL + "genre"
         
         NetworkService.shared.request(type: GenreData.self, url: url, method: .get) { response in
             switch response {
@@ -24,6 +22,4 @@ final class GenreListService : GenreListServiceProtocol {
             }
         }
     }
-
-    
 }

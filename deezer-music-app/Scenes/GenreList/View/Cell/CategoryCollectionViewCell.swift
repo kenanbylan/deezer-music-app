@@ -8,34 +8,33 @@
 import UIKit
 import Kingfisher
 
-class CategoryCollectionViewCell: UICollectionViewCell {
+final class CategoryCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var categoryImageView: UIImageView!
-    @IBOutlet weak var categoryTitle: UILabel!
+    @IBOutlet private weak var categoryImageView: UIImageView!
+    @IBOutlet private weak var categoryTitle: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        configUI()
+        setupUI()
     }
     
-    private func configUI() {
+    private func setupUI() {
         layer.cornerRadius = 12
         layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.3
-        layer.shadowRadius = 2.0
+        layer.shadowColor = UIColor.darkGray.cgColor
+        layer.shadowOpacity = 0.6
+        layer.shadowRadius = 12.0
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
+        //layer.shouldRasterize = true
     }
 
-    public func setupConfig(genre: GenreResponse) {
+    public func updateUIWith(genre: GenreResponse) {
         categoryTitle.text = genre.name
         categoryImageView.kf.setImage(with: genre.pictureMedium)
     }
     
-    
-    public func setupArtistConfig(artist: ArtistResponse) {
+    public func updateUIWith(artist: ArtistResponse) {
         categoryTitle.text = artist.name
         categoryImageView.kf.setImage(with: artist.pictureMedium)
     }
-
 }

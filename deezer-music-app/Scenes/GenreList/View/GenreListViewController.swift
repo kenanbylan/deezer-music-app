@@ -8,18 +8,25 @@ import UIKit
 
 final class GenreListViewController: UIViewController {
     
-    @IBOutlet private weak var genreCollectionView: UICollectionView!
-    weak var coordinator: GenreListCoordinator?
-    var viewModel: GenreListViewModelProtocol!
+    @IBOutlet private weak var genreCollectionView: UICollectionView! {
+        didSet {
+            genreCollectionView.delegate = self
+        }
+    }
+    var viewModel: GenreListViewModelProtocol! {
+        didSet {
+            viewModel.delegate = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         genreCollectionView.delegate = self
-        
-        viewModel.delegate = self
+        genreCollectionView.dataSource = self
         viewModel?.viewDidLoad()
         registerCollectionView()
+        
     }
     
     private func registerCollectionView() {
@@ -34,34 +41,36 @@ extension GenreListViewController : GenreListViewModelDelegate {
             break
         case .showGenreList(_):
             self.genreCollectionView.reloadData()
+        case .setTitle(let title):
+            self.navigationController?.title = title
         }
     }
 }
 
 // MARK: - UICollectionViewDataSource
 
-extension GenreListViewController : UICollectionViewDataSource {
+extension GenreListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.numberOfGenres()
+        return viewModel.numberOfGenres
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: CategoryCollectionViewCell.self) , for: indexPath) as! CategoryCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: CategoryCollectionViewCell.self),
+            for: indexPath) as! CategoryCollectionViewCell
         
-        if let genre = viewModel.genreAtIndex(indexPath.item) {
-            cell.setupConfig(genre: genre)
+        if let genre = viewModel.genreAt(indexPath.item) {
+            cell.updateUIWith(genre: genre)
         }
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected index : ",indexPath)
-        viewModel.didSelectGenreAtIndex(indexPath.item)
+        viewModel.didSelectGenreAt(indexPath.item)
     }
 }
-
 
 extension GenreListViewController: UICollectionViewDelegateFlowLayout {
     
 }
+

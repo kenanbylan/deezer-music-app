@@ -1,15 +1,12 @@
-//
 //  GenreListCoordinator.swift
 //  deezer-music-app
-//
 //  Created by Kenan Baylan on 10.07.2023.
 
-
-import UIKit
+import UIKit.UINavigationController
 
 //MARK: - Genre Coordinator
 
-class GenreListCoordinator: Coordinator {
+final class GenreListCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
@@ -23,22 +20,26 @@ class GenreListCoordinator: Coordinator {
         let storyboard = UIStoryboard(name: "GenreList", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "GenreListViewController") as! GenreListViewController
         let service = GenreListService()
-        let artistListCoordinator = ArtistListCoordinator(navigationController: navigationController)
-        viewController.viewModel = GenreListViewModel(service: service,artistCoordinator: artistListCoordinator)
-        viewController.coordinator = self
+        let viewModel = GenreListViewModel(service: service)
+        viewModel.coordinator = self
+        viewController.viewModel = viewModel
         rootViewController = viewController
     }
     
+    //MARK: - END OF ERROR QUEUE.
     
-    func showArtistList() {
-        let artistListCoordinator = ArtistListCoordinator(navigationController: navigationController)
-        artistListCoordinator.start()
-        childCoordinators.append(artistListCoordinator)
+    func showArtistList(genreId: Int) {
+        print("Clicked data: ",genreId)
+        let storyboard = UIStoryboard(name: "ArtistList", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ArtistListViewController") as! ArtistListViewController
+        
+        //navigationController.show(viewController, sender: nil)
+        navigationController.pushViewController(viewController, animated: true)
+        
+        //        navigationController.pushViewController(viewController, animated: true)
+        //        let artistListCoordinator = ArtistListCoordinator(navigationController: navigationController, genreId: genreId)
+        //        childCoordinators.append(artistListCoordinator)
+        //        artistListCoordinator.start()
     }
-    
-    
-
-    
-    
     
 }

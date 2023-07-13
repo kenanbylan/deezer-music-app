@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct ArtistData: Decodable {
+struct ArtistData: Codable {
     let data: [ArtistResponse]
 }
 
-struct ArtistResponse: Decodable {
+struct ArtistResponse: Codable {
     let id: Int
     let name: String?
     let picture: String?

@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct GenreData: Codable {
-    let data: [GenreResponse]
+struct GenreData: Decodable {
+    let data: [GenreResponse]?
 }
 
-struct GenreResponse: Codable {
-    let id: Int
-    let name: String
-    let pictureMedium: URL
+struct GenreResponse: Decodable {
+    let id: Int?
+    let name: String?
+    let pictureMedium: URL?
     
     private enum CodingKeys: String, CodingKey {
         case id, name

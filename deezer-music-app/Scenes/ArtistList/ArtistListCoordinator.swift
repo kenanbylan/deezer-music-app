@@ -10,21 +10,27 @@ import UIKit
 //MARK: ASK HERE !!
 
 class ArtistListCoordinator: Coordinator {
+    
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     var rootViewController: UIViewController?
     
-    init(navigationController: UINavigationController) {
+    var genreId: Int
+    
+    init(navigationController: UINavigationController,genreId: Int) {
         self.navigationController = navigationController
+        self.genreId = genreId
     }
     
-    func start(with genre: GenreResponse) {
+    func start() {
+        let artistListStoryboard = UIStoryboard(name: "ArtistList", bundle: nil)
+        let artistListViewController = artistListStoryboard.instantiateViewController(withIdentifier: "ArtistListViewController") as! ArtistListViewController
         
-        let storyboard = UIStoryboard(name: "ArtistList", bundle: nil)
-        let artistListViewController = storyboard.instantiateViewController(withIdentifier: "ArtistListViewController") as! ArtistListViewController
-        
-        let artistListService = ArtistListService() // Gerekli servisi oluşturun
+        let artistListService = ArtistListService()
         let viewModel = ArtistListViewModel(artistListService: artistListService)
+        viewModel.genreId = genreId
+        viewModel.coordinator = self
+        
         artistListViewController.viewModel = viewModel
         navigationController.pushViewController(artistListViewController, animated: true)
     }
