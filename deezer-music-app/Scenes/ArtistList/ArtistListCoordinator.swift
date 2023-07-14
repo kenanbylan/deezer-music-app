@@ -3,7 +3,6 @@
 //  deezer-music-app
 //
 //  Created by Kenan Baylan on 12.07.2023.
-//
 
 import UIKit
 
@@ -15,11 +14,11 @@ class ArtistListCoordinator: Coordinator {
     var navigationController: UINavigationController
     var rootViewController: UIViewController?
     
-    var genreId: Int
+    var selectGenre: GenreResponse
     
-    init(navigationController: UINavigationController,genreId: Int) {
+    init(navigationController: UINavigationController,selectGenre: GenreResponse) {
         self.navigationController = navigationController
-        self.genreId = genreId
+        self.selectGenre = selectGenre
     }
     
     func start() {
@@ -28,11 +27,12 @@ class ArtistListCoordinator: Coordinator {
         
         let artistListService = ArtistListService()
         let viewModel = ArtistListViewModel(artistListService: artistListService)
-        viewModel.genreId = genreId
+        viewModel.selectedGenre = selectGenre
         viewModel.coordinator = self
         
         artistListViewController.viewModel = viewModel
         navigationController.pushViewController(artistListViewController, animated: true)
+        
     }
     
     func goBack() {

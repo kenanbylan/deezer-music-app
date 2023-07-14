@@ -12,7 +12,7 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var categoryImageView: UIImageView!
     @IBOutlet private weak var categoryTitle: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()

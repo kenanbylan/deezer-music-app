@@ -29,15 +29,3 @@ protocol GenreListViewModelDelegate: AnyObject {
 }
 
 
-extension GenreListViewModelProtocol {
-    var numberOfGenres: Int {
-        return genreItems.count
-    }
-    
-    subscript(index: Int) -> GenreResponse? {
-        guard index >= 0 && index < genreItems.count else {
-            return nil
-        }
-        return genreItems[index]
-    }
-}

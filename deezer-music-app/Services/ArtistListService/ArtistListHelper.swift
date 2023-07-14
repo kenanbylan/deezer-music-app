@@ -12,5 +12,5 @@ protocol ArtistListServiceProtocol {
 }
 
 struct ArtistListEndpoints {
-    static let baseUrl = " https://api.deezer.com/genre/"
+    static let baseUrl = "https://api.deezer.com/genre/"
 }

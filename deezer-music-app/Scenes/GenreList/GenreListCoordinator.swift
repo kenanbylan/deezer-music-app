@@ -15,7 +15,7 @@ final class GenreListCoordinator: Coordinator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-
+    
     func start() {
         let storyboard = UIStoryboard(name: "GenreList", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "GenreListViewController") as! GenreListViewController
@@ -31,18 +31,12 @@ final class GenreListCoordinator: Coordinator {
     
     //MARK: - END OF ERROR QUEUE.
     
-    func showArtistList(genreId: Int) {
-        print("Clicked data: ",genreId)
-        let storyboard = UIStoryboard(name: "ArtistList", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "ArtistListViewController") as! ArtistListViewController
+    func showArtistList(genre: GenreResponse) {
         
-        //navigationController.show(viewController, sender: nil)
-        navigationController.pushViewController(viewController, animated: true)
+        let artistListCoordinator = ArtistListCoordinator(navigationController: navigationController, selectGenre: genre)
+        childCoordinators.append(artistListCoordinator)
+        artistListCoordinator.start()
         
-        //        navigationController.pushViewController(viewController, animated: true)
-        //        let artistListCoordinator = ArtistListCoordinator(navigationController: navigationController, genreId: genreId)
-        //        childCoordinators.append(artistListCoordinator)
-        //        artistListCoordinator.start()
     }
     
 }

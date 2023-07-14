@@ -11,6 +11,7 @@ final class GenreListViewController: UIViewController {
     @IBOutlet private weak var genreCollectionView: UICollectionView! {
         didSet {
             genreCollectionView.delegate = self
+            genreCollectionView.dataSource = self
         }
     }
     var viewModel: GenreListViewModelProtocol! {
@@ -22,8 +23,6 @@ final class GenreListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        genreCollectionView.delegate = self
-        genreCollectionView.dataSource = self
         viewModel?.viewDidLoad()
         registerCollectionView()
         

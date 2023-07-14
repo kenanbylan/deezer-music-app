@@ -1,9 +1,7 @@
 import UIKit
 
 class GenreListViewModel: GenreListViewModelProtocol {
-    
-    
-    
+  
     var delegate: GenreListViewModelDelegate?
     private let service: GenreListServiceProtocol
     var genreItems: [GenreResponse] = []
@@ -15,7 +13,7 @@ class GenreListViewModel: GenreListViewModelProtocol {
     
     func viewDidLoad() {
         delegate?.handleViewModelOutput(.setLoading(true))
-        delegate?.handleViewModelOutput(.setTitle("Deezer Musics"))
+        delegate?.handleViewModelOutput(.setTitle("Deezer Music"))
         getGenre()
     }
     
@@ -31,7 +29,6 @@ class GenreListViewModel: GenreListViewModelProtocol {
     }
     
     func didSelectGenreAt(_ index: Int) {
-        print("Clicked index:", index)
         guard let genre = self[index] else {
             return
         }
@@ -39,10 +36,24 @@ class GenreListViewModel: GenreListViewModelProtocol {
         guard let coordinator = coordinator else {
             return
         }
-        
-        coordinator.showArtistList(genreId: genre.id ?? 0)
+        coordinator.showArtistList(genre: genre)
     }
 }
+
+extension GenreListViewModelProtocol {
+    var numberOfGenres: Int {
+        return genreItems.count
+    }
+    
+    subscript(index: Int) -> GenreResponse? {
+        guard index >= 0 && index < genreItems.count else {
+            return nil
+        }
+        return genreItems[index]
+    }
+}
+
+
 
 //MARK: Get endpoint services
 
@@ -61,4 +72,7 @@ extension GenreListViewModel {
         }
     }
 }
+
+
+
 

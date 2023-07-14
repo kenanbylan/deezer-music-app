@@ -34,6 +34,10 @@
 		93350ED42A5EAE9D00FB8C8F /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93350ED32A5EAE9D00FB8C8F /* TabbarController.swift */; };
 		93350EDB2A5ECD1900FB8C8F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93350EDA2A5ECD1900FB8C8F /* Coordinator.swift */; };
 		93350EDD2A5ECE9900FB8C8F /* TabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93350EDC2A5ECE9900FB8C8F /* TabbarCoordinator.swift */; };
+		9382C30E2A61525300C0BDAF /* ArtistDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9382C30D2A61525300C0BDAF /* ArtistDetailCoordinator.swift */; };
+		9382C3102A61525A00C0BDAF /* ArtistDetailContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9382C30F2A61525A00C0BDAF /* ArtistDetailContract.swift */; };
+		9382C3122A61526400C0BDAF /* ArtistDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9382C3112A61526400C0BDAF /* ArtistDetailViewModel.swift */; };
+		9382C3162A61528700C0BDAF /* ArtistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9382C3152A61528700C0BDAF /* ArtistDetailViewController.swift */; };
 		93C421962A5F494D0069BE0C /* ArtistListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C421952A5F494C0069BE0C /* ArtistListCoordinator.swift */; };
 		93C421982A5F49570069BE0C /* ArtistListContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C421972A5F49570069BE0C /* ArtistListContract.swift */; };
 		93C4219A2A5F49630069BE0C /* ArtistListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C421992A5F49630069BE0C /* ArtistListViewModel.swift */; };
@@ -96,6 +100,10 @@
 		93350ED32A5EAE9D00FB8C8F /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		93350EDA2A5ECD1900FB8C8F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		93350EDC2A5ECE9900FB8C8F /* TabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCoordinator.swift; sourceTree = "<group>"; };
+		9382C30D2A61525300C0BDAF /* ArtistDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailCoordinator.swift; sourceTree = "<group>"; };
+		9382C30F2A61525A00C0BDAF /* ArtistDetailContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailContract.swift; sourceTree = "<group>"; };
+		9382C3112A61526400C0BDAF /* ArtistDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailViewModel.swift; sourceTree = "<group>"; };
+		9382C3152A61528700C0BDAF /* ArtistDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailViewController.swift; sourceTree = "<group>"; };
 		93C421952A5F494C0069BE0C /* ArtistListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListCoordinator.swift; sourceTree = "<group>"; };
 		93C421972A5F49570069BE0C /* ArtistListContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListContract.swift; sourceTree = "<group>"; };
 		93C421992A5F49630069BE0C /* ArtistListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListViewModel.swift; sourceTree = "<group>"; };
@@ -205,6 +213,7 @@
 				93350EDE2A5ECE9F00FB8C8F /* Tabbar */,
 				93350E402A5C213B00FB8C8F /* GenreList */,
 				93C421942A5F49340069BE0C /* ArtistList */,
+				9382C30C2A61523C00C0BDAF /* ArtistDetail */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -305,6 +314,33 @@
 			path = Tabbar;
 			sourceTree = "<group>";
 		};
+		9382C30C2A61523C00C0BDAF /* ArtistDetail */ = {
+			isa = PBXGroup;
+			children = (
+				9382C30D2A61525300C0BDAF /* ArtistDetailCoordinator.swift */,
+				9382C30F2A61525A00C0BDAF /* ArtistDetailContract.swift */,
+				9382C3112A61526400C0BDAF /* ArtistDetailViewModel.swift */,
+				9382C3132A61526800C0BDAF /* View */,
+			);
+			path = ArtistDetail;
+			sourceTree = "<group>";
+		};
+		9382C3132A61526800C0BDAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9382C3142A61527500C0BDAF /* Cell */,
+				9382C3152A61528700C0BDAF /* ArtistDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9382C3142A61527500C0BDAF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		93C421942A5F49340069BE0C /* ArtistList */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,16 +357,8 @@
 			children = (
 				93C4219C2A5F49810069BE0C /* ArtistList.storyboard */,
 				93C4219F2A5F499F0069BE0C /* ArtistListViewController.swift */,
-				93C4219E2A5F49900069BE0C /* Cell */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		93C4219E2A5F49900069BE0C /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		93C421A12A5F58B60069BE0C /* ArtistListService */ = {
@@ -507,10 +535,14 @@
 				93350E712A5C8F7F00FB8C8F /* Storyboarded.swift in Sources */,
 				93350E7E2A5CB14700FB8C8F /* Artist.swift in Sources */,
 				93350E5E2A5C2C7E00FB8C8F /* CategoryCollectionViewCell.swift in Sources */,
+				9382C3122A61526400C0BDAF /* ArtistDetailViewModel.swift in Sources */,
 				93C421962A5F494D0069BE0C /* ArtistListCoordinator.swift in Sources */,
 				93350E692A5C362E00FB8C8F /* GenreListService.swift in Sources */,
+				9382C30E2A61525300C0BDAF /* ArtistDetailCoordinator.swift in Sources */,
 				93350E6B2A5C363800FB8C8F /* GenreListHelper.swift in Sources */,
 				93350EDB2A5ECD1900FB8C8F /* Coordinator.swift in Sources */,
+				9382C3162A61528700C0BDAF /* ArtistDetailViewController.swift in Sources */,
+				9382C3102A61525A00C0BDAF /* ArtistDetailContract.swift in Sources */,
 				93350E082A5C200D00FB8C8F /* AppDelegate.swift in Sources */,
 				93C421982A5F49570069BE0C /* ArtistListContract.swift in Sources */,
 				93350E0A2A5C200D00FB8C8F /* SceneDelegate.swift in Sources */,
