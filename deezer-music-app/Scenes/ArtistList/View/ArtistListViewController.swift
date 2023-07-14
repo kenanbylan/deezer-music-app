@@ -15,8 +15,8 @@ class ArtistListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.delegate = self
-        viewModel.viewDidLoad()
+     //   viewModel.delegate = self
+       // viewModel.viewDidLoad()
         
         //TODO: register collectionView
     }

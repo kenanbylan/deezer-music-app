@@ -15,15 +15,18 @@ final class GenreListCoordinator: Coordinator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+
     func start() {
         let storyboard = UIStoryboard(name: "GenreList", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "GenreListViewController") as! GenreListViewController
+        
         let service = GenreListService()
         let viewModel = GenreListViewModel(service: service)
         viewModel.coordinator = self
         viewController.viewModel = viewModel
-        rootViewController = viewController
+        
+        navigationController.setViewControllers([viewController], animated: true)
+        rootViewController = navigationController
     }
     
     //MARK: - END OF ERROR QUEUE.
