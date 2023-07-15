@@ -11,7 +11,8 @@ final class ArtistListViewController: UIViewController {
     
     @IBOutlet private weak var artistListCollectionView: UICollectionView!
     
-    weak var coordinator: ArtistListCoordinator?
+    private weak var coordinator: ArtistListCoordinator?
+    
     var viewModel: ArtistListViewModelProtocol! {
         didSet {
             viewModel.delegate  = self
@@ -63,10 +64,9 @@ extension ArtistListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //TODO: will be added.
+        viewModel.didSelectArtistAtIndex(indexPath.item)
     }
 }
-
 
 extension ArtistListViewController: UICollectionViewDelegateFlowLayout {
     

@@ -11,7 +11,7 @@ class ArtistListViewModel: ArtistListViewModelProtocol {
     
     var delegate: ArtistListViewModelDelegate?
     var coordinator: ArtistListCoordinator?
-    var artistList: [ArtistResponse] = []
+    var artistList: [ArtistListResponse] = []
     private let artistListService: ArtistListServiceProtocol
     
     var selectedGenre: GenreResponse?
@@ -26,10 +26,9 @@ class ArtistListViewModel: ArtistListViewModelProtocol {
         }
         delegate?.handleViewModelOutput(.showTitle(selectedGenre?.name ?? "Nil"))
         getArtistList(genreId: genreId)
-       
     }
     
-    func artistAt(_ index: Int) -> ArtistResponse? {
+    func artistAt(_ index: Int) -> ArtistListResponse? {
         guard index >= 0 && index < artistList.count else { return nil }
         return artistList[index]
     }
@@ -37,7 +36,11 @@ class ArtistListViewModel: ArtistListViewModelProtocol {
     func didSelectArtistAtIndex(_ index: Int) {
         guard let selectArtist = artistAt(index) else { return }
         //TODO: Handle Genre Selection
+        
+        coordinator?.showArtistDetail(artist: selectArtist)
+        
     }
+    
 }
 
 // MARK: -GET RESPONSE

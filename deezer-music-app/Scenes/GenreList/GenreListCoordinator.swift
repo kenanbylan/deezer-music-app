@@ -32,11 +32,9 @@ final class GenreListCoordinator: Coordinator {
     //MARK: - END OF ERROR QUEUE.
     
     func showArtistList(genre: GenreResponse) {
-        
         let artistListCoordinator = ArtistListCoordinator(navigationController: navigationController, selectGenre: genre)
         childCoordinators.append(artistListCoordinator)
         artistListCoordinator.start()
-        
     }
     
 }

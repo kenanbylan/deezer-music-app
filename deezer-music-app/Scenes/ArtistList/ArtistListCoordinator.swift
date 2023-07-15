@@ -6,8 +6,6 @@
 
 import UIKit
 
-//MARK: ASK HERE !!
-
 class ArtistListCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
@@ -32,10 +30,12 @@ class ArtistListCoordinator: Coordinator {
         
         artistListViewController.viewModel = viewModel
         navigationController.pushViewController(artistListViewController, animated: true)
-        
     }
     
-    func goBack() {
-        navigationController.popViewController(animated: true)
+    
+    func showArtistDetail(artist: ArtistListResponse) {
+        let artistDetailCoordinator = ArtistDetailCoordinator(navigationController: navigationController, selectArtist: artist)
+        childCoordinators.append(artistDetailCoordinator)
+        artistDetailCoordinator.start()
     }
 }

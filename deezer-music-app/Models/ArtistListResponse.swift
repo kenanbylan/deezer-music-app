@@ -8,10 +8,10 @@
 import Foundation
 
 struct ArtistData: Codable {
-    let data: [ArtistResponse]
+    let data: [ArtistListResponse]
 }
 
-struct ArtistResponse: Codable {
+struct ArtistListResponse: Codable {
     let id: Int
     let name: String?
     let picture: String?
@@ -31,3 +31,5 @@ struct ArtistResponse: Codable {
         case pictureXL = "picture_xl"
     }
 }
+
+

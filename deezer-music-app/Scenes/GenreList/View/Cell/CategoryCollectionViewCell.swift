@@ -33,7 +33,7 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
         categoryImageView.kf.setImage(with: genre.pictureMedium)
     }
     
-    public func updateUIWith(artist: ArtistResponse) {
+    public func updateUIWith(artist: ArtistListResponse) {
         categoryTitle.text = artist.name
         categoryImageView.kf.setImage(with: artist.pictureMedium)
     }
