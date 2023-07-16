@@ -7,22 +7,13 @@
 
 import Foundation
 
-
-//https://api.deezer.com/artist/8354140/top?limit=2
-//NOT: Artist foto ve albumlerin listelendiği sayfada bu structa göre istek atılacak.
-
 struct AlbumTracksResponse: Decodable {
     let data: [AlbumTracksData]?
     let total: Int?
     let next: String?
 }
 
-//Album bilgileri ve prewiew çekilecek.
-
-
-//https://api.deezer.com/artist/4233013/top?limit=50 isteğine karşılık gelecek data
-
-struct AlbumTracksData: Decodable {
+struct AlbumTracksData: Decodable, Hashable{
     let id: Int?
     let readable: Bool?
     let title, titleShort: String?
@@ -48,7 +39,7 @@ struct AlbumTracksData: Decodable {
     }
 }
 
-struct ArtistAlbums: Decodable {
+struct ArtistAlbums: Decodable, Hashable {
     let id: Int?
     let title: String?
     let cover: String?

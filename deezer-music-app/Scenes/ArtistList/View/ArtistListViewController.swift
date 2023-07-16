@@ -8,11 +8,8 @@
 import UIKit
 
 final class ArtistListViewController: UIViewController {
-    
     @IBOutlet private weak var artistListCollectionView: UICollectionView!
-    
     private weak var coordinator: ArtistListCoordinator?
-    
     var viewModel: ArtistListViewModelProtocol! {
         didSet {
             viewModel.delegate  = self
@@ -23,12 +20,9 @@ final class ArtistListViewController: UIViewController {
         super.viewDidLoad()
         artistListCollectionView.delegate = self
         artistListCollectionView.dataSource = self
-        registerCollectionView()
-        viewModel.viewDidLoad()
-    }
-    
-    private func registerCollectionView() {
+        
         artistListCollectionView.register(CategoryCollectionViewCell.self)
+        viewModel.viewDidLoad()
     }
 }
 
@@ -44,7 +38,6 @@ extension ArtistListViewController: ArtistListViewModelDelegate {
         }
     }
 }
-
 
 extension ArtistListViewController: UICollectionViewDataSource {
     
@@ -68,6 +61,4 @@ extension ArtistListViewController: UICollectionViewDataSource {
     }
 }
 
-extension ArtistListViewController: UICollectionViewDelegateFlowLayout {
-    
-}
+extension ArtistListViewController: UICollectionViewDelegateFlowLayout { }

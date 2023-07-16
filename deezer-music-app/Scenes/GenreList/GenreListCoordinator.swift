@@ -36,5 +36,4 @@ final class GenreListCoordinator: Coordinator {
         childCoordinators.append(artistListCoordinator)
         artistListCoordinator.start()
     }
-    
 }

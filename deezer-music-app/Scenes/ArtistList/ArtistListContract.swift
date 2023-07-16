@@ -14,7 +14,6 @@ protocol ArtistListViewModelProtocol: AnyObject {
     var artistList: [ArtistListResponse] { get }
     
     func viewDidLoad()
-
     func artistAt(_ index: Int) -> ArtistListResponse?
     func didSelectArtistAtIndex(_ index: Int)
 }

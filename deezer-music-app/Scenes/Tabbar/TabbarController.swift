@@ -18,6 +18,4 @@ class TabBarController: UITabBarController {
     }
 }
 
-extension TabBarController: UITabBarControllerDelegate {
-    
-}
+extension TabBarController: UITabBarControllerDelegate { }

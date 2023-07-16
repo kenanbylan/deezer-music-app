@@ -35,12 +35,10 @@ class ArtistListViewModel: ArtistListViewModelProtocol {
     
     func didSelectArtistAtIndex(_ index: Int) {
         guard let selectArtist = artistAt(index) else { return }
-        //TODO: Handle Genre Selection
         
+        //MARK: Next pages
         coordinator?.showArtistDetail(artist: selectArtist)
-        
     }
-    
 }
 
 // MARK: -GET RESPONSE

@@ -3,22 +3,20 @@
 //  deezer-music-app
 //
 //  Created by Kenan Baylan on 14.07.2023.
-//
 
 import UIKit
 import Kingfisher
 
-class ArtistDetailViewController: UIViewController {
-
+final class ArtistDetailViewController: UIViewController {
     @IBOutlet private weak var artistDetailCollectionView: UICollectionView!
-    @IBOutlet private weak var artistImageView: UIImageView!
     private weak var coordinator: ArtistDetailCoordinator?
-
     var viewModel: ArtistDetailViewModelProtocol! {
         didSet {
             viewModel.delegate  = self
         }
     }
+    
+    var selectartistAlbumImage: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +24,12 @@ class ArtistDetailViewController: UIViewController {
         artistDetailCollectionView.delegate = self
         artistDetailCollectionView.dataSource = self
         artistDetailCollectionView.register(AlbumCollectionViewCell.self)
-        setupUI()
     }
 }
+
+//MARK: ArtistDetailViewModelDelegate
+
 extension ArtistDetailViewController : ArtistDetailViewModelDelegate {
-    
     func handleVieModelOutput(_ output: ArtistDetailViewModelOutput) {
         switch output {
         case .showArtistDetail(_):
@@ -42,9 +41,10 @@ extension ArtistDetailViewController : ArtistDetailViewModelDelegate {
             
         case .showTitle(let title):
             self.navigationItem.title = title
-        
+            
         case .showTitleImage(let image):
-            self.artistImageView.kf.setImage(with: image)
+            self.selectartistAlbumImage = image
+            self.artistDetailCollectionView.reloadData()
         }
     }
 }
@@ -62,23 +62,20 @@ extension ArtistDetailViewController: UICollectionViewDataSource {
         cell.updateUIWith(artistAlbum: viewModel.artistAlbumDetail[indexPath.item])
         return cell
     }
-}
-
-extension ArtistDetailViewController: UICollectionViewDelegateFlowLayout {
-}
-
-
-//MARK: - ImageView SetupUI
-extension ArtistDetailViewController {
-    private func setupUI() {
-        artistImageView.layer.cornerRadius = 12
-        artistImageView.layer.shadowColor = UIColor.black.cgColor
-        artistImageView.layer.shadowOpacity = 2.0
-        artistImageView.layer.shadowOffset = CGSize(width: 0, height: 4)
-        artistImageView.layer.shadowRadius = 4
-        artistImageView.layer.masksToBounds = false
-        artistImageView.contentMode = .scaleAspectFill
-        artistImageView.clipsToBounds = true
+    
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
+        
+        headerView.updateWith(image: selectartistAlbumImage)
+        return headerView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.didSelectArtistAlbum(indexPath.item)
     }
 }
+
+extension ArtistDetailViewController: UICollectionViewDelegateFlowLayout { }
 

@@ -11,11 +11,11 @@ protocol ArtistDetailViewModelProtocol {
     var coordinator: ArtistDetailCoordinator? { get set }
     var delegate: ArtistDetailViewModelDelegate? { get set }
     var artistAlbumDetail: [AlbumTracksData] { get }
+//    var artistAlbumDetail: Set<AlbumTracksData> = [] { }
     
     func viewDidLoad()
     func artistAlbumAt(_ index: Int) -> AlbumTracksData?
     func didSelectArtistAlbum(_ index: Int)
-    
 }
 
 enum ArtistDetailViewModelOutput {

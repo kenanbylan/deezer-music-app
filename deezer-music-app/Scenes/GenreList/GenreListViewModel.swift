@@ -22,20 +22,13 @@ class GenreListViewModel: GenreListViewModelProtocol {
     }
     
     func genreAt(_ index: Int) -> GenreResponse? {
-        guard index >= 0 && index < genreItems.count else {
-            return nil
-        }
+        guard index >= 0 && index < genreItems.count else { return nil }
         return genreItems[index]
     }
     
     func didSelectGenreAt(_ index: Int) {
-        guard let genre = self[index] else {
-            return
-        }
-        // TODO: Handle genre selection
-        guard let coordinator = coordinator else {
-            return
-        }
+        guard let genre = self[index] else { return }
+        guard let coordinator = coordinator else { return }
         coordinator.showArtistList(genre: genre)
     }
 }
@@ -53,12 +46,9 @@ extension GenreListViewModelProtocol {
     }
 }
 
-
-
 //MARK: Get endpoint services
 
 extension GenreListViewModel {
-    
     private func getGenre() {
         service.getGenre { [weak self] genres, error in
             guard let self = self else { return }
@@ -72,7 +62,3 @@ extension GenreListViewModel {
         }
     }
 }
-
-
-
-

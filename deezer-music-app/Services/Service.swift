@@ -14,9 +14,9 @@ struct NetworkService {
     private init() {}
     
     func request<T: Decodable>(type: T.Type,
-                             url: String,
-                             method: HTTPMethod,
-                             completion: @escaping((Result<T, APIError>)->())) {
+                               url: String,
+                               method: HTTPMethod,
+                               completion: @escaping((Result<T, APIError>)->())) {
         AF.request(url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "", method: method).responseData { response in
             switch response.result {
             case .success(let data):

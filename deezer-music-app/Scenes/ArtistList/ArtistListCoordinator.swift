@@ -32,7 +32,6 @@ class ArtistListCoordinator: Coordinator {
         navigationController.pushViewController(artistListViewController, animated: true)
     }
     
-    
     func showArtistDetail(artist: ArtistListResponse) {
         let artistDetailCoordinator = ArtistDetailCoordinator(navigationController: navigationController, selectArtist: artist)
         childCoordinators.append(artistDetailCoordinator)

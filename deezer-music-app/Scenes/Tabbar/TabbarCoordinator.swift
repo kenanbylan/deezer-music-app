@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 final class TabbarCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
@@ -24,7 +23,6 @@ final class TabbarCoordinator: Coordinator {
     func start() {
         tabbarController.viewControllers = setupViewControllers()
     }
-    
     
     func setupViewControllers() ->[UIViewController] {
         var viewControllers: [UIViewController] = []

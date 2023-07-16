@@ -35,8 +35,11 @@ class ArtistDetailCoordinator: Coordinator {
         navigationController.pushViewController(artistDetailViewController, animated: true)
     }
     
-    func showArtistAlbum() {
+    func showArtistAlbum(albumData: AlbumData, artistAlbumDetail: [AlbumTracksData]) {
         //TODO: will be added.
+        let artistTrackCoordinator = ArtistTrackCoordinator(navigationController: navigationController,albumData: albumData,artistAlbumDetail: artistAlbumDetail)
+        
+        childCoordinators.append(artistTrackCoordinator)
+        artistTrackCoordinator.start()
     }
-    
 }

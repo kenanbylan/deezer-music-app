@@ -7,7 +7,6 @@
 import UIKit
 
 final class GenreListViewController: UIViewController {
-    
     @IBOutlet private weak var genreCollectionView: UICollectionView! {
         didSet {
             genreCollectionView.delegate = self
@@ -24,11 +23,6 @@ final class GenreListViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel?.viewDidLoad()
-        registerCollectionView()
-        
-    }
-    
-    private func registerCollectionView() {
         genreCollectionView.register(CategoryCollectionViewCell.self)
     }
 }
@@ -69,7 +63,5 @@ extension GenreListViewController: UICollectionViewDataSource {
     }
 }
 
-extension GenreListViewController: UICollectionViewDelegateFlowLayout {
-    
-}
+extension GenreListViewController: UICollectionViewDelegateFlowLayout { }
 

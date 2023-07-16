@@ -8,29 +8,36 @@
 import UIKit
 import Kingfisher
 
-class AlbumCollectionViewCell: UICollectionViewCell {
+//TODO: will be Favorite image add
+final class AlbumCollectionViewCell: UICollectionViewCell {
     
     //TODO: will be do private property
-    @IBOutlet weak var albumImageView: UIImageView!
-    @IBOutlet weak var albumNameLabel: UILabel!
-    @IBOutlet weak var albumReleaseDataLabel: UILabel!
+    @IBOutlet private weak var albumImageView: UIImageView!
+    @IBOutlet private weak var albumNameLabel: UILabel!
+    @IBOutlet private weak var albumReleaseDataLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         setupUI()
     }
     
-    //TODO: fix the code here.
     public func updateUIWith(artistAlbum: AlbumTracksData) {
         if let coverURLString = artistAlbum.album?.coverMedium,
            let coverURL = URL(string: coverURLString) {
             self.albumImageView.kf.setImage(with: coverURL)
         }
         self.albumNameLabel.text = artistAlbum.album?.title
-        
         //TODO: will be change.
         self.albumReleaseDataLabel.text = "22.03.2023"
+    }
+    
+    public func updateUIWith(trackData: Track, albumImage: String) {
+        self.albumNameLabel.text = trackData.title
+        self.albumReleaseDataLabel.text = trackData.formattedDuration
+        
+        if let coverURL = URL(string: albumImage) {
+            self.albumImageView.kf.setImage(with: coverURL)
+        }
     }
     
     private func setupUI() {
@@ -47,5 +54,5 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         albumImageView.layer.borderWidth = 2
         albumImageView.layer.borderColor = UIColor.systemGray.cgColor
     }
-
+    
 }

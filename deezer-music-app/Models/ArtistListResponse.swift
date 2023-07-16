@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct ArtistData: Codable {
+struct ArtistData: Decodable {
     let data: [ArtistListResponse]
 }
 
-struct ArtistListResponse: Codable {
+struct ArtistListResponse: Decodable {
     let id: Int
     let name: String?
     let picture: String?
     let pictureSmall: URL?
-    let pictureMedium: URL? //to be changes
+    let pictureMedium: URL?
     let pictureBig: URL?
     let pictureXL: URL?
     let radio: Bool?
