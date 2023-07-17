@@ -29,7 +29,7 @@ final class TabbarCoordinator: Coordinator {
         
         
         //MARK: Genre Tabbar Item
-        let genreCoordinator = GenreListCoordinator(navigationController: navigationController)
+        let genreCoordinator = GenreListCoordinator(navigationController: UINavigationController())
         childCoordinators.append(genreCoordinator)
         genreCoordinator.start()
         
@@ -42,7 +42,7 @@ final class TabbarCoordinator: Coordinator {
         }
         
         //MARK: Favorite Tabbar Item
-        let favoriteCoordinator = FavoriteListCoordinator(navigationController: navigationController)
+        let favoriteCoordinator = FavoriteListCoordinator(navigationController: UINavigationController())
         childCoordinators.append(favoriteCoordinator)
         favoriteCoordinator.start()
         

@@ -55,7 +55,7 @@ extension ArtistListViewModel {
             } else {
                 self.artistList = artists?.data ?? []
                 self.delegate?.handleViewModelOutput(.setLoading(false))
-                self.delegate?.handleViewModelOutput(.showArtistList(artistList))
+                self.delegate?.handleViewModelOutput(.showArtistList(self.artistList))
             }
         }
     }
