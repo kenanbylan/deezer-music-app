@@ -37,6 +37,7 @@ final class ArtistDetailViewModel: ArtistDetailViewModelProtocol {
     func didSelectArtistAlbum(_ index: Int) {
         albumId = self.artistAlbumDetail[index].album?.id
         getAlbumById(albumId: albumId ?? 0 )
+        print("Album Detail", artistAlbumDetail[0].album?.tracklist)
     }
 }
 
@@ -63,7 +64,7 @@ extension ArtistDetailViewModel {
     private func getAlbumById(albumId: Int) -> Void {
         artistDetailService.getAlbumById(albumId: albumId) { [weak self] albumData, error in
             if let error = error {
-                print("Error 3333:",error)
+                print("Error :",error)
             } else {
                 self?.coordinator?.showArtistAlbum(albumData: albumData!,artistAlbumDetail: self!.artistAlbumDetail)
             }
@@ -81,7 +82,6 @@ extension ArtistDetailViewModel {
         for album in albums {
             guard let albumId = album.album?.id else { continue }
             
-            // Albüm ID'sini kontrol et ve eşsiz albümleri ekleyin
             if !albumIds.contains(albumId) {
                 uniqueAlbums.append(album)
                 albumIds.insert(albumId)

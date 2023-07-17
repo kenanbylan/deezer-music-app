@@ -21,7 +21,6 @@ final class ArtistDetailService: ArtistDetailServiceProtocol {
     
     func getAlbumById(albumId: Int, completion: @escaping ((AlbumData?, Error?) -> Void)) {
         let url = Endpoints.baseURL + "album/\(albumId)"
-        print("getAlbumById : ", url)
         
         NetworkService.shared.request(type: AlbumData.self, url: url , method: .get) { response in
             

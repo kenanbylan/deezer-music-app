@@ -22,7 +22,6 @@ class HeaderCollectionReusableView: UICollectionReusableView {
             artistAlbumImageView.kf.setImage(with: url)
         }
     }
-    
     private func setupUI() {
         artistAlbumImageView.contentMode = .scaleAspectFill
         artistAlbumImageView.layer.cornerRadius = 12

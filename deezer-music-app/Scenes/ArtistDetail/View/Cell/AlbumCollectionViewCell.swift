@@ -31,15 +31,7 @@ final class AlbumCollectionViewCell: UICollectionViewCell {
         self.albumReleaseDataLabel.text = "22.03.2023"
     }
     
-    public func updateUIWith(trackData: Track, albumImage: String) {
-        self.albumNameLabel.text = trackData.title
-        self.albumReleaseDataLabel.text = trackData.formattedDuration
-        
-        if let coverURL = URL(string: albumImage) {
-            self.albumImageView.kf.setImage(with: coverURL)
-        }
-    }
-    
+
     private func setupUI() {
         layer.borderWidth = 2
         layer.borderColor = UIColor.systemGray.cgColor

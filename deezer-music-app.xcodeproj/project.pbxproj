@@ -63,6 +63,15 @@
 		93C421A52A5F58E20069BE0C /* ArtistListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C421A42A5F58E20069BE0C /* ArtistListHelper.swift */; };
 		93D3D21F2A60543B00064CC2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D3D21E2A60543B00064CC2 /* Constants.swift */; };
 		93D3D2212A60577A00064CC2 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D3D2202A60577A00064CC2 /* UIViewController + Extension.swift */; };
+		93EC52332A65270D00DEFDD9 /* ArtistTrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EC52312A65270D00DEFDD9 /* ArtistTrackCollectionViewCell.swift */; };
+		93EC52342A65270D00DEFDD9 /* ArtistTrackCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93EC52322A65270D00DEFDD9 /* ArtistTrackCollectionViewCell.xib */; };
+		93EC52382A65369C00DEFDD9 /* FavoriteListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EC52372A65369C00DEFDD9 /* FavoriteListCoordinator.swift */; };
+		93EC523A2A6536A900DEFDD9 /* FavoriteListContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EC52392A6536A900DEFDD9 /* FavoriteListContract.swift */; };
+		93EC523C2A6536B400DEFDD9 /* FavoriteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EC523B2A6536B400DEFDD9 /* FavoriteListViewModel.swift */; };
+		93EC52402A6537AF00DEFDD9 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EC523F2A6537AF00DEFDD9 /* FavoriteListViewController.swift */; };
+		93EC52422A65470C00DEFDD9 /* FavoriteList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93EC52412A65470C00DEFDD9 /* FavoriteList.storyboard */; };
+		93EC52462A6547BD00DEFDD9 /* FavoriteListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EC52452A6547BD00DEFDD9 /* FavoriteListService.swift */; };
+		93EC52482A654AB500DEFDD9 /* FavoriteListServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EC52472A654AB500DEFDD9 /* FavoriteListServiceProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +150,15 @@
 		93C421A42A5F58E20069BE0C /* ArtistListHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListHelper.swift; sourceTree = "<group>"; };
 		93D3D21E2A60543B00064CC2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		93D3D2202A60577A00064CC2 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
+		93EC52312A65270D00DEFDD9 /* ArtistTrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistTrackCollectionViewCell.swift; sourceTree = "<group>"; };
+		93EC52322A65270D00DEFDD9 /* ArtistTrackCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistTrackCollectionViewCell.xib; sourceTree = "<group>"; };
+		93EC52372A65369C00DEFDD9 /* FavoriteListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListCoordinator.swift; sourceTree = "<group>"; };
+		93EC52392A6536A900DEFDD9 /* FavoriteListContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListContract.swift; sourceTree = "<group>"; };
+		93EC523B2A6536B400DEFDD9 /* FavoriteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewModel.swift; sourceTree = "<group>"; };
+		93EC523F2A6537AF00DEFDD9 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
+		93EC52412A65470C00DEFDD9 /* FavoriteList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteList.storyboard; sourceTree = "<group>"; };
+		93EC52452A6547BD00DEFDD9 /* FavoriteListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListService.swift; sourceTree = "<group>"; };
+		93EC52472A654AB500DEFDD9 /* FavoriteListServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListServiceProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +210,7 @@
 		9324BFDA2A62EE7500B8CF3F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				93EC52302A6526F800DEFDD9 /* Cell */,
 				9324BFDB2A62EE8700B8CF3F /* ArtistTrack.storyboard */,
 				9324BFDD2A62EE9C00B8CF3F /* ArtistTrackViewController.swift */,
 			);
@@ -230,16 +249,13 @@
 		93350E062A5C200D00FB8C8F /* deezer-music-app */ = {
 			isa = PBXGroup;
 			children = (
-				93350E072A5C200D00FB8C8F /* AppDelegate.swift */,
-				93350E092A5C200D00FB8C8F /* SceneDelegate.swift */,
+				93EC522E2A65104500DEFDD9 /* App  */,
 				93350E3C2A5C208A00FB8C8F /* Utils */,
 				93350E552A5C253900FB8C8F /* Coordinators */,
 				93350E612A5C2FA000FB8C8F /* Models */,
 				93350E3A2A5C206E00FB8C8F /* Services */,
 				93350E3B2A5C207300FB8C8F /* Scenes */,
-				93350E132A5C200F00FB8C8F /* Assets.xcassets */,
-				93350E152A5C200F00FB8C8F /* LaunchScreen.storyboard */,
-				93350E182A5C200F00FB8C8F /* Info.plist */,
+				93EC522F2A65105600DEFDD9 /* Resource */,
 			);
 			path = "deezer-music-app";
 			sourceTree = "<group>";
@@ -264,12 +280,12 @@
 		93350E3A2A5C206E00FB8C8F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				93350E662A5C35C500FB8C8F /* ServiceHelper.swift */,
-				93350E642A5C35A200FB8C8F /* Service.swift */,
+				93EC52442A65479A00DEFDD9 /* GenericService */,
 				93350E602A5C2CB500FB8C8F /* GenreListService */,
 				93C421A12A5F58B60069BE0C /* ArtistListService */,
 				9382C3172A61557600C0BDAF /* ArtistDetailService */,
 				9324BFE22A632CCD00B8CF3F /* AlbumTrackService */,
+				93EC52432A65477C00DEFDD9 /* FavoriteService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -282,6 +298,7 @@
 				93C421942A5F49340069BE0C /* ArtistList */,
 				9382C30C2A61523C00C0BDAF /* ArtistDetail */,
 				9324BFD32A62EE2F00B8CF3F /* ArtistTrack */,
+				93EC52352A65366600DEFDD9 /* FavoriteList */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -458,6 +475,72 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		93EC522E2A65104500DEFDD9 /* App  */ = {
+			isa = PBXGroup;
+			children = (
+				93350E072A5C200D00FB8C8F /* AppDelegate.swift */,
+				93350E092A5C200D00FB8C8F /* SceneDelegate.swift */,
+			);
+			path = "App ";
+			sourceTree = "<group>";
+		};
+		93EC522F2A65105600DEFDD9 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				93350E182A5C200F00FB8C8F /* Info.plist */,
+				93350E132A5C200F00FB8C8F /* Assets.xcassets */,
+				93350E152A5C200F00FB8C8F /* LaunchScreen.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		93EC52302A6526F800DEFDD9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				93EC52312A65270D00DEFDD9 /* ArtistTrackCollectionViewCell.swift */,
+				93EC52322A65270D00DEFDD9 /* ArtistTrackCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		93EC52352A65366600DEFDD9 /* FavoriteList */ = {
+			isa = PBXGroup;
+			children = (
+				93EC52372A65369C00DEFDD9 /* FavoriteListCoordinator.swift */,
+				93EC52392A6536A900DEFDD9 /* FavoriteListContract.swift */,
+				93EC523B2A6536B400DEFDD9 /* FavoriteListViewModel.swift */,
+				93EC52362A65368400DEFDD9 /* View */,
+			);
+			path = FavoriteList;
+			sourceTree = "<group>";
+		};
+		93EC52362A65368400DEFDD9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				93EC523F2A6537AF00DEFDD9 /* FavoriteListViewController.swift */,
+				93EC52412A65470C00DEFDD9 /* FavoriteList.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		93EC52432A65477C00DEFDD9 /* FavoriteService */ = {
+			isa = PBXGroup;
+			children = (
+				93EC52452A6547BD00DEFDD9 /* FavoriteListService.swift */,
+				93EC52472A654AB500DEFDD9 /* FavoriteListServiceProtocol.swift */,
+			);
+			path = FavoriteService;
+			sourceTree = "<group>";
+		};
+		93EC52442A65479A00DEFDD9 /* GenericService */ = {
+			isa = PBXGroup;
+			children = (
+				93350E662A5C35C500FB8C8F /* ServiceHelper.swift */,
+				93350E642A5C35A200FB8C8F /* Service.swift */,
+			);
+			path = GenericService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -572,7 +655,9 @@
 			files = (
 				93350E5F2A5C2C7E00FB8C8F /* CategoryCollectionViewCell.xib in Resources */,
 				9324BFDC2A62EE8700B8CF3F /* ArtistTrack.storyboard in Resources */,
+				93EC52422A65470C00DEFDD9 /* FavoriteList.storyboard in Resources */,
 				93350E172A5C200F00FB8C8F /* LaunchScreen.storyboard in Resources */,
+				93EC52342A65270D00DEFDD9 /* ArtistTrackCollectionViewCell.xib in Resources */,
 				9382C3192A61564000C0BDAF /* ArtistDetail.storyboard in Resources */,
 				93350E142A5C200F00FB8C8F /* Assets.xcassets in Resources */,
 				9382C31F2A61B26A00C0BDAF /* AlbumCollectionViewCell.xib in Resources */,
@@ -609,6 +694,7 @@
 				93350E462A5C216300FB8C8F /* GenreListViewController.swift in Sources */,
 				93350ECC2A5DCF1000FB8C8F /* GenreListContract.swift in Sources */,
 				93350ED42A5EAE9D00FB8C8F /* TabbarController.swift in Sources */,
+				93EC523A2A6536A900DEFDD9 /* FavoriteListContract.swift in Sources */,
 				934C9C582A64153900AE527A /* Track + Extension.swift in Sources */,
 				93350E4C2A5C219B00FB8C8F /* GenreListViewModel.swift in Sources */,
 				93D3D21F2A60543B00064CC2 /* Constants.swift in Sources */,
@@ -619,6 +705,7 @@
 				9324BFD52A62EE5500B8CF3F /* ArtistTrackContract.swift in Sources */,
 				93D3D2212A60577A00064CC2 /* UIViewController + Extension.swift in Sources */,
 				9324BFD02A62CCF400B8CF3F /* HeaderCollectionReusableView.swift in Sources */,
+				93EC523C2A6536B400DEFDD9 /* FavoriteListViewModel.swift in Sources */,
 				93350EDD2A5ECE9900FB8C8F /* TabbarCoordinator.swift in Sources */,
 				9324BFE42A632D1000B8CF3F /* AlbumTrackService.swift in Sources */,
 				93C421A32A5F58D90069BE0C /* ArtistListService.swift in Sources */,
@@ -627,21 +714,26 @@
 				93350E7E2A5CB14700FB8C8F /* ArtistListResponse.swift in Sources */,
 				9382C31E2A61B26A00C0BDAF /* AlbumCollectionViewCell.swift in Sources */,
 				93350E5E2A5C2C7E00FB8C8F /* CategoryCollectionViewCell.swift in Sources */,
+				93EC52332A65270D00DEFDD9 /* ArtistTrackCollectionViewCell.swift in Sources */,
 				9324BFD72A62EE6200B8CF3F /* ArtistTrackCoordinator.swift in Sources */,
 				9382C3122A61526400C0BDAF /* ArtistDetailViewModel.swift in Sources */,
 				93C421962A5F494D0069BE0C /* ArtistListCoordinator.swift in Sources */,
+				93EC52482A654AB500DEFDD9 /* FavoriteListServiceProtocol.swift in Sources */,
 				9324BFE62A632D1A00B8CF3F /* AlbumTrackHelper.swift in Sources */,
 				93350E692A5C362E00FB8C8F /* GenreListService.swift in Sources */,
 				9382C30E2A61525300C0BDAF /* ArtistDetailCoordinator.swift in Sources */,
 				93350E6B2A5C363800FB8C8F /* GenreListHelper.swift in Sources */,
+				93EC52462A6547BD00DEFDD9 /* FavoriteListService.swift in Sources */,
 				93350EDB2A5ECD1900FB8C8F /* Coordinator.swift in Sources */,
 				9382C3162A61528700C0BDAF /* ArtistDetailViewController.swift in Sources */,
 				9382C3102A61525A00C0BDAF /* ArtistDetailContract.swift in Sources */,
 				93350E082A5C200D00FB8C8F /* AppDelegate.swift in Sources */,
 				93C421982A5F49570069BE0C /* ArtistListContract.swift in Sources */,
 				93350E0A2A5C200D00FB8C8F /* SceneDelegate.swift in Sources */,
+				93EC52382A65369C00DEFDD9 /* FavoriteListCoordinator.swift in Sources */,
 				93350E732A5C902F00FB8C8F /* GenreListCoordinator.swift in Sources */,
 				93350E672A5C35C500FB8C8F /* ServiceHelper.swift in Sources */,
+				93EC52402A6537AF00DEFDD9 /* FavoriteListViewController.swift in Sources */,
 				9324BFD92A62EE7000B8CF3F /* ArtistTrackViewModel.swift in Sources */,
 				9382C3252A61F80A00C0BDAF /* AlbumTrack.swift in Sources */,
 				93C4219A2A5F49630069BE0C /* ArtistListViewModel.swift in Sources */,
@@ -823,7 +915,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6RYG55F8TD;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "deezer-music-app/Info.plist";
+				INFOPLIST_FILE = "deezer-music-app/Resource/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -851,7 +943,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6RYG55F8TD;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "deezer-music-app/Info.plist";
+				INFOPLIST_FILE = "deezer-music-app/Resource/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

@@ -69,6 +69,7 @@ extension ArtistDetailViewController: UICollectionViewDataSource {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
         
         headerView.updateWith(image: selectartistAlbumImage)
+        
         return headerView
     }
     

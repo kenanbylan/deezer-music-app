@@ -7,7 +7,8 @@
 
 import Foundation
 
-//https://api.deezer.com/album/{albumId} apiye istek atıldığında karşılık verilecek.
+
+//https://api.deezer.com/album/{albumId} when a request is sent to the API, it will be responded to.
 
 struct AlbumData: Decodable {
     
@@ -23,7 +24,6 @@ struct AlbumData: Decodable {
         case releaseDate = "release_date"
     }
 }
-
 
 struct TrackData: Decodable {
     let data: [Track]

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArtistTrackCollectionViewCell" id="gTV-IL-0wX" customClass="ArtistTrackCollectionViewCell" customModule="deezer_music_app" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dty-Eo-32V">
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O61-Cz-pcR">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="O61-Cz-pcR" secondAttribute="height" id="Fqt-4v-2gT"/>
+                                    <constraint firstAttribute="height" constant="100" id="UFv-Yw-ZGG"/>
+                                    <constraint firstAttribute="width" constant="100" id="b6o-zS-1ls"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YTK-rS-gSd">
+                                <rect key="frame" x="116" y="16" width="218" height="67.333333333333329"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dursun Zaman (feat: Jabbar)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGs-ZO-gFE">
+                                        <rect key="frame" x="0.0" y="0.0" width="218" height="27.333333333333332"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rVU-0n-nMy">
+                                        <rect key="frame" x="0.0" y="37.333333333333336" width="218" height="30.000000000000007"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.41 minute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHS-Pz-b0f">
+                                                <rect key="frame" x="0.0" y="0.0" width="183" height="30"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="wpx-0C-t3y">
+                                                <rect key="frame" x="188" y="0.0" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="wpx-0C-t3y" secondAttribute="height" id="HX1-OK-PYR"/>
+                                                    <constraint firstAttribute="width" constant="30" id="Ksg-Xe-1Av"/>
+                                                    <constraint firstAttribute="height" constant="30" id="xEb-MV-LrN"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="O61-Cz-pcR" secondAttribute="bottom" id="0GF-ea-ysl"/>
+                            <constraint firstItem="YTK-rS-gSd" firstAttribute="top" secondItem="Dty-Eo-32V" secondAttribute="top" constant="16" id="4SD-Kj-eg8"/>
+                            <constraint firstItem="YTK-rS-gSd" firstAttribute="leading" secondItem="O61-Cz-pcR" secondAttribute="trailing" constant="16" id="5Dx-BA-3X4"/>
+                            <constraint firstAttribute="height" constant="100" id="H0B-gU-mdL"/>
+                            <constraint firstItem="O61-Cz-pcR" firstAttribute="leading" secondItem="Dty-Eo-32V" secondAttribute="leading" id="H7H-eD-y7m"/>
+                            <constraint firstItem="O61-Cz-pcR" firstAttribute="top" secondItem="Dty-Eo-32V" secondAttribute="top" id="ISg-A0-kDm"/>
+                            <constraint firstAttribute="width" constant="350" id="JYR-kP-NgG"/>
+                            <constraint firstAttribute="trailing" secondItem="YTK-rS-gSd" secondAttribute="trailing" constant="16" id="K7B-sY-Xvk"/>
+                            <constraint firstAttribute="bottom" secondItem="YTK-rS-gSd" secondAttribute="bottom" constant="16.670000000000002" id="OBG-7d-KD9"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="Dty-Eo-32V" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="DxY-0w-pgX"/>
+                <constraint firstAttribute="trailing" secondItem="Dty-Eo-32V" secondAttribute="trailing" id="SgK-1Y-n7U"/>
+                <constraint firstItem="Dty-Eo-32V" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Ueg-fQ-Pgg"/>
+                <constraint firstAttribute="bottom" secondItem="Dty-Eo-32V" secondAttribute="bottom" id="bjQ-Ik-Dkp"/>
+            </constraints>
+            <size key="customSize" width="372" height="118"/>
+            <connections>
+                <outlet property="durationLabel" destination="jHS-Pz-b0f" id="6K6-TI-ogl"/>
+                <outlet property="favoriteImageView" destination="wpx-0C-t3y" id="xqZ-Gq-H5j"/>
+                <outlet property="trackImageView" destination="O61-Cz-pcR" id="8of-GE-fMp"/>
+                <outlet property="trackTitle" destination="IGs-ZO-gFE" id="Lv9-nA-6bY"/>
+            </connections>
+            <point key="canvasLocation" x="1.5267175572519083" y="32.394366197183103"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="heart" width="512" height="512"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

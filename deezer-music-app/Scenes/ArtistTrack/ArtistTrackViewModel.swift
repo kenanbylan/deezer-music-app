@@ -34,11 +34,9 @@ final class ArtistTrackViewModel: ArtistTrackViewModelProtocol {
     
     func didSelectTrackAt(_ index: Int) {
         guard let trackData = trackDataAt(index: index) else { return }
-        print("TRACK DATA :", trackData)
-        
+        print("Track data:",trackData)
         self.delegate?.handleViewModelOutput(.didSelectTrack(trackData))
     }
-    
 }
 
 //MARK: - GET RESPONSE DATA

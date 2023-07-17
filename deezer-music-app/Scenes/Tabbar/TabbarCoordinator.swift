@@ -24,20 +24,40 @@ final class TabbarCoordinator: Coordinator {
         tabbarController.viewControllers = setupViewControllers()
     }
     
-    func setupViewControllers() ->[UIViewController] {
+    func setupViewControllers() -> [UIViewController] {
         var viewControllers: [UIViewController] = []
+        
+        
+        //MARK: Genre Tabbar Item
         let genreCoordinator = GenreListCoordinator(navigationController: navigationController)
         childCoordinators.append(genreCoordinator)
         genreCoordinator.start()
         
         let genreVC = genreCoordinator.rootViewController
-        
-        let tabbarItem = UITabBarItem(title: "Home", image: UIImage(named: TabbarImagesName.home), selectedImage: UIImage(named: "home"))
-        genreVC?.tabBarItem = tabbarItem
+        let genreTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: TabbarImagesName.home), selectedImage: UIImage(named: "home"))
+        genreVC?.tabBarItem = genreTabBarItem
         
         if let genreVC = genreVC {
             viewControllers.append(genreVC)
         }
+        
+        //MARK: Favorite Tabbar Item
+        let favoriteCoordinator = FavoriteListCoordinator(navigationController: navigationController)
+        childCoordinators.append(favoriteCoordinator)
+        favoriteCoordinator.start()
+        
+        let favoriteVC = favoriteCoordinator.rootViewController
+        let favoriteTabBarItem = UITabBarItem(title: "Favorite", image: UIImage(named: TabbarImagesName.favorites), selectedImage: UIImage(named: "fav"))
+        favoriteVC?.tabBarItem = favoriteTabBarItem
+        
+        if let favoriteVC = favoriteVC {
+            viewControllers.append(favoriteVC)
+        } else {
+            print("favorite is nil.")
+        }
+        
         return viewControllers
+        
     }
+    
 }

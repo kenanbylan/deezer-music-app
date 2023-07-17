@@ -24,7 +24,7 @@ final class ArtistTrackViewController: UIViewController {
         artistTrackCollectionView.dataSource = self
         
         viewModel.viewDidLoad()
-        artistTrackCollectionView.register(AlbumCollectionViewCell.self)
+        artistTrackCollectionView.register(ArtistTrackCollectionViewCell.self)
     }
 }
 
@@ -38,7 +38,7 @@ extension ArtistTrackViewController: ArtistTrackViewModelDelegate {
             
         case .showArtistTrackList(_):
             artistTrackCollectionView.reloadData()
-        case .setLoading(_):
+        case .setLoading(_ ):
             break
             
         case .setLoading(_):
@@ -60,14 +60,15 @@ extension ArtistTrackViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: AlbumCollectionViewCell.self),
-            for: indexPath) as! AlbumCollectionViewCell
+            withReuseIdentifier: String(describing: ArtistTrackCollectionViewCell.self),
+            for: indexPath) as! ArtistTrackCollectionViewCell
         
+        //FİXED: From time to time the application crashes when the application starts.
         if let trackData = viewModel.trackDataAt(index: indexPath.item) {
             let albumImage = viewModel.artistAlbumDetail?[indexPath.item].album?.coverMedium
             cell.updateUIWith(trackData: trackData,albumImage: albumImage!)
+            
         }
-        
         return cell
     }
     
@@ -79,19 +80,10 @@ extension ArtistTrackViewController: UICollectionViewDataSource {
 
 extension ArtistTrackViewController: UICollectionViewDelegate { }
 
-
-//FİX: Will be code
 //MARK: For audio player
 
 extension ArtistTrackViewController {
     private func playTrack(track: Track) {
-        let modalViewController = createModalViewController()
-        present(modalViewController, animated: true, completion: nil)
-    }
-   
-    private func createModalViewController() -> UIViewController {
-        let modalViewController = UIViewController()
-        
-        return modalViewController
+        print("Track: ",track )
     }
 }

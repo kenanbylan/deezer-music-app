@@ -9,5 +9,5 @@ import Foundation
 
 struct TabbarImagesName {
     static let home = "home"
-    static let favorites = "favorite"
+    static let favorites = "fav"
 }
