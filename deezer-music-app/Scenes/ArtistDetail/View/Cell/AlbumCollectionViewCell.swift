@@ -11,7 +11,6 @@ import Kingfisher
 //TODO: will be Favorite image add
 final class AlbumCollectionViewCell: UICollectionViewCell {
     
-    //TODO: will be do private property
     @IBOutlet private weak var albumImageView: UIImageView!
     @IBOutlet private weak var albumNameLabel: UILabel!
     @IBOutlet private weak var albumReleaseDataLabel: UILabel!
@@ -21,20 +20,18 @@ final class AlbumCollectionViewCell: UICollectionViewCell {
         setupUI()
     }
     
-    public func updateUIWith(artistAlbum: AlbumTracksData) {
-        if let coverURLString = artistAlbum.album?.coverMedium,
-           let coverURL = URL(string: coverURLString) {
-            self.albumImageView.kf.setImage(with: coverURL)
-        }
-        self.albumNameLabel.text = artistAlbum.album?.title
-        //TODO: will be change.
-        self.albumReleaseDataLabel.text = "22.03.2023"
+    public func updateUIWith(artistAlbum: AlbumResponse) {
+        let coverURL = URL(string: artistAlbum.coverMedium)
+        self.albumImageView.kf.setImage(with: coverURL)
+        self.albumNameLabel.text = artistAlbum.title
+        self.albumReleaseDataLabel.text = artistAlbum.releaseDate.formatReleaseDate()
     }
-    
+}
 
+//MARK: AlbumCollectionViewCell Setup UI
+extension AlbumCollectionViewCell {
+    
     private func setupUI() {
-        layer.borderWidth = 2
-        layer.borderColor = UIColor.systemGray.cgColor
         layer.cornerRadius = 12
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.4
@@ -45,6 +42,7 @@ final class AlbumCollectionViewCell: UICollectionViewCell {
         albumImageView.contentMode = .scaleAspectFill
         albumImageView.layer.borderWidth = 2
         albumImageView.layer.borderColor = UIColor.systemGray.cgColor
+        albumImageView.layer.cornerRadius = 12
+        
     }
-    
 }

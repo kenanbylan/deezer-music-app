@@ -8,19 +8,29 @@ import UIKit
 import Kingfisher
 
 final class ArtistDetailViewController: UIViewController {
+    
     @IBOutlet private weak var artistDetailCollectionView: UICollectionView!
     private weak var coordinator: ArtistDetailCoordinator?
+    private var loadIndicator: UIActivityIndicatorView!
+    
     var viewModel: ArtistDetailViewModelProtocol! {
         didSet {
             viewModel.delegate  = self
         }
     }
     
-    var selectartistAlbumImage: URL?
+    
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         viewModel.viewDidLoad()
+        
+        registerCollectionView()
+        settingViewControllerUI()
+    }
+    
+    private func registerCollectionView() {
         artistDetailCollectionView.delegate = self
         artistDetailCollectionView.dataSource = self
         artistDetailCollectionView.register(AlbumCollectionViewCell.self)
@@ -32,26 +42,26 @@ final class ArtistDetailViewController: UIViewController {
 extension ArtistDetailViewController : ArtistDetailViewModelDelegate {
     func handleVieModelOutput(_ output: ArtistDetailViewModelOutput) {
         switch output {
-        case .showArtistDetail(_):
-            self.artistDetailCollectionView.reloadData()
-        case .setLoading(_):
-            break
+            
+        case .setLoading(let isLoad):
+            DispatchQueue.main.async { [self] in
+                isLoad ? self.loadIndicator.startAnimating() : self.loadIndicator.stopAnimating()
+            }
         case .showArtistAlbum(_):
             self.artistDetailCollectionView.reloadData()
             
         case .showTitle(let title):
             self.navigationItem.title = title
             
-        case .showTitleImage(let image):
-            self.selectartistAlbumImage = image
-            self.artistDetailCollectionView.reloadData()
+        case .showError(errorDescription: let error):
+            self.presentErrorAlert(title: "Error" , message: error)
         }
     }
 }
 
 extension ArtistDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.artistAlbumDetail.count
+        return viewModel.artistAlbums.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -59,16 +69,20 @@ extension ArtistDetailViewController: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: AlbumCollectionViewCell.self),
             for: indexPath) as! AlbumCollectionViewCell
         
-        cell.updateUIWith(artistAlbum: viewModel.artistAlbumDetail[indexPath.item])
+        if let albumData = viewModel.artistAlbumAt(indexPath.item) {
+            cell.updateUIWith(artistAlbum: albumData )
+        }
+        
         return cell
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
         
-        headerView.updateWith(image: selectartistAlbumImage)
+        if let image = viewModel.selectedArtistHeaderImage {
+            headerView.updateWith(image: image)
+        }
         
         return headerView
     }
@@ -80,3 +94,15 @@ extension ArtistDetailViewController: UICollectionViewDataSource {
 
 extension ArtistDetailViewController: UICollectionViewDelegateFlowLayout { }
 
+
+extension ArtistDetailViewController {
+    func settingViewControllerUI() {
+        loadIndicator = UIActivityIndicatorView()
+        self.view.addSubview(loadIndicator)
+        loadIndicator.center = self.view.center
+        loadIndicator.hidesWhenStopped = true
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+    }
+}

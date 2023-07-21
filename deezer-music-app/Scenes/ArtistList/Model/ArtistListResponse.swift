@@ -1,9 +1,6 @@
-//
 //  Artist.swift
 //  deezer-music-app
-//
 //  Created by Kenan Baylan on 11.07.2023.
-//
 
 import Foundation
 
@@ -21,14 +18,17 @@ struct ArtistListResponse: Decodable {
     let pictureXL: URL?
     let radio: Bool?
     let tracklist: String?
-    let type: String?
+    let nbAlbum: Int?
+    let nbFan: Int?
     
     enum CodingKeys: String, CodingKey {
-        case id, name, picture, radio, tracklist, type
+        case id, name, picture, radio, tracklist
         case pictureSmall = "picture_small"
         case pictureMedium = "picture_medium"
         case pictureBig = "picture_big"
         case pictureXL = "picture_xl"
+        case nbAlbum = "nb_album"
+        case nbFan = "nb_fan"
     }
 }
 

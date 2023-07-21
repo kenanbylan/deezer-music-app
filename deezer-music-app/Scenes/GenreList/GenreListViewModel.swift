@@ -16,7 +16,7 @@ class GenreListViewModel: GenreListViewModelProtocol {
         delegate?.handleViewModelOutput(.setTitle("Deezer Music"))
         getGenre()
     }
-    
+
     var numberOfGenres: Int {
         return genreItems.count
     }

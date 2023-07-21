@@ -5,69 +5,80 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AlbumCollectionViewCell" id="gTV-IL-0wX" customClass="AlbumCollectionViewCell" customModule="deezer_music_app" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="370" height="120"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="370" height="120"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gw6-kl-HEe">
-                        <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CeF-Uo-s77">
+                        <rect key="frame" x="0.0" y="0.0" width="370" height="120"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test-image" translatesAutoresizingMaskIntoConstraints="NO" id="W0X-2F-9Ym">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="W0X-2F-9Ym" secondAttribute="height" multiplier="1:1" id="gZB-xU-cc0"/>
+                                    <constraint firstAttribute="width" secondItem="W0X-2F-9Ym" secondAttribute="height" id="ATf-QM-HXj"/>
+                                    <constraint firstAttribute="width" constant="120" id="Gax-7k-WHd"/>
+                                    <constraint firstAttribute="height" constant="120" id="hGc-JQ-COu"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="bRq-x7-rwD">
-                                <rect key="frame" x="120" y="18.666666666666668" width="230" height="62.666666666666657"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Davy Jones Suite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNJ-HU-75O">
-                                        <rect key="frame" x="0.0" y="0.0" width="167.33333333333334" height="23.333333333333332"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24.03.2002" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eew-oT-BgR">
-                                        <rect key="frame" x="0.0" y="43.333333333333329" width="70.333333333333329" height="19.333333333333329"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Davy Jones Suite DFSAPD" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNJ-HU-75O">
+                                <rect key="frame" x="136" y="8" width="218" height="52"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24.03.2002" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eew-oT-BgR">
+                                <rect key="frame" x="136" y="86.666666666666671" width="218" height="23.333333333333329"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="350" id="GCO-Ed-zCH"/>
-                            <constraint firstAttribute="height" constant="100" id="fHQ-2a-pQh"/>
+                            <constraint firstItem="W0X-2F-9Ym" firstAttribute="leading" secondItem="CeF-Uo-s77" secondAttribute="leading" id="Cnt-Vl-nyD"/>
+                            <constraint firstAttribute="trailing" secondItem="qNJ-HU-75O" secondAttribute="trailing" constant="16" id="MTV-Fh-TjU"/>
+                            <constraint firstItem="W0X-2F-9Ym" firstAttribute="top" secondItem="CeF-Uo-s77" secondAttribute="top" id="Oll-8k-06c"/>
+                            <constraint firstAttribute="height" constant="120" id="RA0-oH-wRn"/>
+                            <constraint firstAttribute="width" constant="370" id="UNk-CF-Zi9"/>
+                            <constraint firstAttribute="bottom" secondItem="eew-oT-BgR" secondAttribute="bottom" constant="10" id="UcP-IT-JQL"/>
+                            <constraint firstAttribute="bottom" secondItem="W0X-2F-9Ym" secondAttribute="bottom" id="fxj-0a-3xf"/>
+                            <constraint firstItem="qNJ-HU-75O" firstAttribute="top" secondItem="CeF-Uo-s77" secondAttribute="top" constant="8" id="gJi-m7-s6l"/>
+                            <constraint firstItem="eew-oT-BgR" firstAttribute="leading" secondItem="W0X-2F-9Ym" secondAttribute="trailing" constant="16" id="gKm-vE-tR7"/>
+                            <constraint firstAttribute="trailing" secondItem="eew-oT-BgR" secondAttribute="trailing" constant="16" id="i6E-q9-5Xe"/>
+                            <constraint firstItem="qNJ-HU-75O" firstAttribute="leading" secondItem="W0X-2F-9Ym" secondAttribute="trailing" constant="16" id="yYD-Sa-UI1"/>
                         </constraints>
-                    </stackView>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="gw6-kl-HEe" secondAttribute="trailing" id="ChK-BK-3gz"/>
-                <constraint firstAttribute="bottom" secondItem="gw6-kl-HEe" secondAttribute="bottom" id="MEK-Ef-aiA"/>
-                <constraint firstItem="gw6-kl-HEe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="v4M-hB-aVT"/>
-                <constraint firstItem="gw6-kl-HEe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="vUc-SH-Zff"/>
+                <constraint firstItem="CeF-Uo-s77" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="81s-FT-Lj8"/>
+                <constraint firstAttribute="trailing" secondItem="CeF-Uo-s77" secondAttribute="trailing" id="L4j-Q2-OWp"/>
+                <constraint firstAttribute="bottom" secondItem="CeF-Uo-s77" secondAttribute="bottom" id="cln-yR-i30"/>
+                <constraint firstItem="CeF-Uo-s77" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yGE-t4-Xxc"/>
             </constraints>
-            <size key="customSize" width="246" height="65"/>
+            <size key="customSize" width="296" height="85"/>
             <connections>
                 <outlet property="albumImageView" destination="W0X-2F-9Ym" id="A5d-g5-vCJ"/>
                 <outlet property="albumNameLabel" destination="qNJ-HU-75O" id="5Cn-ne-hQJ"/>
                 <outlet property="albumReleaseDataLabel" destination="eew-oT-BgR" id="uYS-jS-yp5"/>
             </connections>
-            <point key="canvasLocation" x="146.56488549618319" y="7.746478873239437"/>
+            <point key="canvasLocation" x="253.43511450381678" y="1.4084507042253522"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="test-image" width="250" height="250"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

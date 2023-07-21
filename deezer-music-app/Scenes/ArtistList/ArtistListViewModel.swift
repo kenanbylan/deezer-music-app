@@ -11,9 +11,9 @@ class ArtistListViewModel: ArtistListViewModelProtocol {
     
     var delegate: ArtistListViewModelDelegate?
     var coordinator: ArtistListCoordinator?
+    private let artistListService: ArtistListServiceProtocol!
+
     var artistList: [ArtistListResponse] = []
-    private let artistListService: ArtistListServiceProtocol
-    
     var selectedGenre: GenreResponse?
     
     init(artistListService: ArtistListServiceProtocol) {
@@ -21,9 +21,9 @@ class ArtistListViewModel: ArtistListViewModelProtocol {
     }
     
     func viewDidLoad() {
-        guard let genreId = selectedGenre?.id else {
-            return
-        }
+        delegate?.handleViewModelOutput(.setLoading(true))
+        guard let genreId = selectedGenre?.id else { return }
+        
         delegate?.handleViewModelOutput(.showTitle(selectedGenre?.name ?? "Nil"))
         getArtistList(genreId: genreId)
     }
@@ -35,7 +35,6 @@ class ArtistListViewModel: ArtistListViewModelProtocol {
     
     func didSelectArtistAtIndex(_ index: Int) {
         guard let selectArtist = artistAt(index) else { return }
-        
         //MARK: Next pages
         coordinator?.showArtistDetail(artist: selectArtist)
     }
@@ -43,20 +42,18 @@ class ArtistListViewModel: ArtistListViewModelProtocol {
 
 // MARK: -GET RESPONSE
 
-extension ArtistListViewModel {
-    
+private extension ArtistListViewModel {
     private func getArtistList(genreId: Int) {
         delegate?.handleViewModelOutput(.setLoading(true))
         artistListService.getArtistList(genreId: genreId) { [weak self] artists, error in
             guard let self = self else { return }
             if let error = error {
-                print("Error:",error.localizedDescription)
-                ///TODO: do alert handler.
+                self.delegate?.handleViewModelOutput(.showError(errorDescription: error.localizedDescription))
             } else {
                 self.artistList = artists?.data ?? []
-                self.delegate?.handleViewModelOutput(.setLoading(false))
-                self.delegate?.handleViewModelOutput(.showArtistList(self.artistList))
+                self.delegate?.handleViewModelOutput(.showArtistList(artistList))
             }
         }
+        self.delegate?.handleViewModelOutput(.setLoading(false))
     }
 }

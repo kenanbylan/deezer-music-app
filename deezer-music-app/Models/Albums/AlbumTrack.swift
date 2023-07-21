@@ -9,10 +9,7 @@ import Foundation
 
 struct AlbumTracksResponse: Decodable {
     let data: [AlbumTracksData]?
-    let total: Int?
-    let next: String?
 }
-
 struct AlbumTracksData: Decodable, Hashable{
     let id: Int?
     let readable: Bool?

@@ -8,10 +8,9 @@ import Foundation
 
 final class AlbumTrackService: AlbumTrackServiceProtocol {
     //    example id: 68851461
-    func getAlbumTrack(albumId: Int, completion: @escaping ((AlbumData?, Error?) -> Void)) {
+    func getAlbumTrack(albumId: Int, completion: @escaping ((AlbumDetailResponse?, Error?) -> Void)) {
         let url =  Endpoints.baseURL + "/album/\(albumId)"
-        
-        NetworkService.shared.request(type: AlbumData.self, url: url , method: .get) { response in
+        NetworkService.shared.request(type: AlbumDetailResponse.self, url: url , method: .get) { response in
             switch response {
             case .success(let albumData):
                 completion(albumData,nil)

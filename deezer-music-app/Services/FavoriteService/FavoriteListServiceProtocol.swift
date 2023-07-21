@@ -7,6 +7,4 @@
 
 import Foundation
 
-protocol FavoriteListServiceProtocol {
-    
-}
+protocol FavoriteListServiceProtocol { }

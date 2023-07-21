@@ -8,5 +8,5 @@
 import Foundation
 
 protocol AlbumTrackServiceProtocol {
-    func getAlbumTrack(albumId: Int, completion:@escaping( (AlbumData?, Error?) -> Void))
+    func getAlbumTrack(albumId: Int, completion:@escaping( (AlbumDetailResponse?, Error?) -> Void))
 }

@@ -4,23 +4,26 @@
 //
 //  Created by Kenan Baylan on 17.07.2023.
 
-
 import Foundation
 
 protocol FavoriteListViewModelProtocol {
     var coordinator: FavoriteListCoordinator? { get set }
-    var favoriteList: AlbumData? { get }
     var delegate: FavoriteListViewModelDelegate? { get set }
+
+    var favoriteList: [AlbumDetailTrackListData] { get set }
     
     func viewDidLoad()
-    func favoriteAt(_ index: Int) -> AlbumData?
-    func didSelectFavoriteAt(_ index: Int)
+    func numberOfFavorites() -> Int
+    func favoriteAt(index: Int) -> AlbumDetailTrackListData?
+    func didSelectFavoriteAt(index: Int)
+    func removeFavoriteById(selectTrackId:Int)
 }
 
 enum FavoriteListViewModelOutput {
-    case showFavoriteList([AlbumData])
+    case showFavoriteList([AlbumDetailTrackListData])
     case setLoading(Bool)
     case setTitle(String)
+    case successRemoved(Bool)
 }
 
 protocol FavoriteListViewModelDelegate: AnyObject {

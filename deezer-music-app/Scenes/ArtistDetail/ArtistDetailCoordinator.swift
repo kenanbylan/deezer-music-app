@@ -21,25 +21,24 @@ class ArtistDetailCoordinator: Coordinator {
     }
     
     func start() {
+        
         let artistDetailStoryboard = UIStoryboard(name: "ArtistDetail", bundle: nil)
         let artistDetailViewController = artistDetailStoryboard.instantiateViewController(withIdentifier: "ArtistDetailViewController") as! ArtistDetailViewController
-
+        
         let artistDetailService = ArtistDetailService()
         let viewModel = ArtistDetailViewModel(artistDetailService: artistDetailService)
         
         viewModel.selectArtist = selectArtist
         viewModel.coordinator = self
-        
         artistDetailViewController.viewModel = viewModel
-        
         navigationController.pushViewController(artistDetailViewController, animated: true)
+    
     }
     
-    func showArtistAlbum(albumData: AlbumData, artistAlbumDetail: [AlbumTracksData]) {
-        //TODO: will be added.
-        let artistTrackCoordinator = ArtistTrackCoordinator(navigationController: navigationController,albumData: albumData,artistAlbumDetail: artistAlbumDetail)
-        
-        childCoordinators.append(artistTrackCoordinator)
-        artistTrackCoordinator.start()
+    
+    func showArtistAlbum(albumId: Int, albumName: String) {
+        let artistAlbumCoordinator = ArtistAlbumCoordinator(navigationController: navigationController, selectAlbumId: albumId, selectedAlbumName: albumName)
+        childCoordinators.append(artistAlbumCoordinator)
+        artistAlbumCoordinator.start()
     }
 }

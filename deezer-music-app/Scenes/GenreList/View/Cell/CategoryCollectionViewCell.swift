@@ -1,9 +1,8 @@
 //
 //  CategoryCollectionViewCell.swift
 //  deezer-music-app
-//
 //  Created by Kenan Baylan on 10.07.2023.
-//
+
 
 import UIKit
 import Kingfisher
@@ -21,7 +20,7 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
     private func setupUI() {
         layer.cornerRadius = 12
         layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-        layer.shadowColor = UIColor.darkGray.cgColor
+        layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.6
         layer.shadowRadius = 12.0
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath

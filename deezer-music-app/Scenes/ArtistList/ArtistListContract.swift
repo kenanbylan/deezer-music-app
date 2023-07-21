@@ -22,6 +22,7 @@ enum ArtistListViewModelOutput {
     case showArtistList([ArtistListResponse])
     case setLoading(Bool)
     case showTitle(String)
+    case showError(errorDescription: String)
 }
 
 protocol ArtistListViewModelDelegate: AnyObject {

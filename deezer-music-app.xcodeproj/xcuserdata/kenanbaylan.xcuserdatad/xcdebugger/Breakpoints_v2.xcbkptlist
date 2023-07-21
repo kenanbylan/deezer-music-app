@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "63F666FA-10AB-4E0E-99FA-73CD061FA3CE"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "deezer-music-app/Scenes/ArtistDetail/View/Cell/HeaderCollectionReusableView.swift"

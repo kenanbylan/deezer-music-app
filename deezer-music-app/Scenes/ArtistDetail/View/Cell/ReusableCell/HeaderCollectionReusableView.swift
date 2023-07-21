@@ -17,11 +17,12 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         setupUI()
     }
     
-    func updateWith(image: URL?) {
-        if let url = image {
+    func updateWith(image: String) {
+        if let url = URL(string: image) {
             artistAlbumImageView.kf.setImage(with: url)
         }
     }
+    
     private func setupUI() {
         artistAlbumImageView.contentMode = .scaleAspectFill
         artistAlbumImageView.layer.cornerRadius = 12

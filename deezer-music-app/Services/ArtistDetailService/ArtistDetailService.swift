@@ -8,26 +8,26 @@ import Foundation
 
 final class ArtistDetailService: ArtistDetailServiceProtocol {
     
-    func getArtistData(tracklist: String, completion: @escaping ((AlbumTracksResponse?, Error?) -> Void)) {
-        NetworkService.shared.request(type: AlbumTracksResponse.self, url: tracklist, method: .get) { response in
+    func getArtistDetail(artistId: Int, completion: @escaping ((ArtistResponse?, Error?) -> Void)) {
+        let url = Endpoints.baseURL + "artist" + "/\(artistId)"
+        NetworkService.shared.request(type: ArtistResponse.self, url:url, method: .get) { response in
             switch response {
-            case .success(let tracklistData):
-                completion(tracklistData,nil)
+            case .success(let data):
+                completion(data,nil)
             case .failure(let error):
                 completion(nil,APIError.requestFailed(error))
             }
         }
     }
     
-    func getAlbumById(albumId: Int, completion: @escaping ((AlbumData?, Error?) -> Void)) {
-        let url = Endpoints.baseURL + "album/\(albumId)"
-        
-        NetworkService.shared.request(type: AlbumData.self, url: url , method: .get) { response in
-            
+    func getAlbumById(artistId: Int, completion: @escaping ((AlbumResponseData?, Error?) -> Void)) {
+        let url = Endpoints.baseURL + "artist" + "/\(artistId)" + "/albums"
+        NetworkService.shared.request(type: AlbumResponseData.self, url: url , method: .get) { response in
             switch response {
-            case .success(let albumData):
-                completion(albumData,nil)
+            case .success(let data):
+                completion(data,nil)
             case .failure(let error):
+                print("Error", error)
                 completion(nil,APIError.requestFailed(error))
             }
         }

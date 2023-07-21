@@ -6,7 +6,6 @@
 import Foundation
 
 protocol ArtistDetailServiceProtocol {
-    func getArtistData(tracklist: String, completion:@escaping( (AlbumTracksResponse?, Error?) -> Void))
-    func getAlbumById(albumId: Int, completion:@escaping( (AlbumData?, Error?) -> Void) )
+    func getArtistDetail(artistId: Int, completion:@escaping((ArtistResponse?, Error?) -> Void) )
+    func getAlbumById(artistId: Int, completion:@escaping( (AlbumResponseData?, Error?) -> Void) )
 }
-

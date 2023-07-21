@@ -3,7 +3,6 @@
 //  deezer-music-app
 //
 //  Created by Kenan Baylan on 14.07.2023.
-//
 
 import Foundation
 
@@ -12,32 +11,34 @@ final class ArtistDetailViewModel: ArtistDetailViewModelProtocol {
     var delegate: ArtistDetailViewModelDelegate?
     var coordinator: ArtistDetailCoordinator?
     private let artistDetailService: ArtistDetailServiceProtocol
-
-    var artistAlbumDetail: [AlbumTracksData] = []
+    
+    //MARK: - new property
+    var artistAlbums: [AlbumResponse] = []
+    var artistDetail: ArtistResponse?
     var selectArtist: ArtistListResponse?
-    var selectArtistAlbumImage: URL?
-    var albumId: Int?
-    var albumData: AlbumData?
+    var selectedArtistHeaderImage: String?
+    
+    
     
     init(artistDetailService: ArtistDetailServiceProtocol) {
         self.artistDetailService = artistDetailService
     }
     
     func viewDidLoad() {
-        delegate?.handleVieModelOutput(.showTitleImage(selectArtist?.pictureBig))
-        delegate?.handleVieModelOutput(.showTitle(selectArtist?.name ?? "nil"))
-        getArtistTracklist(tracklist: (selectArtist?.tracklist)!)
+        delegate?.handleVieModelOutput(.setLoading(true))
+        guard let artistId = selectArtist?.id else { return }
+        getArtistDetail(artistId: artistId)
     }
     
-    func artistAlbumAt(_ index: Int) -> AlbumTracksData? {
-        guard index >= 0 && index < artistAlbumDetail.count else { return nil }
-        return artistAlbumDetail[index]
+    func artistAlbumAt(_ index: Int) -> AlbumResponse? {
+        guard index >= 0 && index < artistAlbums.count else { return nil }
+        return artistAlbums[index]
     }
-    
     func didSelectArtistAlbum(_ index: Int) {
-        albumId = self.artistAlbumDetail[index].album?.id
-        getAlbumById(albumId: albumId ?? 0 )
-        print("Album Detail", artistAlbumDetail[0].album?.tracklist)
+        guard let album = artistAlbumAt(index) else { return }
+        //TODO: - next coordinator
+        self.coordinator?.showArtistAlbum(albumId: album.id, albumName: album.title)
+        
     }
 }
 
@@ -45,30 +46,36 @@ final class ArtistDetailViewModel: ArtistDetailViewModelProtocol {
 
 extension ArtistDetailViewModel {
     
-    private func getArtistTracklist(tracklist: String) {
-        artistDetailService.getArtistData(tracklist: tracklist) { [weak self] tracklists, error in
-            guard let self = self else { return }
-            
+    private func getArtistDetail(artistId: Int) {
+        delegate?.handleVieModelOutput(.setLoading(true))
+        artistDetailService.getArtistDetail(artistId: artistId) { [weak self] artistDetail, error in
             if let error = error {
-                print("Error:",error.localizedDescription)
-                ///TODO: do alert handler.
+                self?.delegate?.handleVieModelOutput(.showError(errorDescription: error.localizedDescription))
             } else {
-                // Aynı albüme sahip olanları filtrele
-                let filteredAlbums = self.filterDuplicateAlbums(albums: tracklists?.data ?? [])
-                self.artistAlbumDetail = filteredAlbums
-                self.delegate?.handleVieModelOutput(.showArtistAlbum(filteredAlbums))
+                if let artistDetail = artistDetail {
+                    self?.artistDetail = artistDetail
+                    self?.delegate?.handleVieModelOutput(.showTitle(self?.artistDetail?.name ?? "nil"))
+                    self?.selectedArtistHeaderImage = artistDetail.pictureBig ?? ""
+                }
             }
         }
+        getAlbumById(artistId: artistId)
+        delegate?.handleVieModelOutput(.setLoading(false))
     }
-
-    private func getAlbumById(albumId: Int) -> Void {
-        artistDetailService.getAlbumById(albumId: albumId) { [weak self] albumData, error in
+    
+    private func getAlbumById(artistId: Int) -> Void {
+        delegate?.handleVieModelOutput(.setLoading(true))
+        artistDetailService.getAlbumById(artistId: artistId) { [weak self] albumData, error in
+            guard let self = self else { return }
             if let error = error {
                 print("Error :",error)
+                self.delegate?.handleVieModelOutput(.showError(errorDescription: error.localizedDescription))
             } else {
-                self?.coordinator?.showArtistAlbum(albumData: albumData!,artistAlbumDetail: self!.artistAlbumDetail)
+                self.artistAlbums = (albumData?.data)!
+                self.delegate?.handleVieModelOutput(.showArtistAlbum(self.artistAlbums))
             }
         }
+        delegate?.handleVieModelOutput(.setLoading(false))
     }
 }
 
