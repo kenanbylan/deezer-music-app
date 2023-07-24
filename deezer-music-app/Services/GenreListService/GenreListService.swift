@@ -11,7 +11,6 @@ final class GenreListService : GenreListServiceProtocol {
     
     func getGenre(completion: @escaping ((GenreData?, Error?) -> ())) {
         let url =  Endpoints.baseURL + "genre"
-        
         NetworkService.shared.request(type: GenreData.self, url: url, method: .get) { response in
             switch response {
             case .success(let genres):

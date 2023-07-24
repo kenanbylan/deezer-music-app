@@ -34,6 +34,7 @@ final class ArtistDetailViewModel: ArtistDetailViewModelProtocol {
         guard index >= 0 && index < artistAlbums.count else { return nil }
         return artistAlbums[index]
     }
+    
     func didSelectArtistAlbum(_ index: Int) {
         guard let album = artistAlbumAt(index) else { return }
         //TODO: - next coordinator

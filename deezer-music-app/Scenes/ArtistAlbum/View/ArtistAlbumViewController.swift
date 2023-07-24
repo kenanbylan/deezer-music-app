@@ -73,6 +73,7 @@ extension ArtistAlbumViewController: UICollectionViewDataSource {
         cell?.delegate = self
 
         if let albumData = viewModel.albumDataAt(index: indexPath.item) {
+            cell?.id = albumData.trackId ?? 0
             cell?.updateUIWith(albumData: albumData)
         }
         

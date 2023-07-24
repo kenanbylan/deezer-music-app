@@ -35,6 +35,7 @@ final class FavoriteListViewController: UIViewController {
 
 extension FavoriteListViewController: FavoriteListViewModelDelegate {
     func handleViewModelOutput(_ output: FavoriteListViewModelOutput) {
+        
         switch output {
         case .showFavoriteList(_):
             favoriteCollectionView.reloadData()
@@ -54,14 +55,18 @@ extension FavoriteListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArtistAlbumCollectionViewCell", for: indexPath) as? ArtistAlbumCollectionViewCell
+        
+        let identifier = CollectionCellIdentifier.artistAlbumCell.rawValue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? ArtistAlbumCollectionViewCell
+        
         
         cell?.delegate = self
         
         if let favoriteData = viewModel.favoriteAt(index: indexPath.item) {
+            cell?.id = Int(favoriteData.id)
             cell?.updateUIWith(albumData: favoriteData)
         }
-      
+        
         return cell ?? UICollectionViewCell()
     }
 }
@@ -69,7 +74,6 @@ extension FavoriteListViewController: UICollectionViewDataSource {
 extension FavoriteListViewController: UICollectionViewDelegate { }
 
 extension FavoriteListViewController: ArtistAlbumCollectionViewCellDelegate {
-     
     func favoriteImageViewTapped(id: Int, isFavorite: Bool) {
         if isFavorite {
             viewModel.removeFavoriteById(selectTrackId: id)
@@ -78,4 +82,3 @@ extension FavoriteListViewController: ArtistAlbumCollectionViewCellDelegate {
         }
     }
 }
-

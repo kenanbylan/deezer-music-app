@@ -82,8 +82,7 @@ struct TrackDetailResponse: Decodable {
 
 //Add to favorites appear to the model.
 struct AlbumDetailTrackListData: Hashable {
-    
-    let id: Int
+    let id: Double
     var albumImage: String?
     var trackId: Int?
     let title: String?

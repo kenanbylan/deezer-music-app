@@ -55,7 +55,7 @@ final class CoreDataManager {
             
             let favoriteTrack = Favorites(context: context)
             
-            favoriteTrack.id = Int32(data.trackId ?? 0)
+            favoriteTrack.id = Double(data.trackId ?? 0)
             favoriteTrack.albumName = data.albumName
             favoriteTrack.artistName = data.artistName
             favoriteTrack.image = data.albumImage
@@ -106,7 +106,7 @@ final class CoreDataManager {
             let favoriteTracks = try context.fetch(fetchRequest)
             for fav in favoriteTracks as! [NSManagedObject] {
                 favoritesList.append(AlbumDetailTrackListData(
-                    id: fav.value(forKey: "id") as! Int,
+                    id: fav.value(forKey: "id") as! Double,
                     albumImage: fav.value(forKey: "image") as? String,
                     title: fav.value(forKey: "title") as? String,
                     duration: (fav.value(forKey: "duration") as? Int),

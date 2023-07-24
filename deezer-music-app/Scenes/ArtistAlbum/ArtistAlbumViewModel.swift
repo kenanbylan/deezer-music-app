@@ -87,7 +87,7 @@ extension ArtistAlbumViewModel {
                 
                 self.artistAlbumDetail = albumDetail.tracks?.data?.map({
                     AlbumDetailTrackListData(
-                        id: albumDetail.id,
+                        id: Double(albumDetail.id),
                         albumImage: albumDetail.coverMedium,
                         trackId: $0.id,
                         title: $0.title,

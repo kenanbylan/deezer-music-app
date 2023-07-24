@@ -33,7 +33,7 @@ class ArtistAlbumCollectionViewCell: UICollectionViewCell {
     public func updateUIWith(albumData: AlbumDetailTrackListData) {
 
         self.isFavorite = CoreDataManager.shared.isTrackFavorite(id: albumData.trackId ?? 0)
-        self.id = albumData.trackId ?? 0
+        //self.id = albumData.trackId ?? 0
         
         self.trackTitle.text = albumData.title
         self.durationLabel.text = (albumData.duration?.formatDuration() ?? "") + " duration"

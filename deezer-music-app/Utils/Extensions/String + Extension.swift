@@ -5,7 +5,7 @@
 //  Created by Kenan Baylan on 20.07.2023.
 //
 
-import Foundation
+import UIKit
 
 extension String {
     func formatReleaseDate() -> String {
@@ -20,3 +20,11 @@ extension String {
         }
     }
 }
+
+//For UICollectionView
+extension String {
+    func dequeueArtistAlbumCell(from collectionView: UICollectionView, for indexPath: IndexPath) -> ArtistAlbumCollectionViewCell? {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: self, for: indexPath) as? ArtistAlbumCollectionViewCell
+    }
+}
+

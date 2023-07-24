@@ -21,6 +21,7 @@ final class FavoriteListViewModel: FavoriteListViewModelProtocol {
     
     private func loadFavoriteList() {
         favoriteList = CoreDataManager.shared.fetchFavoriteTracks()
+        print("FAVORİTE LİST :" , favoriteList)
         delegate?.handleViewModelOutput(.showFavoriteList(favoriteList))
     }
     
@@ -47,12 +48,15 @@ final class FavoriteListViewModel: FavoriteListViewModelProtocol {
             case .success(let succes):
                 print("Favorite list:",favoriteList)
                 print("Success removed: ",succes)
-                self.favoriteList.remove(at: selectTrackId)
-                delegate?.handleViewModelOutput(.successRemoved(true))
-
+                
+                if let index = self.favoriteList.firstIndex(where: { $0.trackId == selectTrackId }) {
+                    print("İndex:", index)
+                    self.favoriteList.remove(at: index)
+                    delegate?.handleViewModelOutput(.successRemoved(true))
+                }
             case .failure(let error):
                 print("Error: ",error)
-                self.delegate?.handleViewModelOutput(.successRemoved(true))
+                self.delegate?.handleViewModelOutput(.successRemoved(false))
             }
         }
     }

@@ -3,14 +3,14 @@
 //  deezer-music-app
 //
 //  Created by Kenan Baylan on 15.07.2023.
-//
 
 import Foundation
 
 struct AlbumTracksResponse: Decodable {
     let data: [AlbumTracksData]?
 }
-struct AlbumTracksData: Decodable, Hashable{
+struct AlbumTracksData: Decodable, Hashable {
+    
     let id: Int?
     let readable: Bool?
     let title, titleShort: String?
@@ -22,7 +22,7 @@ struct AlbumTracksData: Decodable, Hashable{
     let md5Image: String?
     let album: ArtistAlbums?
     let type: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case id, readable, title
         case titleShort = "title_short"
@@ -44,7 +44,7 @@ struct ArtistAlbums: Decodable, Hashable {
     let md5Image: String?
     let tracklist: String?
     let type: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case id, title, cover
         case coverSmall = "cover_small"
