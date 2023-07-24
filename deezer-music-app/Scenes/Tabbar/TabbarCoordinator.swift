@@ -1,9 +1,6 @@
-//
 //  TabbarCoordinator.swift
 //  deezer-music-app
-//
 //  Created by Kenan Baylan on 12.07.2023.
-//
 
 import UIKit
 
@@ -22,6 +19,7 @@ final class TabbarCoordinator: Coordinator {
     
     func start() {
         tabbarController.viewControllers = setupViewControllers()
+        navigationController.navigationBar.tintColor = .red
     }
     
     func setupViewControllers() -> [UIViewController] {
@@ -34,6 +32,8 @@ final class TabbarCoordinator: Coordinator {
         genreCoordinator.start()
         
         let genreVC = genreCoordinator.rootViewController
+        
+        
         let genreTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: TabbarImagesName.home), selectedImage: UIImage(named: "home"))
         genreVC?.tabBarItem = genreTabBarItem
         
@@ -57,6 +57,11 @@ final class TabbarCoordinator: Coordinator {
         }
         
         return viewControllers
+        
+    }
+    
+    
+    func showMusicDetail() {
         
     }
     

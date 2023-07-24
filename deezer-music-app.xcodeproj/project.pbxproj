@@ -43,9 +43,6 @@
 		93350EDD2A5ECE9900FB8C8F /* TabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93350EDC2A5ECE9900FB8C8F /* TabbarCoordinator.swift */; };
 		934A77B92A6944CE00D6074F /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934A77B82A6944CE00D6074F /* String + Extension.swift */; };
 		934A77BB2A694A2000D6074F /* Int + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934A77BA2A694A2000D6074F /* Int + Extension.swift */; };
-		934A77E82A6A91A200D6074F /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934A77E72A6A91A200D6074F /* MiniPlayerViewController.swift */; };
-		934A77EB2A6A93F300D6074F /* MiniBarPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 934A77EA2A6A93F300D6074F /* MiniBarPlayer.xib */; };
-		934A77ED2A6A940000D6074F /* MiniBarPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934A77EC2A6A940000D6074F /* MiniBarPlayer.swift */; };
 		934A77EF2A6AB10F00D6074F /* UIView + Extension .swift in Sources */ = {isa = PBXBuildFile; fileRef = 934A77EE2A6AB10F00D6074F /* UIView + Extension .swift */; };
 		9382C30E2A61525300C0BDAF /* ArtistDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9382C30D2A61525300C0BDAF /* ArtistDetailCoordinator.swift */; };
 		9382C3102A61525A00C0BDAF /* ArtistDetailContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9382C30F2A61525A00C0BDAF /* ArtistDetailContract.swift */; };
@@ -59,6 +56,12 @@
 		9382C3232A61F5D900C0BDAF /* ArtistDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9382C3222A61F5D900C0BDAF /* ArtistDetailService.swift */; };
 		9382C3252A61F80A00C0BDAF /* AlbumTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9382C3242A61F80A00C0BDAF /* AlbumTrack.swift */; };
 		9382C32B2A61FA0F00C0BDAF /* ArtistAlbums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9382C32A2A61FA0F00C0BDAF /* ArtistAlbums.swift */; };
+		93B5AE1F2A6EA3F800DCB718 /* MusicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B5AE1E2A6EA3F800DCB718 /* MusicDetailViewController.swift */; };
+		93B5AE212A6EA40000DCB718 /* MusicDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B5AE202A6EA40000DCB718 /* MusicDetail.storyboard */; };
+		93B5AE242A6EAFE100DCB718 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 93B5AE232A6EAFE100DCB718 /* Lottie */; };
+		93B5AE272A6EB42800DCB718 /* test-lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 93B5AE262A6EB42800DCB718 /* test-lottie.json */; };
+		93B685CB2A6E5E9900F01CE3 /* MiniBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B685CA2A6E5E9900F01CE3 /* MiniBarViewController.swift */; };
+		93B685CD2A6E644A00F01CE3 /* MiniBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B685CC2A6E644A00F01CE3 /* MiniBar.storyboard */; };
 		93C421962A5F494D0069BE0C /* ArtistListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C421952A5F494C0069BE0C /* ArtistListCoordinator.swift */; };
 		93C421982A5F49570069BE0C /* ArtistListContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C421972A5F49570069BE0C /* ArtistListContract.swift */; };
 		93C4219A2A5F49630069BE0C /* ArtistListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C421992A5F49630069BE0C /* ArtistListViewModel.swift */; };
@@ -138,9 +141,6 @@
 		93350EDC2A5ECE9900FB8C8F /* TabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCoordinator.swift; sourceTree = "<group>"; };
 		934A77B82A6944CE00D6074F /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
 		934A77BA2A694A2000D6074F /* Int + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + Extension.swift"; sourceTree = "<group>"; };
-		934A77E72A6A91A200D6074F /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
-		934A77EA2A6A93F300D6074F /* MiniBarPlayer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiniBarPlayer.xib; sourceTree = "<group>"; };
-		934A77EC2A6A940000D6074F /* MiniBarPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniBarPlayer.swift; sourceTree = "<group>"; };
 		934A77EE2A6AB10F00D6074F /* UIView + Extension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension .swift"; sourceTree = "<group>"; };
 		9382C30D2A61525300C0BDAF /* ArtistDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailCoordinator.swift; sourceTree = "<group>"; };
 		9382C30F2A61525A00C0BDAF /* ArtistDetailContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailContract.swift; sourceTree = "<group>"; };
@@ -154,6 +154,11 @@
 		9382C3222A61F5D900C0BDAF /* ArtistDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailService.swift; sourceTree = "<group>"; };
 		9382C3242A61F80A00C0BDAF /* AlbumTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTrack.swift; sourceTree = "<group>"; };
 		9382C32A2A61FA0F00C0BDAF /* ArtistAlbums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistAlbums.swift; sourceTree = "<group>"; };
+		93B5AE1E2A6EA3F800DCB718 /* MusicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailViewController.swift; sourceTree = "<group>"; };
+		93B5AE202A6EA40000DCB718 /* MusicDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MusicDetail.storyboard; sourceTree = "<group>"; };
+		93B5AE262A6EB42800DCB718 /* test-lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "test-lottie.json"; sourceTree = "<group>"; };
+		93B685CA2A6E5E9900F01CE3 /* MiniBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniBarViewController.swift; sourceTree = "<group>"; };
+		93B685CC2A6E644A00F01CE3 /* MiniBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MiniBar.storyboard; sourceTree = "<group>"; };
 		93C421952A5F494C0069BE0C /* ArtistListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListCoordinator.swift; sourceTree = "<group>"; };
 		93C421972A5F49570069BE0C /* ArtistListContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListContract.swift; sourceTree = "<group>"; };
 		93C421992A5F49630069BE0C /* ArtistListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListViewModel.swift; sourceTree = "<group>"; };
@@ -184,6 +189,7 @@
 			files = (
 				93350E842A5D3DDF00FB8C8F /* Kingfisher in Frameworks */,
 				93350E812A5D3D4E00FB8C8F /* Alamofire in Frameworks */,
+				93B5AE242A6EAFE100DCB718 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +275,6 @@
 				93350E3C2A5C208A00FB8C8F /* Utils */,
 				93350E552A5C253900FB8C8F /* Coordinators */,
 				93350E612A5C2FA000FB8C8F /* Models */,
-				934A77E62A6A918500D6074F /* MusicPlayer */,
 				93EC524F2A65AEC800DEFDD9 /* CoreDataManager */,
 				93350E3A2A5C206E00FB8C8F /* Services */,
 				93350E3B2A5C207300FB8C8F /* Scenes */,
@@ -312,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				93350EDE2A5ECE9F00FB8C8F /* Tabbar */,
+				934A77E62A6A918500D6074F /* MusicPlayer */,
 				93350E402A5C213B00FB8C8F /* GenreList */,
 				93C421942A5F49340069BE0C /* ArtistList */,
 				9382C30C2A61523C00C0BDAF /* ArtistDetail */,
@@ -324,6 +330,7 @@
 		93350E3C2A5C208A00FB8C8F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				93B5AE252A6EB40200DCB718 /* Lottie */,
 				93D3D21D2A60543100064CC2 /* Constants */,
 				93350E562A5C257E00FB8C8F /* Extensions */,
 			);
@@ -411,19 +418,19 @@
 		934A77E62A6A918500D6074F /* MusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				934A77E92A6A934F00D6074F /* MusicBar */,
-				934A77E72A6A91A200D6074F /* MiniPlayerViewController.swift */,
+				93B5AE1D2A6EA3B100DCB718 /* MiniBar */,
+				934A77E92A6A934F00D6074F /* MusicDetail */,
 			);
 			path = MusicPlayer;
 			sourceTree = "<group>";
 		};
-		934A77E92A6A934F00D6074F /* MusicBar */ = {
+		934A77E92A6A934F00D6074F /* MusicDetail */ = {
 			isa = PBXGroup;
 			children = (
-				934A77EA2A6A93F300D6074F /* MiniBarPlayer.xib */,
-				934A77EC2A6A940000D6074F /* MiniBarPlayer.swift */,
+				93B5AE1E2A6EA3F800DCB718 /* MusicDetailViewController.swift */,
+				93B5AE202A6EA40000DCB718 /* MusicDetail.storyboard */,
 			);
-			path = MusicBar;
+			path = MusicDetail;
 			sourceTree = "<group>";
 		};
 		936DE23D2A67C217008DE2E3 /* Model */ = {
@@ -489,6 +496,23 @@
 				9382C3242A61F80A00C0BDAF /* AlbumTrack.swift */,
 			);
 			path = Albums;
+			sourceTree = "<group>";
+		};
+		93B5AE1D2A6EA3B100DCB718 /* MiniBar */ = {
+			isa = PBXGroup;
+			children = (
+				93B685CA2A6E5E9900F01CE3 /* MiniBarViewController.swift */,
+				93B685CC2A6E644A00F01CE3 /* MiniBar.storyboard */,
+			);
+			path = MiniBar;
+			sourceTree = "<group>";
+		};
+		93B5AE252A6EB40200DCB718 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				93B5AE262A6EB42800DCB718 /* test-lottie.json */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 		93C421942A5F49340069BE0C /* ArtistList */ = {
@@ -624,6 +648,7 @@
 			packageProductDependencies = (
 				93350E802A5D3D4E00FB8C8F /* Alamofire */,
 				93350E832A5D3DDF00FB8C8F /* Kingfisher */,
+				93B5AE232A6EAFE100DCB718 /* Lottie */,
 			);
 			productName = "deezer-music-app";
 			productReference = 93350E042A5C200D00FB8C8F /* deezer-music-app.app */;
@@ -700,6 +725,7 @@
 			packageReferences = (
 				93350E7F2A5D3D4E00FB8C8F /* XCRemoteSwiftPackageReference "Alamofire" */,
 				93350E822A5D3DDF00FB8C8F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				93B5AE222A6EAFE100DCB718 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 93350E052A5C200D00FB8C8F /* Products */;
 			projectDirPath = "";
@@ -721,13 +747,15 @@
 				9324BFDC2A62EE8700B8CF3F /* ArtistAlbum.storyboard in Resources */,
 				93EC52422A65470C00DEFDD9 /* FavoriteList.storyboard in Resources */,
 				93350E172A5C200F00FB8C8F /* LaunchScreen.storyboard in Resources */,
+				93B5AE272A6EB42800DCB718 /* test-lottie.json in Resources */,
 				93EC52342A65270D00DEFDD9 /* ArtistAlbumCollectionViewCell.xib in Resources */,
 				9382C3192A61564000C0BDAF /* ArtistDetail.storyboard in Resources */,
 				93350E142A5C200F00FB8C8F /* Assets.xcassets in Resources */,
 				9382C31F2A61B26A00C0BDAF /* AlbumCollectionViewCell.xib in Resources */,
 				93350E0F2A5C200D00FB8C8F /* GenreList.storyboard in Resources */,
+				93B5AE212A6EA40000DCB718 /* MusicDetail.storyboard in Resources */,
 				93C4219D2A5F49810069BE0C /* ArtistList.storyboard in Resources */,
-				934A77EB2A6A93F300D6074F /* MiniBarPlayer.xib in Resources */,
+				93B685CD2A6E644A00F01CE3 /* MiniBar.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,7 +782,6 @@
 			files = (
 				93EC52512A65AEDD00DEFDD9 /* CoreDataManager.swift in Sources */,
 				93350E652A5C35A200FB8C8F /* Service.swift in Sources */,
-				934A77E82A6A91A200D6074F /* MiniPlayerViewController.swift in Sources */,
 				9382C3232A61F5D900C0BDAF /* ArtistDetailService.swift in Sources */,
 				9324BFDE2A62EE9C00B8CF3F /* ArtistAlbumViewController.swift in Sources */,
 				93350E632A5C2FB500FB8C8F /* GenreResponse.swift in Sources */,
@@ -762,6 +789,7 @@
 				93350ECC2A5DCF1000FB8C8F /* GenreListContract.swift in Sources */,
 				93350ED42A5EAE9D00FB8C8F /* TabbarController.swift in Sources */,
 				93EC523A2A6536A900DEFDD9 /* FavoriteListContract.swift in Sources */,
+				93B685CB2A6E5E9900F01CE3 /* MiniBarViewController.swift in Sources */,
 				93350E4C2A5C219B00FB8C8F /* GenreListViewModel.swift in Sources */,
 				93D3D21F2A60543B00064CC2 /* Constants.swift in Sources */,
 				93350E6D2A5C3DF100FB8C8F /* UICollectionView+Extension.swift in Sources */,
@@ -785,7 +813,6 @@
 				93EC52332A65270D00DEFDD9 /* ArtistAlbumCollectionViewCell.swift in Sources */,
 				9324BFD72A62EE6200B8CF3F /* ArtistAlbumCoordinator.swift in Sources */,
 				934A77BB2A694A2000D6074F /* Int + Extension.swift in Sources */,
-				934A77ED2A6A940000D6074F /* MiniBarPlayer.swift in Sources */,
 				934A77B92A6944CE00D6074F /* String + Extension.swift in Sources */,
 				9382C3122A61526400C0BDAF /* ArtistDetailViewModel.swift in Sources */,
 				93C421962A5F494D0069BE0C /* ArtistListCoordinator.swift in Sources */,
@@ -798,6 +825,7 @@
 				93350EDB2A5ECD1900FB8C8F /* Coordinator.swift in Sources */,
 				9382C3162A61528700C0BDAF /* ArtistDetailViewController.swift in Sources */,
 				9382C3102A61525A00C0BDAF /* ArtistDetailContract.swift in Sources */,
+				93B5AE1F2A6EA3F800DCB718 /* MusicDetailViewController.swift in Sources */,
 				93350E082A5C200D00FB8C8F /* AppDelegate.swift in Sources */,
 				93C421982A5F49570069BE0C /* ArtistListContract.swift in Sources */,
 				93350E0A2A5C200D00FB8C8F /* SceneDelegate.swift in Sources */,
@@ -1172,6 +1200,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		93B5AE222A6EAFE100DCB718 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1184,6 +1220,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 93350E822A5D3DDF00FB8C8F /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		93B5AE232A6EAFE100DCB718 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93B5AE222A6EAFE100DCB718 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 

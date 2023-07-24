@@ -9,6 +9,7 @@ import UIKit
 
 class ArtistAlbumCoordinator: Coordinator {
     
+    weak var tabBarController: TabBarController?
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     var rootViewController: UIViewController?
@@ -30,10 +31,15 @@ class ArtistAlbumCoordinator: Coordinator {
         let albumTrackService = AlbumTrackService()
         let viewModel = ArtistAlbumViewModel(albumTrackService: albumTrackService)
         
-        
         viewModel.selectAlbumId = selectAlbumId
         viewModel.selectedAlbumName = selectedAlbumName
         viewModel.coordinator = self
+        
+        // Set the miniBarDelegate to the TabBarController
+        if let tabBarController = navigationController.tabBarController as? TabBarController {
+            viewModel.miniBarDelegate = tabBarController
+        }
+        
         
         artistTrackViewController.viewModel = viewModel
         navigationController.pushViewController(artistTrackViewController, animated: true)

@@ -9,25 +9,30 @@ import AVFAudio
 
 final class ArtistAlbumViewController: UIViewController {
     
-    @IBOutlet private weak var artistTrackCollectionView: UICollectionView!
-    private weak var coordinator: ArtistAlbumCoordinator?
-    
-    var viewModel: ArtistAlbumViewModelProtocol! {
+    @IBOutlet private weak var artistTrackCollectionView: UICollectionView! {
         didSet {
-            viewModel.delegate  = self
+            artistTrackCollectionView.delegate = self
+            artistTrackCollectionView.dataSource = self
         }
     }
     
+    private weak var coordinator: ArtistAlbumCoordinator?
     var audioPlayer:AVAudioPlayer?
+    var viewModel: ArtistAlbumViewModelProtocol! { didSet { viewModel.delegate  = self } }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        artistTrackCollectionView.delegate = self
-        artistTrackCollectionView.dataSource = self
         
         viewModel.viewDidLoad()
         artistTrackCollectionView.register(ArtistAlbumCollectionViewCell.self)
     }
+}
+
+
+//MARK: -ArtistAlbumViewController Setup func.
+
+extension ArtistAlbumViewController {
+    
 }
 
 //MARK: ArtistTrackViewModelDelegate
@@ -37,7 +42,7 @@ extension ArtistAlbumViewController: ArtistAlbumViewModelDelegate {
         switch output {
         case .showTitle(let title):
             self.navigationItem.title = title
-        case .showArtistAlbumList(let data):
+        case .showArtistAlbumList(_):
             artistTrackCollectionView.reloadData()
         case .setLoading(_ ):
             break
@@ -71,7 +76,7 @@ extension ArtistAlbumViewController: UICollectionViewDataSource {
             for: indexPath) as? ArtistAlbumCollectionViewCell
         
         cell?.delegate = self
-
+        
         if let albumData = viewModel.albumDataAt(index: indexPath.item) {
             cell?.id = albumData.trackId ?? 0
             cell?.updateUIWith(albumData: albumData)
@@ -90,7 +95,7 @@ extension ArtistAlbumViewController: UICollectionViewDelegate { }
 extension ArtistAlbumViewController: ArtistAlbumCollectionViewCellDelegate {
     
     func favoriteImageViewTapped(id: Int, isFavorite: Bool) {
-        if isFavorite { 
+        if isFavorite {
             viewModel.favoriteAlbum(id)
         } else {
             viewModel.removeFavoriteAlbum(selectTrackId: id)

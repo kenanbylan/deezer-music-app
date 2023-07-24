@@ -27,5 +27,3 @@ enum GenreListViewModelOutput {
 protocol GenreListViewModelDelegate: AnyObject {
     func handleViewModelOutput(_ output: GenreListViewModelOutput)
 }
-
-

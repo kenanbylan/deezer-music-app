@@ -8,8 +8,10 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
     
     var coordinator: ArtistAlbumCoordinator?
     var delegate: ArtistAlbumViewModelDelegate?
-    private let albumTrackService: AlbumTrackServiceProtocol
     
+    var miniBarDelegate: MiniBarDelegate?
+    
+    private let albumTrackService: AlbumTrackServiceProtocol
     var artistAlbumDetail: [AlbumDetailTrackListData]?
     var selectAlbumId: Int?
     var selectedAlbumName: String?
@@ -21,6 +23,7 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
     func viewDidLoad() {
         self.delegate?.handleViewModelOutput(.showTitle(selectedAlbumName ?? "nil"))
         getAlbumById(albumId: selectAlbumId ?? 0)
+        
     }
     
     func numberOfAlbum() -> Int {
@@ -34,16 +37,19 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
     
     
     func didSelectAlbumAt(_ index: Int) {
-        print("Album clicked. playe music and bottom alert view.")
+        let musicData = albumDataAt(index: index)
+        guard let musicData = musicData else { return }
+        miniBarDelegate?.playMusic(musicData: musicData)
+        
     }
     
     
     func favoriteAlbum(_ selectTrackId: Int) {
         
         guard let selectAlbum = artistAlbumDetail?.first(where: { $0.trackId == selectTrackId }) else {
-               return print("Album data is nil or not found.")
+            return print("Album data is nil or not found.")
         }
-    
+        
         CoreDataManager.shared.addFavoriteTrack(data: selectAlbum) { [weak self] result in
             guard let self = self else { return }
             switch result {

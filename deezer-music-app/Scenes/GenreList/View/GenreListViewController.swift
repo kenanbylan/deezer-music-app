@@ -36,6 +36,7 @@ extension GenreListViewController : GenreListViewModelDelegate {
             self.genreCollectionView.reloadData()
         case .setTitle(let title):
             self.navigationController?.title = title
+            
         }
     }
 }

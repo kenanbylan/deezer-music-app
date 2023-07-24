@@ -31,19 +31,19 @@ class ArtistAlbumCollectionViewCell: UICollectionViewCell {
     }
     
     public func updateUIWith(albumData: AlbumDetailTrackListData) {
-
+        
         self.isFavorite = CoreDataManager.shared.isTrackFavorite(id: albumData.trackId ?? 0)
         //self.id = albumData.trackId ?? 0
         
         self.trackTitle.text = albumData.title
-        self.durationLabel.text = (albumData.duration?.formatDuration() ?? "") + " duration"
+        self.durationLabel.text = (albumData.duration?.formatDuration() ?? "")
         
         guard let image = albumData.albumImage else { return }
         guard let url = URL(string: image) else { return }
         self.trackImageView.kf.setImage(with: url)
         
         favoriteImageView.image = isFavorite ? UIImage(named: "lover") : UIImage(named: "heart")
-    
+        
     }
 }
 

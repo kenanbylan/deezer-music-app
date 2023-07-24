@@ -20,5 +20,115 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "11F76505-7CDF-41A3-BEDB-3684AEA85D02"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "deezer-music-app/Scenes/ArtistAlbum/ArtistAlbumViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "didSelectAlbumAt(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "11F76505-7CDF-41A3-BEDB-3684AEA85D02 - 8ce1fff55c520878"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "deezer_music_app.ArtistAlbumViewModel.favoriteAlbum(Swift.Int) -&gt; ()"
+                  moduleName = "deezer-music-app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenanbaylan/Desktop/software/mobile/deezer-music-app/deezer-music-app/Scenes/ArtistAlbum/ArtistAlbumViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "11F76505-7CDF-41A3-BEDB-3684AEA85D02 - bd45fbeed129ab5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "deezer_music_app.ArtistAlbumViewModel.didSelectAlbumAt(Swift.Int) -&gt; ()"
+                  moduleName = "deezer-music-app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenanbaylan/Desktop/software/mobile/deezer-music-app/deezer-music-app/Scenes/ArtistAlbum/ArtistAlbumViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "216">
+               </Location>
+               <Location
+                  uuid = "11F76505-7CDF-41A3-BEDB-3684AEA85D02 - bd45fbeed129ab39"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "deezer_music_app.ArtistAlbumViewModel.didSelectAlbumAt(Swift.Int) -&gt; ()"
+                  moduleName = "deezer-music-app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenanbaylan/Desktop/software/mobile/deezer-music-app/deezer-music-app/Scenes/ArtistAlbum/ArtistAlbumViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "256">
+               </Location>
+               <Location
+                  uuid = "11F76505-7CDF-41A3-BEDB-3684AEA85D02 - bd45fbeed129ab18"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "deezer_music_app.ArtistAlbumViewModel.didSelectAlbumAt(Swift.Int) -&gt; ()"
+                  moduleName = "deezer-music-app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenanbaylan/Desktop/software/mobile/deezer-music-app/deezer-music-app/Scenes/ArtistAlbum/ArtistAlbumViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "256">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1F3FCA9E-5CAE-482B-AC23-E1D0407FF80F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "deezer-music-app/Scenes/FavoriteList/View/FavoriteListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "showEmptyStateAnimationIfNeeded()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "15579E1C-92DB-4CF2-87FB-8B9666CEDF15"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "deezer-music-app/Scenes/FavoriteList/View/FavoriteListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "showEmptyStateAnimationIfNeeded()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

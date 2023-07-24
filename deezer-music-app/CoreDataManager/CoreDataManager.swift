@@ -63,7 +63,7 @@ final class CoreDataManager {
             favoriteTrack.link = data.link
             favoriteTrack.preview = data.preview
             favoriteTrack.title = data.title
-        
+            
             do {
                 saveContext()
                 completion(.success("Succes favorites."))

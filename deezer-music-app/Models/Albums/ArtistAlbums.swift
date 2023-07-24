@@ -6,18 +6,13 @@
 //
 
 import Foundation
-
-
 //https://api.deezer.com/album/{albumId} when a request is sent to the API, it will be responded to.
-
-
 
 struct AlbumResponseData: Decodable {
     let data: [AlbumResponse]?
 }
 
 struct AlbumResponse: Decodable, Hashable {
-    
     let id: Int
     let title: String
     let cover: String
@@ -42,7 +37,6 @@ struct AlbumResponse: Decodable, Hashable {
 
 //MARK: Album detail's
 struct AlbumDetailResponse: Decodable {
-    
     let id: Int
     let title: String?
     let cover: String?
@@ -66,7 +60,6 @@ struct AlbumDetailResponse: Decodable {
     
 }
 
-
 struct TrackDetailDataResponse: Decodable {
     let data: [TrackDetailResponse]?
 }
@@ -78,7 +71,6 @@ struct TrackDetailResponse: Decodable {
     let preview: String?
     let link: String?
 }
-
 
 //Add to favorites appear to the model.
 struct AlbumDetailTrackListData: Hashable {

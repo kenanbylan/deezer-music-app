@@ -17,6 +17,8 @@ final class GenreListCoordinator: Coordinator {
     }
     
     func start() {
+        navigationController.navigationBar.tintColor = .red
+        
         let storyboard = UIStoryboard(name: "GenreList", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "GenreListViewController") as! GenreListViewController
         
@@ -24,6 +26,7 @@ final class GenreListCoordinator: Coordinator {
         let viewModel = GenreListViewModel(service: service)
         viewModel.coordinator = self
         viewController.viewModel = viewModel
+        
         
         navigationController.setViewControllers([viewController], animated: true)
         rootViewController = navigationController
@@ -43,7 +46,7 @@ final class GenreListCoordinator: Coordinator {
         favoriteCoordinator.start()
         navigationController.pushViewController(favoriteCoordinator.rootViewController!, animated: true)
     }
-
+    
     
     
 }
