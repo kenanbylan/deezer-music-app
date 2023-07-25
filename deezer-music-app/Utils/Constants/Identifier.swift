@@ -10,6 +10,7 @@ import Foundation
 
 enum CollectionCellIdentifier: String {
     case artistAlbumCell = "ArtistAlbumCollectionViewCell"
+    case favoritesCell = "FavoriteCollectionViewCell"
 }
 
 

@@ -27,7 +27,6 @@ class ArtistAlbumCoordinator: Coordinator {
         let artistTrackStoryboard = UIStoryboard(name: "ArtistAlbum", bundle: nil)
         let artistTrackViewController = artistTrackStoryboard.instantiateViewController(withIdentifier: "ArtistAlbumViewController") as! ArtistAlbumViewController
         
-        
         let albumTrackService = AlbumTrackService()
         let viewModel = ArtistAlbumViewModel(albumTrackService: albumTrackService)
         
@@ -35,11 +34,10 @@ class ArtistAlbumCoordinator: Coordinator {
         viewModel.selectedAlbumName = selectedAlbumName
         viewModel.coordinator = self
         
-        // Set the miniBarDelegate to the TabBarController
+        
         if let tabBarController = navigationController.tabBarController as? TabBarController {
             viewModel.miniBarDelegate = tabBarController
         }
-        
         
         artistTrackViewController.viewModel = viewModel
         navigationController.pushViewController(artistTrackViewController, animated: true)

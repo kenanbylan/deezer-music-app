@@ -9,29 +9,44 @@ import AVFAudio
 
 final class ArtistAlbumViewController: UIViewController {
     
-    @IBOutlet private weak var artistTrackCollectionView: UICollectionView! {
-        didSet {
-            artistTrackCollectionView.delegate = self
-            artistTrackCollectionView.dataSource = self
-        }
-    }
-    
+    @IBOutlet private weak var artistTrackCollectionView: UICollectionView!
     private weak var coordinator: ArtistAlbumCoordinator?
+    private let refreshControl = UIRefreshControl()
     var audioPlayer:AVAudioPlayer?
     var viewModel: ArtistAlbumViewModelProtocol! { didSet { viewModel.delegate  = self } }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         viewModel.viewDidLoad()
-        artistTrackCollectionView.register(ArtistAlbumCollectionViewCell.self)
+        
+        setupCollectionView()
+        setupResreshControl()
     }
 }
 
 
-//MARK: -ArtistAlbumViewController Setup func.
+//MARK: - ArtistAlbumViewController Setup func.
 
 extension ArtistAlbumViewController {
+    
+    private func setupCollectionView() {
+        artistTrackCollectionView.delegate = self
+        artistTrackCollectionView.dataSource = self
+        artistTrackCollectionView.register(ArtistAlbumCollectionViewCell.self)
+    }
+    
+    private func setupResreshControl() {
+        artistTrackCollectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .allEditingEvents)
+    }
+    
+    @objc private func refreshData() {
+        viewModel.viewDidLoad()
+        artistTrackCollectionView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
     
 }
 
@@ -44,20 +59,13 @@ extension ArtistAlbumViewController: ArtistAlbumViewModelDelegate {
             self.navigationItem.title = title
         case .showArtistAlbumList(_):
             artistTrackCollectionView.reloadData()
-        case .setLoading(_ ):
-            break
-        case .didSelectAlbum(_):
-            break
-            
         case .showError(errorDescription: let errorDescription):
             self.presentErrorAlert(title: "Error", message: errorDescription)
-            
         case .succesAddFavorite(_):
             artistTrackCollectionView.reloadData()
         case .failureAddFavorite(let error):
             self.presentErrorAlert(title: "Error", message: error.localizedDescription)
             artistTrackCollectionView.reloadData()
-            
         }
     }
 }

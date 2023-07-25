@@ -11,9 +11,10 @@ import AVFAudio
 class TabBarController: UITabBarController {
     
     var coordinator: TabbarCoordinator?
+    var selectMusicData: AlbumDetailTrackListData?
     
     lazy var miniBar: MiniBarViewController = {
-        let storyboard = UIStoryboard(name: "MiniBar", bundle: nil) // Assuming your Storyboard file name is "Main"
+        let storyboard = UIStoryboard(name: "MiniBar", bundle: nil)
         guard let miniBar = storyboard.instantiateViewController(withIdentifier: "MiniBarViewController") as? MiniBarViewController else {
             fatalError("MiniBarViewController not found in the storyboard.")
         }
@@ -32,7 +33,6 @@ class TabBarController: UITabBarController {
     }()
     
     
-    
     var containerView: UIView = {
         let uiView = UIView()
         uiView.translatesAutoresizingMaskIntoConstraints = false
@@ -41,38 +41,35 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        containerView.isHidden = true
         tabBar.tintColor = .red
         
         addChildView()
-        
         setConstraints()
         miniBar.delegate = self
-        
         coordinator = TabbarCoordinator(tabbarController: self, navigationController: UINavigationController())
         coordinator?.start()
     }
 }
 
-extension TabBarController: UITabBarControllerDelegate { }
 
 extension TabBarController: MiniBarDelegate {
     
     func miniBarDidTapButton() {
-        print("Clicked miniBarDidTapButton")
         containerView.isHidden.toggle()
     }
     
-    func presentPlayerView() {
-        
+    func showMusicDetailPage(selectMusicData: AlbumDetailTrackListData) {
+        coordinator?.showMusicDetail(musicDetail: selectMusicData)
     }
     
     func playMusic(musicData: AlbumDetailTrackListData) {
         containerView.isHidden = false
         miniBar.updateMusicWith(musicData: musicData)
-        
     }
 }
 
+extension TabBarController: UITabBarControllerDelegate { }
 
 extension TabBarController {
     
@@ -82,6 +79,7 @@ extension TabBarController {
         containerView.addSubview(miniBar.view)
         miniBar.didMove(toParent: self)
         
+        //Delete tabbarItem
         if let childIndex = viewControllers?.firstIndex(of: miniBar) {
             viewControllers?.remove(at: childIndex)
         }

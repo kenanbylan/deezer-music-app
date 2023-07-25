@@ -3,7 +3,6 @@
 //  deezer-music-app
 //
 //  Created by Kenan Baylan on 17.07.2023.
-//
 
 import UIKit
 import Lottie
@@ -13,14 +12,10 @@ final class FavoriteListViewController: UIViewController {
     
     private let refreshControl = UIRefreshControl()
     private var animationView: LottieAnimationView?
+    @IBOutlet private weak var favoriteCollectionView: UICollectionView!
+    var viewModel: FavoriteListViewModelProtocol! { didSet { viewModel.delegate = self } }
     
-    
-    var viewModel: FavoriteListViewModelProtocol! {
-        didSet { viewModel.delegate = self }
-    }
-    
-    @IBOutlet weak var favoriteCollectionView: UICollectionView!
-    
+    //MARK: Lifecycle.
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewDidLoad()
@@ -28,23 +23,43 @@ final class FavoriteListViewController: UIViewController {
         setupRefreshControl()
         showEmptyStateAnimationIfNeeded()
     }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.viewModel.viewDidLoad()
-        self.setupRefreshControl()
-        self.showEmptyStateAnimationIfNeeded()
-    }
 }
 
 
-//MARK: helper func.
+//MARK: FavoriteListVC Lifecycle's
+
 extension FavoriteListViewController {
     
+    //MARK: -every page opening.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.viewDidLoad()
+        setupRefreshControl()
+        favoriteCollectionView.reloadData()
+    }
+    
+    //MARK: - when the screen is fully visible.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showEmptyStateAnimationIfNeeded()
+        favoriteCollectionView.reloadData()
+    }
+    
+    //MARK: - view while leaving the viewcontroller.
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        hideEmptyStateAnimation()
+        favoriteCollectionView.reloadData()
+    }
+}
+
+//MARK: Helper function.
+
+extension FavoriteListViewController {
     private func setupCollectionView() {
         favoriteCollectionView.delegate = self
         favoriteCollectionView.dataSource = self
-        favoriteCollectionView.register(ArtistAlbumCollectionViewCell.self)
+        favoriteCollectionView.register(FavoriteCollectionViewCell.self)
     }
     
     private func setupRefreshControl() {
@@ -53,17 +68,14 @@ extension FavoriteListViewController {
     }
     
     @objc private func refreshData() {
-        // Tabloyu yenileme işlemlerini burada yapabilirsiniz.
         viewModel.viewDidLoad()
         favoriteCollectionView.reloadData()
         refreshControl.endRefreshing()
     }
 }
 
-
-
-
 extension FavoriteListViewController: FavoriteListViewModelDelegate {
+    
     func handleViewModelOutput(_ output: FavoriteListViewModelOutput) {
         
         switch output {
@@ -73,8 +85,6 @@ extension FavoriteListViewController: FavoriteListViewModelDelegate {
             
         case .setTitle(let title):
             self.navigationItem.title = title
-        case .setLoading(_):
-            break
         case .successRemoved(_):
             favoriteCollectionView.reloadData()
             showEmptyStateAnimationIfNeeded()
@@ -89,33 +99,32 @@ extension FavoriteListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let identifier = CollectionCellIdentifier.artistAlbumCell.rawValue
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? ArtistAlbumCollectionViewCell
-        
+        let identifier = CollectionCellIdentifier.favoritesCell.rawValue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? FavoriteCollectionViewCell
         
         cell?.delegate = self
-        
+
         if let favoriteData = viewModel.favoriteAt(index: indexPath.item) {
             cell?.id = Int(favoriteData.id)
-            cell?.updateUIWith(albumData: favoriteData)
+            cell?.updateWith(favorites: favoriteData)
         }
         
         return cell ?? UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.didSelectFavoriteAt(index: indexPath.item)
     }
 }
 
 extension FavoriteListViewController: UICollectionViewDelegate { }
 
-extension FavoriteListViewController: ArtistAlbumCollectionViewCellDelegate {
-    func favoriteImageViewTapped(id: Int, isFavorite: Bool) {
-        if isFavorite {
-            viewModel.removeFavoriteById(selectTrackId: id)
-        } else {
-            print("id: \(id) is not favorite")
-        }
+extension FavoriteListViewController: FavoriteCollectionViewCellDelegate {
+    
+    func removeFromFavorite(id: Int) {
+        viewModel.removeFavoriteById(selectTrackId: id)
     }
 }
-
 
 //MARK: Lottie animation setup.
 
@@ -124,7 +133,6 @@ extension FavoriteListViewController {
     private func showEmptyStateAnimationIfNeeded() {
         if viewModel.numberOfFavorites() == 0 {
             if animationView == nil {
-                
                 animationView = LottieAnimationView(name: "test-lottie")
                 animationView?.translatesAutoresizingMaskIntoConstraints = false
                 animationView?.loopMode = .loop
@@ -138,9 +146,14 @@ extension FavoriteListViewController {
             animationView?.play()
             favoriteCollectionView.isHidden = true
         } else {
-            animationView?.stop()
-            favoriteCollectionView.isHidden = false
+            hideEmptyStateAnimation() // Favori liste boş değilse animasyonu gizleyin
         }
     }
     
+    private func hideEmptyStateAnimation() {
+        animationView?.stop()
+        animationView?.removeFromSuperview()
+        animationView = nil
+        favoriteCollectionView.isHidden = false
+    }
 }

@@ -40,13 +40,4 @@ final class GenreListCoordinator: Coordinator {
         artistListCoordinator.start()
     }
     
-    func showFavoritePage() {
-        let favoriteCoordinator = FavoriteListCoordinator(navigationController: navigationController)
-        childCoordinators.append(favoriteCoordinator)
-        favoriteCoordinator.start()
-        navigationController.pushViewController(favoriteCoordinator.rootViewController!, animated: true)
-    }
-    
-    
-    
 }

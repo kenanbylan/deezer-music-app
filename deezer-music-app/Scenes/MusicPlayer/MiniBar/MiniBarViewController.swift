@@ -9,9 +9,8 @@ import UIKit
 import Kingfisher
 import AVFoundation
 
-
 protocol MiniBarDelegate {
-    func presentPlayerView()
+    func showMusicDetailPage(selectMusicData: AlbumDetailTrackListData)
     func miniBarDidTapButton()
     func playMusic(musicData: AlbumDetailTrackListData)
 }
@@ -24,20 +23,21 @@ final class MiniBarViewController: UIViewController {
     
     //MARK: Variable's
     var delegate: MiniBarDelegate?
+    var musicData: AlbumDetailTrackListData?
     var audioPlayer: AVPlayer?
     var isPlaying: Bool = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapDetected))
-        view.addGestureRecognizer(tap)
-        view.isUserInteractionEnabled = true
+        setupUI()
+        setupGestureTap()
     }
     
     func updateMusicWith(musicData: AlbumDetailTrackListData) {
         self.musicTitle.text = musicData.title
+        self.musicData = musicData
+        
         let url = URL(string: musicData.albumImage!)
         guard let url = url else { return }
         self.musicImageView.kf.setImage(with: url)
@@ -69,6 +69,23 @@ final class MiniBarViewController: UIViewController {
     
     @objc func tapDetected() {
         guard let delegate = delegate else { return }
-        delegate.presentPlayerView()
+        guard let musicData = musicData else { return }
+        delegate.showMusicDetailPage(selectMusicData: musicData)
     }
+}
+
+
+//MARK: SETUP - UI
+extension MiniBarViewController {
+    
+    private func setupGestureTap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapDetected))
+        view.addGestureRecognizer(tap)
+        view.isUserInteractionEnabled = true
+    }
+    
+    private func setupUI() {
+        
+    }
+    
 }

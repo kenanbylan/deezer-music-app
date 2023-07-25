@@ -8,7 +8,6 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
     
     var coordinator: ArtistAlbumCoordinator?
     var delegate: ArtistAlbumViewModelDelegate?
-    
     var miniBarDelegate: MiniBarDelegate?
     
     private let albumTrackService: AlbumTrackServiceProtocol
@@ -26,6 +25,7 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
         
     }
     
+    //MARK: For collectionView
     func numberOfAlbum() -> Int {
         return artistAlbumDetail?.count ?? 0
     }
@@ -35,15 +35,16 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
         return artistAlbumDetail?[index]
     }
     
-    
     func didSelectAlbumAt(_ index: Int) {
         let musicData = albumDataAt(index: index)
         guard let musicData = musicData else { return }
         miniBarDelegate?.playMusic(musicData: musicData)
-        
     }
-    
-    
+}
+
+//MARK: Core-Data Function
+
+extension ArtistAlbumViewModel {
     func favoriteAlbum(_ selectTrackId: Int) {
         
         guard let selectAlbum = artistAlbumDetail?.first(where: { $0.trackId == selectTrackId }) else {
@@ -54,15 +55,12 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
             guard let self = self else { return }
             switch result {
             case .failure(let error):
-                print("ERRRRRR: ",error)
                 self.delegate?.handleViewModelOutput(.showError(errorDescription: error.localizedDescription))
             case .success(_):
-                print("Successfully add track")
                 self.delegate?.handleViewModelOutput(.succesAddFavorite(true))
             }
         }
     }
-    
     
     func removeFavoriteAlbum(selectTrackId: Int) {
         CoreDataManager.shared.removeFavoriteTrack(id: selectTrackId) { [weak self] result in
@@ -71,16 +69,15 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
             switch result {
             case .failure(let error):
                 self.delegate?.handleViewModelOutput(.showError(errorDescription: error.localizedDescription))
-            case .success(let success):
-                print("Success removed Core data: ", success)
+            case .success(_):
                 self.delegate?.handleViewModelOutput(.succesAddFavorite(false))
-                
             }
         }
     }
 }
 
 //MARK: - api get response
+
 extension ArtistAlbumViewModel {
     
     private func getAlbumById(albumId: Int) {
@@ -107,6 +104,6 @@ extension ArtistAlbumViewModel {
                 self.delegate?.handleViewModelOutput(.showArtistAlbumList(self.artistAlbumDetail!))
             }
         }
-        self.delegate?.handleViewModelOutput(.setLoading(false))
+        
     }
 }

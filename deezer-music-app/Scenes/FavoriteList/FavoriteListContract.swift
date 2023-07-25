@@ -21,7 +21,6 @@ protocol FavoriteListViewModelProtocol {
 
 enum FavoriteListViewModelOutput {
     case showFavoriteList([AlbumDetailTrackListData])
-    case setLoading(Bool)
     case setTitle(String)
     case successRemoved(Bool)
 }

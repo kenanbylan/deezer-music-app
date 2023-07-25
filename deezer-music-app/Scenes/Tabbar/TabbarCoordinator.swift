@@ -20,28 +20,26 @@ final class TabbarCoordinator: Coordinator {
     func start() {
         tabbarController.viewControllers = setupViewControllers()
         navigationController.navigationBar.tintColor = .red
+        
     }
     
     func setupViewControllers() -> [UIViewController] {
         var viewControllers: [UIViewController] = []
         
-        
         //MARK: Genre Tabbar Item
+        
         let genreCoordinator = GenreListCoordinator(navigationController: UINavigationController())
         childCoordinators.append(genreCoordinator)
         genreCoordinator.start()
         
         let genreVC = genreCoordinator.rootViewController
-        
-        
         let genreTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: TabbarImagesName.home), selectedImage: UIImage(named: "home"))
         genreVC?.tabBarItem = genreTabBarItem
         
-        if let genreVC = genreVC {
-            viewControllers.append(genreVC)
-        }
+        if let genreVC = genreVC { viewControllers.append(genreVC) }
         
         //MARK: Favorite Tabbar Item
+        
         let favoriteCoordinator = FavoriteListCoordinator(navigationController: UINavigationController())
         childCoordinators.append(favoriteCoordinator)
         favoriteCoordinator.start()
@@ -50,21 +48,17 @@ final class TabbarCoordinator: Coordinator {
         let favoriteTabBarItem = UITabBarItem(title: "Favorite", image: UIImage(named: TabbarImagesName.favorites), selectedImage: UIImage(named: "fav"))
         favoriteVC?.tabBarItem = favoriteTabBarItem
         
-        if let favoriteVC = favoriteVC {
-            viewControllers.append(favoriteVC)
-        } else {
-            print("favorite is nil.")
-        }
-        
+        if let favoriteVC = favoriteVC { viewControllers.append(favoriteVC) }
         return viewControllers
-        
     }
     
-    
-    func showMusicDetail() {
+    func showMusicDetail(musicDetail: AlbumDetailTrackListData) {
+        let musicDetailCoordinator = MusicDetailCoordinator(
+            navigationController: navigationController,
+            selectMusicData: musicDetail)
+        
+        childCoordinators.append(musicDetailCoordinator)
+        musicDetailCoordinator.start()
         
     }
-    
-    
-    
 }

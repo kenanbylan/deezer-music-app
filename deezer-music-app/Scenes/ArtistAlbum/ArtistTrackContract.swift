@@ -28,11 +28,8 @@ protocol ArtistAlbumViewModelProtocol {
 }
 enum ArtistAlbumViewModelOutput {
     case showArtistAlbumList([AlbumDetailTrackListData])
-    case setLoading(Bool)
     case showTitle(String)
-    case didSelectAlbum(AlbumDetailTrackListData)
     case showError(errorDescription: String)
-    
     case succesAddFavorite(Bool)
     case failureAddFavorite(Error)
 }

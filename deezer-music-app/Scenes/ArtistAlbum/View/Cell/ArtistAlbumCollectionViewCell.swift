@@ -43,7 +43,6 @@ class ArtistAlbumCollectionViewCell: UICollectionViewCell {
         self.trackImageView.kf.setImage(with: url)
         
         favoriteImageView.image = isFavorite ? UIImage(named: "lover") : UIImage(named: "heart")
-        
     }
 }
 
