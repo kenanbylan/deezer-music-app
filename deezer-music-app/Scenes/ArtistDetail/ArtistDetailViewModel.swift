@@ -50,14 +50,15 @@ extension ArtistDetailViewModel {
     private func getArtistDetail(artistId: Int) {
         delegate?.handleVieModelOutput(.setLoading(true))
         artistDetailService.getArtistDetail(artistId: artistId) { [weak self] artistDetail, error in
+            
             if let error = error {
                 self?.delegate?.handleVieModelOutput(.showError(errorDescription: error.localizedDescription))
             } else {
-                if let artistDetail = artistDetail {
-                    self?.artistDetail = artistDetail
-                    self?.delegate?.handleVieModelOutput(.showTitle(self?.artistDetail?.name ?? "nil"))
-                    self?.selectedArtistHeaderImage = artistDetail.pictureBig ?? ""
-                }
+                guard let artistDetail = artistDetail else { return }
+                self?.artistDetail = artistDetail
+                self?.delegate?.handleVieModelOutput(.showTitle(self?.artistDetail?.name ?? "nil"))
+                self?.selectedArtistHeaderImage = artistDetail.pictureBig ?? ""
+                
             }
         }
         getAlbumById(artistId: artistId)
@@ -68,11 +69,11 @@ extension ArtistDetailViewModel {
         delegate?.handleVieModelOutput(.setLoading(true))
         artistDetailService.getAlbumById(artistId: artistId) { [weak self] albumData, error in
             guard let self = self else { return }
+            guard let albumData = albumData else { return }
             if let error = error {
-                print("Error :",error)
                 self.delegate?.handleVieModelOutput(.showError(errorDescription: error.localizedDescription))
             } else {
-                self.artistAlbums = (albumData?.data)!
+                self.artistAlbums = (albumData.data)!
                 self.delegate?.handleVieModelOutput(.showArtistAlbum(self.artistAlbums))
             }
         }
@@ -80,23 +81,5 @@ extension ArtistDetailViewModel {
     }
 }
 
-//MARK: Helper Function:
-
-extension ArtistDetailViewModel {
-    private func filterDuplicateAlbums(albums: [AlbumTracksData]) -> [AlbumTracksData] {
-        var uniqueAlbums: [AlbumTracksData] = []
-        var albumIds: Set<Int> = []
-        
-        for album in albums {
-            guard let albumId = album.album?.id else { continue }
-            
-            if !albumIds.contains(albumId) {
-                uniqueAlbums.append(album)
-                albumIds.insert(albumId)
-            }
-        }
-        return uniqueAlbums
-    }
-}
 
 

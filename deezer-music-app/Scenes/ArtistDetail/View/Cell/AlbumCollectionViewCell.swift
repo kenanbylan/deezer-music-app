@@ -21,6 +21,8 @@ final class AlbumCollectionViewCell: UICollectionViewCell {
     }
     
     public func updateUIWith(artistAlbum: AlbumResponse) {
+        
+        
         let coverURL = URL(string: artistAlbum.coverMedium)
         self.albumImageView.kf.setImage(with: coverURL)
         self.albumNameLabel.text = artistAlbum.title

@@ -24,8 +24,8 @@ class ArtistAlbumCoordinator: Coordinator {
     }
     
     func start() {
-        let artistTrackStoryboard = UIStoryboard(name: "ArtistAlbum", bundle: nil)
-        let artistTrackViewController = artistTrackStoryboard.instantiateViewController(withIdentifier: "ArtistAlbumViewController") as! ArtistAlbumViewController
+        let artistTrackStoryboard = UIStoryboard(name: Constants.System.Storyboard.artistAlbum , bundle: nil)
+        let artistTrackViewController = artistTrackStoryboard.instantiateViewController(withIdentifier: Constants.System.Controller.artistAlbumViewController) as! ArtistAlbumViewController
         
         let albumTrackService = AlbumTrackService()
         let viewModel = ArtistAlbumViewModel(albumTrackService: albumTrackService)
@@ -34,16 +34,13 @@ class ArtistAlbumCoordinator: Coordinator {
         viewModel.selectedAlbumName = selectedAlbumName
         viewModel.coordinator = self
         
-        
         if let tabBarController = navigationController.tabBarController as? TabBarController {
             viewModel.miniBarDelegate = tabBarController
         }
         
         artistTrackViewController.viewModel = viewModel
         navigationController.pushViewController(artistTrackViewController, animated: true)
-        
     }
     
     func showPlayMusic() { }
-    
 }

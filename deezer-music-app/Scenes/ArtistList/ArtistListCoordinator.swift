@@ -20,8 +20,8 @@ class ArtistListCoordinator: Coordinator {
     }
     
     func start() {
-        let artistListStoryboard = UIStoryboard(name: "ArtistList", bundle: nil)
-        let artistListViewController = artistListStoryboard.instantiateViewController(withIdentifier: "ArtistListViewController") as! ArtistListViewController
+        let artistListStoryboard = UIStoryboard(name: Constants.System.Storyboard.artistList , bundle: nil)
+        let artistListViewController = artistListStoryboard.instantiateViewController(withIdentifier: Constants.System.Controller.artistListViewController) as! ArtistListViewController
         
         let artistListService = ArtistListService()
         let viewModel = ArtistListViewModel(artistListService: artistListService)

@@ -5,22 +5,26 @@
 //  Created by Kenan Baylan on 24.07.2023.
 //
 
-import Foundation
+import UIKit
 
 protocol MusicDetailViewModelProtocol {
-    var coordinator: MusicDetailCoordinator? { get set }
-    var delegate: MusicDetailViewModelDelegate? { get set }
-    var selectPlayingMusic: AlbumDetailTrackListData? { get set }
     
+    var delegate: MusicDetailViewModelDelegate? { get set }
+    var selectPlayingMusic: AlbumDetailTrackListData? { get }
+    var isMusicPlaying: Bool { get }
     func viewDidLoad()
-    func dissmis()
-    func pauseMusic()
-    func playMusic()
+    func togglePlayback()
     func addFavorite()
+    func shareTrack()
 }
 
 enum MusicDetailViewModelOutput {
-    case setTitle(String)
+    case setTitle(title: String)
+    case setArtist(artist: String)
+    case setAlbumTitle(albumTitle: String)
+    case setAlbumImage(imageURL: URL?)
+    case setPlayButtonImage(image: UIImage)
+    case showLinkCopiedMessage(Bool)
 }
 
 protocol MusicDetailViewModelDelegate: AnyObject {

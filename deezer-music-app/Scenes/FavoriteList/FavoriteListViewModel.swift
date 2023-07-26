@@ -10,7 +10,6 @@ final class FavoriteListViewModel: FavoriteListViewModelProtocol {
     
     var coordinator: FavoriteListCoordinator?
     var delegate: FavoriteListViewModelDelegate?
-    var miniBarDelegate: MiniBarDelegate?
     var favoriteList: [AlbumDetailTrackListData] = []
     
     func viewDidLoad() {
@@ -35,7 +34,6 @@ final class FavoriteListViewModel: FavoriteListViewModelProtocol {
     func didSelectFavoriteAt(index: Int) {
         let favoriteMusic = favoriteAt(index: index)
         guard let favoriteMusic = favoriteMusic else { return }
-        miniBarDelegate?.playMusic(musicData: favoriteMusic)
     }
     
     func removeFavoriteById(selectTrackId:Int) {

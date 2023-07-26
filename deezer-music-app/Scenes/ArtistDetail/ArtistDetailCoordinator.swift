@@ -22,8 +22,9 @@ class ArtistDetailCoordinator: Coordinator {
     
     func start() {
         
-        let artistDetailStoryboard = UIStoryboard(name: "ArtistDetail", bundle: nil)
-        let artistDetailViewController = artistDetailStoryboard.instantiateViewController(withIdentifier: "ArtistDetailViewController") as! ArtistDetailViewController
+        let artistDetailStoryboard = UIStoryboard(name: Constants.System.Storyboard.artistDetail , bundle: nil)
+        let artistDetailViewController = artistDetailStoryboard.instantiateViewController(withIdentifier: Constants.System.Controller.artistDetailViewController ) as! ArtistDetailViewController
+        
         
         let artistDetailService = ArtistDetailService()
         let viewModel = ArtistDetailViewModel(artistDetailService: artistDetailService)

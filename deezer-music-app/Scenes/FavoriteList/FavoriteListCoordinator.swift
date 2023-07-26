@@ -3,7 +3,7 @@
 //  deezer-music-app
 //
 //  Created by Kenan Baylan on 17.07.2023.
-//
+
 
 import UIKit.UINavigationController
 
@@ -19,19 +19,19 @@ final class FavoriteListCoordinator: Coordinator {
     }
     
     func start() {
-        let storyboard = UIStoryboard(name: "FavoriteList", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "FavoriteListViewController") as! FavoriteListViewController
+        let storyboard = UIStoryboard(name: Constants.System.Storyboard.favorites, bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: Constants.System.Controller.favoriteListViewController) as! FavoriteListViewController
         
         let viewModel = FavoriteListViewModel()
         viewModel.coordinator = self
         viewController.viewModel = viewModel
         
-        if let tabBarController = navigationController.tabBarController as? TabBarController {
-            viewModel.miniBarDelegate = tabBarController
-        }
+        //        if let tabBarController = navigationController.tabBarController as? TabBarController {
+        //            viewModel.miniBarDelegate = tabBarController
+        //        }
+        
         
         navigationController.setViewControllers([viewController], animated: true)
         rootViewController = navigationController
     }
 }
-

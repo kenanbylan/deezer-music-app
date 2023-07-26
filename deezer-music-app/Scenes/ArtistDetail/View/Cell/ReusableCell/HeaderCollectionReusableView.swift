@@ -18,10 +18,12 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     }
     
     func updateWith(image: String) {
-        if let url = URL(string: image) {
-            artistAlbumImageView.kf.setImage(with: url)
-        }
+        guard let url = URL(string: image) else { return }
+        artistAlbumImageView.kf.setImage(with: url)
     }
+}
+
+extension HeaderCollectionReusableView {
     
     private func setupUI() {
         artistAlbumImageView.contentMode = .scaleAspectFill

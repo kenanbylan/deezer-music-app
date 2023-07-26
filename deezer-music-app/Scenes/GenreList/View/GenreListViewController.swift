@@ -36,7 +36,6 @@ extension GenreListViewController : GenreListViewModelDelegate {
             self.genreCollectionView.reloadData()
         case .setTitle(let title):
             self.navigationController?.title = title
-            
         }
     }
 }
@@ -49,9 +48,11 @@ extension GenreListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: CategoryCollectionViewCell.self),
             for: indexPath) as! CategoryCollectionViewCell
+        
         
         if let genre = viewModel.genreAt(indexPath.item) {
             cell.updateUIWith(genre: genre)

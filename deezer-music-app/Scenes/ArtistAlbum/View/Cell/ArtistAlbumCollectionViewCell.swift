@@ -24,6 +24,7 @@ class ArtistAlbumCollectionViewCell: UICollectionViewCell {
     var isFavorite: Bool = false
     var id: Int = 0
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
@@ -32,12 +33,13 @@ class ArtistAlbumCollectionViewCell: UICollectionViewCell {
     
     public func updateUIWith(albumData: AlbumDetailTrackListData) {
         
-        self.isFavorite = CoreDataManager.shared.isTrackFavorite(id: albumData.trackId ?? 0)
-        //self.id = albumData.trackId ?? 0
+        guard let trackId = albumData.trackId else { return }
+        self.id = trackId  //id atandı.
+        
+        self.isFavorite = CoreDataManager.shared.isTrackFavorite(id: trackId)
         
         self.trackTitle.text = albumData.title
         self.durationLabel.text = (albumData.duration?.formatDuration() ?? "")
-        
         guard let image = albumData.albumImage else { return }
         guard let url = URL(string: image) else { return }
         self.trackImageView.kf.setImage(with: url)
@@ -56,13 +58,11 @@ extension ArtistAlbumCollectionViewCell {
         favoriteImageView.addGestureRecognizer(tapGesture)
     }
     
-    @objc private func favoriteImageViewTapped() {
-        print("Track id :", id)
+    @objc func favoriteImageViewTapped() {
         isFavorite.toggle() //MARK: inpect
         favoriteImageView.image = isFavorite ? UIImage(named: "lover") : UIImage(named: "heart")
         delegate?.favoriteImageViewTapped(id: id, isFavorite: isFavorite)
     }
-    
 }
 
 //MARK: SETUP-UI

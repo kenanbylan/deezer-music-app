@@ -9,7 +9,6 @@ import Foundation
 protocol FavoriteListViewModelProtocol {
     var coordinator: FavoriteListCoordinator? { get set }
     var delegate: FavoriteListViewModelDelegate? { get set }
-
     var favoriteList: [AlbumDetailTrackListData] { get set }
     
     func viewDidLoad()

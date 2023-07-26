@@ -5,16 +5,14 @@
 //  Created by Kenan Baylan on 15.07.2023.
 
 import UIKit
-import AVFAudio
 
 final class ArtistAlbumViewController: UIViewController {
     
     @IBOutlet private weak var artistTrackCollectionView: UICollectionView!
     private weak var coordinator: ArtistAlbumCoordinator?
     private let refreshControl = UIRefreshControl()
-    var audioPlayer:AVAudioPlayer?
-    var viewModel: ArtistAlbumViewModelProtocol! { didSet { viewModel.delegate  = self } }
     
+    var viewModel: ArtistAlbumViewModelProtocol! { didSet { viewModel.delegate  = self } }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +20,11 @@ final class ArtistAlbumViewController: UIViewController {
         
         setupCollectionView()
         setupResreshControl()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupResreshControl()
+        setupCollectionView()
     }
 }
 
@@ -46,8 +49,6 @@ extension ArtistAlbumViewController {
         artistTrackCollectionView.reloadData()
         refreshControl.endRefreshing()
     }
-    
-    
 }
 
 //MARK: ArtistTrackViewModelDelegate
@@ -85,10 +86,9 @@ extension ArtistAlbumViewController: UICollectionViewDataSource {
         
         cell?.delegate = self
         
-        if let albumData = viewModel.albumDataAt(index: indexPath.item) {
-            cell?.id = albumData.trackId ?? 0
-            cell?.updateUIWith(albumData: albumData)
-        }
+        
+        guard let albumData = viewModel.albumDataAt(index: indexPath.item) else { return UICollectionViewCell() }
+        cell?.updateUIWith(albumData: albumData)
         
         return cell ?? UICollectionViewCell()
     }
@@ -103,8 +103,10 @@ extension ArtistAlbumViewController: UICollectionViewDelegate { }
 extension ArtistAlbumViewController: ArtistAlbumCollectionViewCellDelegate {
     
     func favoriteImageViewTapped(id: Int, isFavorite: Bool) {
+        
         if isFavorite {
             viewModel.favoriteAlbum(id)
+            //artistTrackCollectionView.reloadData()
         } else {
             viewModel.removeFavoriteAlbum(selectTrackId: id)
         }

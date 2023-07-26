@@ -45,9 +45,9 @@ final class CoreDataManager {
     
     //TODO: FavoriteImage feedback.
     func addFavoriteTrack(data: AlbumDetailTrackListData, completion: @escaping (Result<String, Error>) -> Void) {
-        print("CLİCKED ALBUM DATA'S ", data)
+        guard let id = data.trackId else { return }
         
-        if isTrackFavorite(id: data.trackId ?? 0) {
+        if isTrackFavorite(id: id ) {
             let errorMessage = "Already Favorites list."
             let error = NSError(domain: "Error:", code: 1001, userInfo: [NSLocalizedDescriptionKey: errorMessage])
             completion(.failure(error))
@@ -55,8 +55,8 @@ final class CoreDataManager {
             
             let favoriteTrack = Favorites(context: context)
             
-            favoriteTrack.id = Double(data.trackId ?? 0)
-            favoriteTrack.albumName = data.albumName
+            favoriteTrack.id = Double(id)
+            favoriteTrack.albumName = data.title
             favoriteTrack.artistName = data.artistName
             favoriteTrack.image = data.albumImage
             favoriteTrack.duration = data.duration?.formatDuration() //MARK: will be look.
@@ -76,7 +76,7 @@ final class CoreDataManager {
     func removeFavoriteTrack(id: Int,completion: @escaping (Result<String, Error>) -> Void) {
         let fetchRequest = NSFetchRequest<Favorites>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
-        
+        print("İD: ", id )
         if isTrackFavorite(id: id) {
             do {
                 let favoriteTracks = try context.fetch(fetchRequest)
@@ -90,7 +90,8 @@ final class CoreDataManager {
                 completion(.failure(error))
             }
         } else {
-            print("Silinemiyor. ")
+            print("Not deleted: iD: ", id)
+            
             let errorMessage = "Already not exist this music in the favorite list."
             let error = NSError(domain: "Error: ", code: 1001, userInfo: [NSLocalizedDescriptionKey: errorMessage])
             completion(.failure(error))
@@ -108,6 +109,7 @@ final class CoreDataManager {
                 favoritesList.append(AlbumDetailTrackListData(
                     id: fav.value(forKey: "id") as! Double,
                     albumImage: fav.value(forKey: "image") as? String,
+                    trackId: fav.value(forKey: "id") as! Int,
                     title: fav.value(forKey: "title") as? String,
                     duration: (fav.value(forKey: "duration") as? Int),
                     preview: fav.value(forKey: "preview") as? String ,
@@ -124,6 +126,7 @@ final class CoreDataManager {
 }
 
 //MARK: SaveContext
+
 
 extension CoreDataManager {
     private func saveContext() {

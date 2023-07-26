@@ -13,7 +13,7 @@ class GenreListViewModel: GenreListViewModelProtocol {
     
     func viewDidLoad() {
         delegate?.handleViewModelOutput(.setLoading(true))
-        delegate?.handleViewModelOutput(.setTitle("Deezer Music"))
+        delegate?.handleViewModelOutput(.setTitle("Deezer"))
         getGenre()
     }
 

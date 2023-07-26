@@ -10,10 +10,11 @@ import Lottie
 
 final class FavoriteListViewController: UIViewController {
     
-    private let refreshControl = UIRefreshControl()
     private var animationView: LottieAnimationView?
+    private let refreshControl = UIRefreshControl()
     @IBOutlet private weak var favoriteCollectionView: UICollectionView!
     var viewModel: FavoriteListViewModelProtocol! { didSet { viewModel.delegate = self } }
+    
     
     //MARK: Lifecycle.
     override func viewDidLoad() {
@@ -25,7 +26,6 @@ final class FavoriteListViewController: UIViewController {
     }
 }
 
-
 //MARK: FavoriteListVC Lifecycle's
 
 extension FavoriteListViewController {
@@ -33,29 +33,29 @@ extension FavoriteListViewController {
     //MARK: -every page opening.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.viewDidLoad()
+        viewModel.viewDidLoad() //TODO: -
         setupRefreshControl()
-        favoriteCollectionView.reloadData()
+        showEmptyStateAnimationIfNeeded()
     }
     
     //MARK: - when the screen is fully visible.
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showEmptyStateAnimationIfNeeded()
-        favoriteCollectionView.reloadData()
+        setupRefreshControl()
     }
     
     //MARK: - view while leaving the viewcontroller.
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         hideEmptyStateAnimation()
-        favoriteCollectionView.reloadData()
     }
 }
 
 //MARK: Helper function.
 
 extension FavoriteListViewController {
+    
     private func setupCollectionView() {
         favoriteCollectionView.delegate = self
         favoriteCollectionView.dataSource = self
@@ -65,6 +65,7 @@ extension FavoriteListViewController {
     private func setupRefreshControl() {
         favoriteCollectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        favoriteCollectionView.reloadData()
     }
     
     @objc private func refreshData() {
@@ -80,14 +81,14 @@ extension FavoriteListViewController: FavoriteListViewModelDelegate {
         
         switch output {
         case .showFavoriteList(_):
-            favoriteCollectionView.reloadData()
             showEmptyStateAnimationIfNeeded()
+            favoriteCollectionView.reloadData()
             
         case .setTitle(let title):
             self.navigationItem.title = title
         case .successRemoved(_):
-            favoriteCollectionView.reloadData()
             showEmptyStateAnimationIfNeeded()
+            favoriteCollectionView.reloadData()
         }
     }
 }
@@ -99,13 +100,17 @@ extension FavoriteListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let identifier = CollectionCellIdentifier.favoritesCell.rawValue
+        let identifier = Constants.System.CollectionViewCell.favoriteCollectionViewCell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? FavoriteCollectionViewCell
         
         cell?.delegate = self
-
+        
         if let favoriteData = viewModel.favoriteAt(index: indexPath.item) {
+            
+            print("şarkı idleri: ", favoriteData)
+            
             cell?.id = Int(favoriteData.id)
+            
             cell?.updateWith(favorites: favoriteData)
         }
         
@@ -122,6 +127,7 @@ extension FavoriteListViewController: UICollectionViewDelegate { }
 extension FavoriteListViewController: FavoriteCollectionViewCellDelegate {
     
     func removeFromFavorite(id: Int) {
+        viewModel.delegate?.handleViewModelOutput(.successRemoved(true))
         viewModel.removeFavoriteById(selectTrackId: id)
     }
 }

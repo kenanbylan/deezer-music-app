@@ -12,7 +12,7 @@ class ArtistListViewModel: ArtistListViewModelProtocol {
     var delegate: ArtistListViewModelDelegate?
     var coordinator: ArtistListCoordinator?
     private let artistListService: ArtistListServiceProtocol!
-
+    
     var artistList: [ArtistListResponse] = []
     var selectedGenre: GenreResponse?
     
@@ -47,10 +47,12 @@ private extension ArtistListViewModel {
         delegate?.handleViewModelOutput(.setLoading(true))
         artistListService.getArtistList(genreId: genreId) { [weak self] artists, error in
             guard let self = self else { return }
+            guard let artists = artists else { return }
+            
             if let error = error {
                 self.delegate?.handleViewModelOutput(.showError(errorDescription: error.localizedDescription))
             } else {
-                self.artistList = artists?.data ?? []
+                self.artistList = artists.data ?? []
                 self.delegate?.handleViewModelOutput(.showArtistList(artistList))
             }
         }

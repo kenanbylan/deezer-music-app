@@ -33,10 +33,11 @@ final class TabbarCoordinator: Coordinator {
         genreCoordinator.start()
         
         let genreVC = genreCoordinator.rootViewController
-        let genreTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: TabbarImagesName.home), selectedImage: UIImage(named: "home"))
+        let genreTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: Constants.Image.home), selectedImage: UIImage(named: "home"))
         genreVC?.tabBarItem = genreTabBarItem
         
         if let genreVC = genreVC { viewControllers.append(genreVC) }
+        
         
         //MARK: Favorite Tabbar Item
         
@@ -45,7 +46,7 @@ final class TabbarCoordinator: Coordinator {
         favoriteCoordinator.start()
         
         let favoriteVC = favoriteCoordinator.rootViewController
-        let favoriteTabBarItem = UITabBarItem(title: "Favorite", image: UIImage(named: TabbarImagesName.favorites), selectedImage: UIImage(named: "fav"))
+        let favoriteTabBarItem = UITabBarItem(title: "Favorite", image: UIImage(named: Constants.Image.favorites), selectedImage: UIImage(named: "fav"))
         favoriteVC?.tabBarItem = favoriteTabBarItem
         
         if let favoriteVC = favoriteVC { viewControllers.append(favoriteVC) }
@@ -53,12 +54,12 @@ final class TabbarCoordinator: Coordinator {
     }
     
     func showMusicDetail(musicDetail: AlbumDetailTrackListData) {
-        let musicDetailCoordinator = MusicDetailCoordinator(
-            navigationController: navigationController,
-            selectMusicData: musicDetail)
+        let storyboard = UIStoryboard(name: Constants.System.Storyboard.musicDetail, bundle: nil)
+        guard let musicDetailVC = storyboard.instantiateViewController(withIdentifier: Constants.System.Controller.musicDetailViewController) as? MusicDetailViewController else { return }
         
-        childCoordinators.append(musicDetailCoordinator)
-        musicDetailCoordinator.start()
+        let musicDetailViewModel = MusicDetailViewModel(selectPlayingMusic: musicDetail)
+        musicDetailVC.viewModel = musicDetailViewModel
         
+        UIApplication.topViewController()?.present(musicDetailVC, animated: true, completion: nil)
     }
 }

@@ -9,22 +9,28 @@ import UIKit
 import Kingfisher
 import AVFoundation
 
+
+var audioPlayer: AVPlayer?
+
 protocol MiniBarDelegate {
     func showMusicDetailPage(selectMusicData: AlbumDetailTrackListData)
     func miniBarDidTapButton()
     func playMusic(musicData: AlbumDetailTrackListData)
+    func stopMusic()
 }
+
 
 final class MiniBarViewController: UIViewController {
     
     //MARK: Property's
     @IBOutlet private weak var musicImageView: UIImageView!
     @IBOutlet private weak var musicTitle: UILabel!
+    @IBOutlet weak var musicPauseButtonTapped: UIButton!
+    
     
     //MARK: Variable's
     var delegate: MiniBarDelegate?
     var musicData: AlbumDetailTrackListData?
-    var audioPlayer: AVPlayer?
     var isPlaying: Bool = false
     
     
@@ -35,6 +41,7 @@ final class MiniBarViewController: UIViewController {
     }
     
     func updateMusicWith(musicData: AlbumDetailTrackListData) {
+        
         self.musicTitle.text = musicData.title
         self.musicData = musicData
         
@@ -54,7 +61,7 @@ final class MiniBarViewController: UIViewController {
         isPlaying = true
     }
     
-    private func stopMusic() {
+     func stopMusic() {
         if isPlaying {
             audioPlayer?.pause()
             isPlaying = false
@@ -62,9 +69,16 @@ final class MiniBarViewController: UIViewController {
     }
     
     @IBAction func musicPauseButtonTapped(_ sender: Any) {
-        stopMusic()
-        delegate?.miniBarDidTapButton()
-        //TODO: music will be pause.
+        
+        if isPlaying {
+            musicPauseButtonTapped.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+            stopMusic()
+            
+        } else {
+            musicPauseButtonTapped.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+            guard let previewURLString = musicData?.preview, let previewURL = URL(string: previewURLString) else { return }
+            startMusic(url: previewURL)
+        }
     }
     
     @objc func tapDetected() {
@@ -84,8 +98,6 @@ extension MiniBarViewController {
         view.isUserInteractionEnabled = true
     }
     
-    private func setupUI() {
-        
-    }
+    private func setupUI() { }
     
 }

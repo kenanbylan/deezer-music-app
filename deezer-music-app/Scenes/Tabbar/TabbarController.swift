@@ -12,7 +12,7 @@ class TabBarController: UITabBarController {
     
     var coordinator: TabbarCoordinator?
     var selectMusicData: AlbumDetailTrackListData?
-    
+
     lazy var miniBar: MiniBarViewController = {
         let storyboard = UIStoryboard(name: "MiniBar", bundle: nil)
         guard let miniBar = storyboard.instantiateViewController(withIdentifier: "MiniBarViewController") as? MiniBarViewController else {
@@ -67,9 +67,15 @@ extension TabBarController: MiniBarDelegate {
         containerView.isHidden = false
         miniBar.updateMusicWith(musicData: musicData)
     }
+    
+    func stopMusic() {
+        
+    }
+    
 }
 
 extension TabBarController: UITabBarControllerDelegate { }
+
 
 extension TabBarController {
     

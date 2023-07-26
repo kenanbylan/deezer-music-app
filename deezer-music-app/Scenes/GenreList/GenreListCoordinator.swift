@@ -19,14 +19,13 @@ final class GenreListCoordinator: Coordinator {
     func start() {
         navigationController.navigationBar.tintColor = .red
         
-        let storyboard = UIStoryboard(name: "GenreList", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "GenreListViewController") as! GenreListViewController
+        let storyboard = UIStoryboard(name: Constants.System.Storyboard.genre , bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: Constants.System.Controller.genreController) as! GenreListViewController
         
         let service = GenreListService()
         let viewModel = GenreListViewModel(service: service)
         viewModel.coordinator = self
         viewController.viewModel = viewModel
-        
         
         navigationController.setViewControllers([viewController], animated: true)
         rootViewController = navigationController
@@ -39,5 +38,4 @@ final class GenreListCoordinator: Coordinator {
         childCoordinators.append(artistListCoordinator)
         artistListCoordinator.start()
     }
-    
 }

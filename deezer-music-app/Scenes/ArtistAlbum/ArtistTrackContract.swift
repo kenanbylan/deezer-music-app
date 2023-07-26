@@ -24,7 +24,6 @@ protocol ArtistAlbumViewModelProtocol {
     //MARK: Core Data func.
     func favoriteAlbum(_ id: Int)
     func removeFavoriteAlbum(selectTrackId: Int)
-    
 }
 enum ArtistAlbumViewModelOutput {
     case showArtistAlbumList([AlbumDetailTrackListData])

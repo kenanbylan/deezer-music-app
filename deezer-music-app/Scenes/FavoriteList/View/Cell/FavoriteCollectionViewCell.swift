@@ -28,8 +28,8 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
     
     func updateWith(favorites: AlbumDetailTrackListData) {
         
-        self.artistNameLabel.text = favorites.artistName
-        self.titleLabel.text = favorites.title
+        self.artistNameLabel.text = favorites.title
+        self.titleLabel.text = favorites.artistName
         guard let image = favorites.albumImage else { return }
         guard let url = URL(string: image) else { return }
         self.favoriteImageView.kf.setImage(with: url)
@@ -38,6 +38,7 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
     @IBAction func deleteButtonTapped(_ sender: Any) {
         delegate?.removeFromFavorite(id: id)
     }
+    
 }
 
 //MARK: SETUP-UI

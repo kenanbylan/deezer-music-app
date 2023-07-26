@@ -8,7 +8,7 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
     
     var coordinator: ArtistAlbumCoordinator?
     var delegate: ArtistAlbumViewModelDelegate?
-    var miniBarDelegate: MiniBarDelegate?
+    var miniBarDelegate: MiniBarDelegate? //MARK: - Will be change's
     
     private let albumTrackService: AlbumTrackServiceProtocol
     var artistAlbumDetail: [AlbumDetailTrackListData]?
@@ -21,11 +21,13 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
     
     func viewDidLoad() {
         self.delegate?.handleViewModelOutput(.showTitle(selectedAlbumName ?? "nil"))
-        getAlbumById(albumId: selectAlbumId ?? 0)
+        guard let selectAlbumId = selectAlbumId else { return }
+        getAlbumById(albumId: selectAlbumId)
         
     }
     
     //MARK: For collectionView
+    
     func numberOfAlbum() -> Int {
         return artistAlbumDetail?.count ?? 0
     }
@@ -45,6 +47,7 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
 //MARK: Core-Data Function
 
 extension ArtistAlbumViewModel {
+    
     func favoriteAlbum(_ selectTrackId: Int) {
         
         guard let selectAlbum = artistAlbumDetail?.first(where: { $0.trackId == selectTrackId }) else {
@@ -83,10 +86,11 @@ extension ArtistAlbumViewModel {
     private func getAlbumById(albumId: Int) {
         albumTrackService.getAlbumTrack(albumId: albumId) { [weak self] albumDetail, error in
             guard let self = self else { return }
+            guard let albumDetail = albumDetail else { return }
+            
             if let error = error {
                 delegate?.handleViewModelOutput(.showError(errorDescription: error.localizedDescription))
             } else {
-                guard let albumDetail = albumDetail else { return }
                 
                 self.artistAlbumDetail = albumDetail.tracks?.data?.map({
                     AlbumDetailTrackListData(
@@ -104,6 +108,5 @@ extension ArtistAlbumViewModel {
                 self.delegate?.handleViewModelOutput(.showArtistAlbumList(self.artistAlbumDetail!))
             }
         }
-        
     }
 }
