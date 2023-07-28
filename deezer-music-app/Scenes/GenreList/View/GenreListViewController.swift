@@ -7,20 +7,22 @@
 import UIKit
 
 final class GenreListViewController: UIViewController {
+    
     @IBOutlet private weak var genreCollectionView: UICollectionView! {
         didSet {
             genreCollectionView.delegate = self
             genreCollectionView.dataSource = self
         }
     }
-    var viewModel: GenreListViewModelProtocol! {
-        didSet {
-            viewModel.delegate = self
-        }
-    }
+    var viewModel: GenreListViewModelProtocol! { didSet { viewModel.delegate = self } }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if !NetworkHelper.isConnectedToNetwork() {
+            showNoInternetAlert()
+            return
+        }
         
         viewModel?.viewDidLoad()
         genreCollectionView.register(CategoryCollectionViewCell.self)
@@ -41,7 +43,6 @@ extension GenreListViewController : GenreListViewModelDelegate {
 }
 
 // MARK: - UICollectionViewDataSource
-
 extension GenreListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfGenres
@@ -67,3 +68,10 @@ extension GenreListViewController: UICollectionViewDataSource {
 
 extension GenreListViewController: UICollectionViewDelegateFlowLayout { }
 
+extension GenreListViewController {
+    private func showNoInternetAlert() {
+        DeezerAlert.shared.showAlert(title: "No Internet Connection", message: "Please check your device's internet connection.") {
+            self.viewModel.coordinator?.start()
+        }
+    }
+}

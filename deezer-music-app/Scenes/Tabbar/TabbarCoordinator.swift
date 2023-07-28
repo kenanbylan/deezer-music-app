@@ -20,7 +20,6 @@ final class TabbarCoordinator: Coordinator {
     func start() {
         tabbarController.viewControllers = setupViewControllers()
         navigationController.navigationBar.tintColor = .red
-        
     }
     
     func setupViewControllers() -> [UIViewController] {
@@ -40,7 +39,6 @@ final class TabbarCoordinator: Coordinator {
         
         
         //MARK: Favorite Tabbar Item
-        
         let favoriteCoordinator = FavoriteListCoordinator(navigationController: UINavigationController())
         childCoordinators.append(favoriteCoordinator)
         favoriteCoordinator.start()
@@ -54,6 +52,7 @@ final class TabbarCoordinator: Coordinator {
     }
     
     func showMusicDetail(musicDetail: AlbumDetailTrackListData) {
+        
         let storyboard = UIStoryboard(name: Constants.System.Storyboard.musicDetail, bundle: nil)
         guard let musicDetailVC = storyboard.instantiateViewController(withIdentifier: Constants.System.Controller.musicDetailViewController) as? MusicDetailViewController else { return }
         

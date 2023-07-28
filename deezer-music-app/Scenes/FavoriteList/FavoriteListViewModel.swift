@@ -30,16 +30,13 @@ final class FavoriteListViewModel: FavoriteListViewModelProtocol {
         guard index >= 0, index < favoriteList.count else { return nil }
         return favoriteList[index]
     }
-    
-    func didSelectFavoriteAt(index: Int) {
-        let favoriteMusic = favoriteAt(index: index)
-        guard let favoriteMusic = favoriteMusic else { return }
-    }
-    
+}
+
+//MARK: FavoriteListViewModel api response
+extension FavoriteListViewModel {
     func removeFavoriteById(selectTrackId:Int) {
         CoreDataManager.shared.removeFavoriteTrack(id: selectTrackId) { [weak self] result in
             guard let self = self else { return }
-            
             switch result {
             case .success(_):
                 if let index = self.favoriteList.firstIndex(where: { $0.trackId == selectTrackId }) {
@@ -52,3 +49,4 @@ final class FavoriteListViewModel: FavoriteListViewModelProtocol {
         }
     }
 }
+

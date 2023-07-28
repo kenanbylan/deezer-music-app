@@ -21,4 +21,3 @@ struct GenreResponse: Decodable {
         case pictureMedium = "picture_medium"
     }
 }
-

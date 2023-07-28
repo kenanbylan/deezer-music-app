@@ -12,22 +12,16 @@ final class ArtistListViewController: UIViewController {
     private weak var coordinator: ArtistListCoordinator?
     private var loadIndicator: UIActivityIndicatorView!
 
-    var viewModel: ArtistListViewModelProtocol! {
-        didSet {
-            viewModel.delegate  = self
-        }
-    }
+    var viewModel: ArtistListViewModelProtocol! { didSet { viewModel.delegate  = self } }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         artistListCollectionView.delegate = self
         artistListCollectionView.dataSource = self
-        
         artistListCollectionView.register(CategoryCollectionViewCell.self)
+        
         viewModel.viewDidLoad()
-        
         settingViewControllerUI()
-        
     }
 }
 
@@ -71,8 +65,6 @@ extension ArtistListViewController: UICollectionViewDataSource {
 }
 
 extension ArtistListViewController: UICollectionViewDelegateFlowLayout { }
-
-
 
 //MARK: Activitiy indicator programatic view setups.
 extension ArtistListViewController {

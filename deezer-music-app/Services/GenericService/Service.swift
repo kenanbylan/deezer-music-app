@@ -3,7 +3,6 @@
 //  deezer-music-app
 //
 //  Created by Kenan Baylan on 10.07.2023.
-//
 
 import Foundation
 import Alamofire
@@ -23,7 +22,6 @@ struct NetworkService {
                 self.handleResponse(data: data) { response in
                     completion(response)
                 }
-                
             case .failure(let error):
                 completion(.failure(.requestFailed(error)))
             }
@@ -31,14 +29,11 @@ struct NetworkService {
     }
     
     fileprivate func handleResponse<T: Decodable>(data: Data, completion: @escaping((Result<T, APIError>)->())) {
-        
         do {
             let result = try JSONDecoder().decode(T.self, from: data)
             completion(.success(result))
-            
         } catch {
             completion(.failure(.decodingFailed(error)))
         }
     }
-    
 }

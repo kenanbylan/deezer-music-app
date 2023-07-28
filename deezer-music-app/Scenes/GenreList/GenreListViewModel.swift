@@ -1,6 +1,6 @@
 import UIKit
 
-class GenreListViewModel: GenreListViewModelProtocol {
+final class GenreListViewModel: GenreListViewModelProtocol {
   
     var delegate: GenreListViewModelDelegate?
     private let service: GenreListServiceProtocol
@@ -17,9 +17,7 @@ class GenreListViewModel: GenreListViewModelProtocol {
         getGenre()
     }
 
-    var numberOfGenres: Int {
-        return genreItems.count
-    }
+    var numberOfGenres: Int { return genreItems.count }
     
     func genreAt(_ index: Int) -> GenreResponse? {
         guard index >= 0 && index < genreItems.count else { return nil }
@@ -34,20 +32,15 @@ class GenreListViewModel: GenreListViewModelProtocol {
 }
 
 extension GenreListViewModelProtocol {
-    var numberOfGenres: Int {
-        return genreItems.count
-    }
+    var numberOfGenres: Int { return genreItems.count }
     
     subscript(index: Int) -> GenreResponse? {
-        guard index >= 0 && index < genreItems.count else {
-            return nil
-        }
+        guard index >= 0 && index < genreItems.count else { return nil }
         return genreItems[index]
     }
 }
 
 //MARK: Get endpoint services
-
 extension GenreListViewModel {
     private func getGenre() {
         service.getGenre { [weak self] genres, error in

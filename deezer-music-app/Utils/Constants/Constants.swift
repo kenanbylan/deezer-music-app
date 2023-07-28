@@ -44,8 +44,3 @@ enum Constants {
         static let homeTitle = "Deezer App"
     }
 }
-
-
-
-
-

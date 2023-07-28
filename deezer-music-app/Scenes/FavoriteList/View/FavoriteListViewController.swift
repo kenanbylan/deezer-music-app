@@ -7,14 +7,12 @@
 import UIKit
 import Lottie
 
-
 final class FavoriteListViewController: UIViewController {
     
     private var animationView: LottieAnimationView?
     private let refreshControl = UIRefreshControl()
     @IBOutlet private weak var favoriteCollectionView: UICollectionView!
     var viewModel: FavoriteListViewModelProtocol! { didSet { viewModel.delegate = self } }
-    
     
     //MARK: Lifecycle.
     override func viewDidLoad() {
@@ -78,12 +76,10 @@ extension FavoriteListViewController {
 extension FavoriteListViewController: FavoriteListViewModelDelegate {
     
     func handleViewModelOutput(_ output: FavoriteListViewModelOutput) {
-        
         switch output {
         case .showFavoriteList(_):
             showEmptyStateAnimationIfNeeded()
             favoriteCollectionView.reloadData()
-            
         case .setTitle(let title):
             self.navigationItem.title = title
         case .successRemoved(_):
@@ -94,38 +90,31 @@ extension FavoriteListViewController: FavoriteListViewModelDelegate {
 }
 
 extension FavoriteListViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfFavorites()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let identifier = Constants.System.CollectionViewCell.favoriteCollectionViewCell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? FavoriteCollectionViewCell
         
         cell?.delegate = self
         
+        
+        //TODO: WİLL BE FİXED.
         if let favoriteData = viewModel.favoriteAt(index: indexPath.item) {
-            
-            print("şarkı idleri: ", favoriteData)
-            
             cell?.id = Int(favoriteData.id)
-            
             cell?.updateWith(favorites: favoriteData)
         }
         
         return cell ?? UICollectionViewCell()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.didSelectFavoriteAt(index: indexPath.item)
     }
 }
 
 extension FavoriteListViewController: UICollectionViewDelegate { }
 
 extension FavoriteListViewController: FavoriteCollectionViewCellDelegate {
-    
     func removeFromFavorite(id: Int) {
         viewModel.delegate?.handleViewModelOutput(.successRemoved(true))
         viewModel.removeFavoriteById(selectTrackId: id)
@@ -135,7 +124,6 @@ extension FavoriteListViewController: FavoriteCollectionViewCellDelegate {
 //MARK: Lottie animation setup.
 
 extension FavoriteListViewController {
-    
     private func showEmptyStateAnimationIfNeeded() {
         if viewModel.numberOfFavorites() == 0 {
             if animationView == nil {
@@ -152,7 +140,7 @@ extension FavoriteListViewController {
             animationView?.play()
             favoriteCollectionView.isHidden = true
         } else {
-            hideEmptyStateAnimation() // Favori liste boş değilse animasyonu gizleyin
+            hideEmptyStateAnimation()
         }
     }
     

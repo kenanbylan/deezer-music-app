@@ -12,7 +12,7 @@ class TabBarController: UITabBarController {
     
     var coordinator: TabbarCoordinator?
     var selectMusicData: AlbumDetailTrackListData?
-
+    
     lazy var miniBar: MiniBarViewController = {
         let storyboard = UIStoryboard(name: "MiniBar", bundle: nil)
         guard let miniBar = storyboard.instantiateViewController(withIdentifier: "MiniBarViewController") as? MiniBarViewController else {
@@ -22,7 +22,6 @@ class TabBarController: UITabBarController {
         return miniBar
     }()
     
-    
     lazy var musicDetailPage: MusicDetailViewController = {
         let musicDetailStoryboard = UIStoryboard(name: "MusicDetail", bundle: nil)
         guard let musicDetailPage = musicDetailStoryboard.instantiateViewController(withIdentifier: "MusicDetailViewController") as? MusicDetailViewController else {
@@ -31,7 +30,6 @@ class TabBarController: UITabBarController {
         musicDetailPage.view.translatesAutoresizingMaskIntoConstraints = false
         return musicDetailPage
     }()
-    
     
     var containerView: UIView = {
         let uiView = UIView()
@@ -52,7 +50,6 @@ class TabBarController: UITabBarController {
     }
 }
 
-
 extension TabBarController: MiniBarDelegate {
     
     func miniBarDidTapButton() {
@@ -60,6 +57,7 @@ extension TabBarController: MiniBarDelegate {
     }
     
     func showMusicDetailPage(selectMusicData: AlbumDetailTrackListData) {
+        
         coordinator?.showMusicDetail(musicDetail: selectMusicData)
     }
     
@@ -68,14 +66,10 @@ extension TabBarController: MiniBarDelegate {
         miniBar.updateMusicWith(musicData: musicData)
     }
     
-    func stopMusic() {
-        
-    }
-    
+    func stopMusic() { }
 }
 
 extension TabBarController: UITabBarControllerDelegate { }
-
 
 extension TabBarController {
     
@@ -85,7 +79,7 @@ extension TabBarController {
         containerView.addSubview(miniBar.view)
         miniBar.didMove(toParent: self)
         
-        //Delete tabbarItem
+        //MARK: Delete tabbarItem
         if let childIndex = viewControllers?.firstIndex(of: miniBar) {
             viewControllers?.remove(at: childIndex)
         }

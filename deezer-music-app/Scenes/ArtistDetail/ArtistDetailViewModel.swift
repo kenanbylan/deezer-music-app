@@ -18,8 +18,6 @@ final class ArtistDetailViewModel: ArtistDetailViewModelProtocol {
     var selectArtist: ArtistListResponse?
     var selectedArtistHeaderImage: String?
     
-    
-    
     init(artistDetailService: ArtistDetailServiceProtocol) {
         self.artistDetailService = artistDetailService
     }
@@ -37,20 +35,16 @@ final class ArtistDetailViewModel: ArtistDetailViewModelProtocol {
     
     func didSelectArtistAlbum(_ index: Int) {
         guard let album = artistAlbumAt(index) else { return }
-        //TODO: - next coordinator
         self.coordinator?.showArtistAlbum(albumId: album.id, albumName: album.title)
-        
     }
 }
 
 //MARK: - GET RESPONSE DATA
 
 extension ArtistDetailViewModel {
-    
     private func getArtistDetail(artistId: Int) {
         delegate?.handleVieModelOutput(.setLoading(true))
         artistDetailService.getArtistDetail(artistId: artistId) { [weak self] artistDetail, error in
-            
             if let error = error {
                 self?.delegate?.handleVieModelOutput(.showError(errorDescription: error.localizedDescription))
             } else {
@@ -58,7 +52,6 @@ extension ArtistDetailViewModel {
                 self?.artistDetail = artistDetail
                 self?.delegate?.handleVieModelOutput(.showTitle(self?.artistDetail?.name ?? "nil"))
                 self?.selectedArtistHeaderImage = artistDetail.pictureBig ?? ""
-                
             }
         }
         getAlbumById(artistId: artistId)
@@ -80,6 +73,3 @@ extension ArtistDetailViewModel {
         delegate?.handleVieModelOutput(.setLoading(false))
     }
 }
-
-
-

@@ -26,11 +26,6 @@ final class FavoriteListCoordinator: Coordinator {
         viewModel.coordinator = self
         viewController.viewModel = viewModel
         
-        //        if let tabBarController = navigationController.tabBarController as? TabBarController {
-        //            viewModel.miniBarDelegate = tabBarController
-        //        }
-        
-        
         navigationController.setViewControllers([viewController], animated: true)
         rootViewController = navigationController
     }

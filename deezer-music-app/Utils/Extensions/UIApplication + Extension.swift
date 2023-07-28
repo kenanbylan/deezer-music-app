@@ -1,15 +1,10 @@
-//
-//  UIApplication + Extension.swift
-//  deezer-music-app
-//
-//  Created by Kenan Baylan on 26.07.2023.
-//
 
 import UIKit
 
-
 extension UIApplication {
-    class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+    class func topViewController(base: UIViewController? = UIApplication.shared.windows.filter {
+        $0.isKeyWindow }.first?.rootViewController) -> UIViewController? {
+        
         if let nav = base as? UINavigationController {
             return topViewController(base: nav.visibleViewController)
         }
@@ -18,7 +13,6 @@ extension UIApplication {
                 return topViewController(base: selected)
             }
         }
-        
         if let presented = base?.presentedViewController {
             return topViewController(base: presented)
         }

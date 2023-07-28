@@ -8,7 +8,6 @@
 import Foundation
 
 protocol ArtistListViewModelProtocol: AnyObject {
-    
     var coordinator: ArtistListCoordinator? { get set }
     var delegate: ArtistListViewModelDelegate? { get set }
     var artistList: [ArtistListResponse] { get }

@@ -85,5 +85,4 @@ struct AlbumDetailTrackListData: Hashable {
     let artistName: String?
     let albumName: String?
     let link: String?
-    
 }

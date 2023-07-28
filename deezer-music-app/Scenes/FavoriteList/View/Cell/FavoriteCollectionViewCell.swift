@@ -27,7 +27,6 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
     }
     
     func updateWith(favorites: AlbumDetailTrackListData) {
-        
         self.artistNameLabel.text = favorites.title
         self.titleLabel.text = favorites.artistName
         guard let image = favorites.albumImage else { return }
@@ -38,14 +37,12 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
     @IBAction func deleteButtonTapped(_ sender: Any) {
         delegate?.removeFromFavorite(id: id)
     }
-    
 }
 
 //MARK: SETUP-UI
 
 extension FavoriteCollectionViewCell {
     private func setupUI() {
-        
         favoriteImageView.layer.cornerRadius = 8.0
         favoriteImageView.clipsToBounds = true
         favoriteImageView.layer.shadowColor = UIColor.black.cgColor
@@ -54,4 +51,3 @@ extension FavoriteCollectionViewCell {
         favoriteImageView.layer.shadowRadius = 4.0
     }
 }
-

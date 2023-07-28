@@ -8,7 +8,6 @@
 import UIKit
 import Kingfisher
 
-//TODO: will be Favorite image add
 final class AlbumCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var albumImageView: UIImageView!
@@ -21,7 +20,6 @@ final class AlbumCollectionViewCell: UICollectionViewCell {
     }
     
     public func updateUIWith(artistAlbum: AlbumResponse) {
-        
         
         let coverURL = URL(string: artistAlbum.coverMedium)
         self.albumImageView.kf.setImage(with: coverURL)
@@ -45,6 +43,5 @@ extension AlbumCollectionViewCell {
         albumImageView.layer.borderWidth = 2
         albumImageView.layer.borderColor = UIColor.systemGray.cgColor
         albumImageView.layer.cornerRadius = 12
-        
     }
 }

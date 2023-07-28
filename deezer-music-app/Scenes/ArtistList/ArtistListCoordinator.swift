@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ArtistListCoordinator: Coordinator {
+final class ArtistListCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController

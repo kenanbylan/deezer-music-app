@@ -19,13 +19,9 @@ final class ArtistDetailViewController: UIViewController {
         }
     }
     
-    
-    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         viewModel.viewDidLoad()
-        
         registerCollectionView()
         settingViewControllerUI()
     }
@@ -60,6 +56,7 @@ extension ArtistDetailViewController : ArtistDetailViewModelDelegate {
 }
 
 extension ArtistDetailViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.artistAlbums.count
     }
@@ -72,18 +69,15 @@ extension ArtistDetailViewController: UICollectionViewDataSource {
         if let albumData = viewModel.artistAlbumAt(indexPath.item) {
             cell.updateUIWith(artistAlbum: albumData )
         }
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
-        
         if let image = viewModel.selectedArtistHeaderImage {
             headerView.updateWith(image: image)
         }
-        
         return headerView
     }
     
@@ -93,7 +87,6 @@ extension ArtistDetailViewController: UICollectionViewDataSource {
 }
 
 extension ArtistDetailViewController: UICollectionViewDelegateFlowLayout { }
-
 
 extension ArtistDetailViewController {
     func settingViewControllerUI() {

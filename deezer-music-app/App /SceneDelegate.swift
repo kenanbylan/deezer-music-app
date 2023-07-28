@@ -4,9 +4,7 @@
 //
 //  Created by Kenan Baylan on 10.07.2023.
 
-
 import UIKit
-
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -20,7 +18,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         window.rootViewController = tabbarController
         window.makeKeyAndVisible()
-        
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -53,9 +50,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Save changes in the application's managed object context when the application transitions to the background.
         
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
-
     }
-    
-    
 }
-

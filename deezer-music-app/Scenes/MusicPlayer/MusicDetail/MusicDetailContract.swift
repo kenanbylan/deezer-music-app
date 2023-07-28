@@ -7,26 +7,10 @@
 
 import UIKit
 
-protocol MusicDetailViewModelProtocol {
-    
-    var delegate: MusicDetailViewModelDelegate? { get set }
-    var selectPlayingMusic: AlbumDetailTrackListData? { get }
-    var isMusicPlaying: Bool { get }
-    func viewDidLoad()
-    func togglePlayback()
-    func addFavorite()
-    func shareTrack()
-}
-
-enum MusicDetailViewModelOutput {
-    case setTitle(title: String)
-    case setArtist(artist: String)
-    case setAlbumTitle(albumTitle: String)
-    case setAlbumImage(imageURL: URL?)
-    case setPlayButtonImage(image: UIImage)
-    case showLinkCopiedMessage(Bool)
-}
-
 protocol MusicDetailViewModelDelegate: AnyObject {
-    func handleViewModelOutput(_ output: MusicDetailViewModelOutput)
+    func setTitle(_ title: String)
+    func setArtist(_ artist: String)
+    func setAlbumImage(_ imageURL: URL?)
+    func setAlbumTitle(_ albumTitle: String)
+    func setPlayButtonImage(_ image: UIImage)
 }

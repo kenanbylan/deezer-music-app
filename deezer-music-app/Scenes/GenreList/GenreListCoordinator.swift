@@ -4,10 +4,7 @@
 
 import UIKit.UINavigationController
 
-//MARK: - Genre Coordinator
-
-final class GenreListCoordinator: Coordinator {
-    
+final class GenreListCoordinator: Coordinator {    
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     var rootViewController: UIViewController?
@@ -30,8 +27,6 @@ final class GenreListCoordinator: Coordinator {
         navigationController.setViewControllers([viewController], animated: true)
         rootViewController = navigationController
     }
-    
-    //MARK: - END OF ERROR QUEUE.
     
     func showArtistList(genre: GenreResponse) {
         let artistListCoordinator = ArtistListCoordinator(navigationController: navigationController, selectGenre: genre)

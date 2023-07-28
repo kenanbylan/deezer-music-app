@@ -23,11 +23,9 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
         self.delegate?.handleViewModelOutput(.showTitle(selectedAlbumName ?? "nil"))
         guard let selectAlbumId = selectAlbumId else { return }
         getAlbumById(albumId: selectAlbumId)
-        
     }
     
     //MARK: For collectionView
-    
     func numberOfAlbum() -> Int {
         return artistAlbumDetail?.count ?? 0
     }
@@ -49,10 +47,7 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
 extension ArtistAlbumViewModel {
     
     func favoriteAlbum(_ selectTrackId: Int) {
-        
-        guard let selectAlbum = artistAlbumDetail?.first(where: { $0.trackId == selectTrackId }) else {
-            return print("Album data is nil or not found.")
-        }
+        guard let selectAlbum = artistAlbumDetail?.first(where: { $0.trackId == selectTrackId }) else { return print("Album data is nil or not found.") }
         
         CoreDataManager.shared.addFavoriteTrack(data: selectAlbum) { [weak self] result in
             guard let self = self else { return }
@@ -68,7 +63,6 @@ extension ArtistAlbumViewModel {
     func removeFavoriteAlbum(selectTrackId: Int) {
         CoreDataManager.shared.removeFavoriteTrack(id: selectTrackId) { [weak self] result in
             guard let self = self else { return }
-            
             switch result {
             case .failure(let error):
                 self.delegate?.handleViewModelOutput(.showError(errorDescription: error.localizedDescription))
@@ -82,7 +76,6 @@ extension ArtistAlbumViewModel {
 //MARK: - api get response
 
 extension ArtistAlbumViewModel {
-    
     private func getAlbumById(albumId: Int) {
         albumTrackService.getAlbumTrack(albumId: albumId) { [weak self] albumDetail, error in
             guard let self = self else { return }

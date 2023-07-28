@@ -7,7 +7,8 @@
 
 import UIKit
 import Kingfisher
-class ArtistListViewModel: ArtistListViewModelProtocol {
+
+final class ArtistListViewModel: ArtistListViewModelProtocol {
     
     var delegate: ArtistListViewModelDelegate?
     var coordinator: ArtistListCoordinator?
@@ -52,7 +53,7 @@ private extension ArtistListViewModel {
             if let error = error {
                 self.delegate?.handleViewModelOutput(.showError(errorDescription: error.localizedDescription))
             } else {
-                self.artistList = artists.data ?? []
+                self.artistList = artists.data
                 self.delegate?.handleViewModelOutput(.showArtistList(artistList))
             }
         }

@@ -8,7 +8,6 @@
 import Foundation
 
 protocol GenreListViewModelProtocol: AnyObject {
-    
     var delegate: GenreListViewModelDelegate? { get set }
     var genreItems: [GenreResponse] { get set}
     var coordinator: GenreListCoordinator? { get set }

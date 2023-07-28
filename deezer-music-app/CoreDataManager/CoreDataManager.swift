@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 
+
 final class CoreDataManager {
     
     static let shared = CoreDataManager()
@@ -28,7 +29,6 @@ final class CoreDataManager {
         return container
     }()
     
-    
     func isTrackFavorite(id: Int) -> Bool {
         let fetchRequest = NSFetchRequest<Favorites>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
@@ -42,8 +42,12 @@ final class CoreDataManager {
         }
     }
     
+}
+
+//MARK: Favorite add Tracks.
+
+extension CoreDataManager {
     
-    //TODO: FavoriteImage feedback.
     func addFavoriteTrack(data: AlbumDetailTrackListData, completion: @escaping (Result<String, Error>) -> Void) {
         guard let id = data.trackId else { return }
         
@@ -72,7 +76,12 @@ final class CoreDataManager {
             }
         }
     }
-    
+}
+
+
+//MARK: -Remove Favorite Tracks.
+
+extension CoreDataManager {
     func removeFavoriteTrack(id: Int,completion: @escaping (Result<String, Error>) -> Void) {
         let fetchRequest = NSFetchRequest<Favorites>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
@@ -97,8 +106,14 @@ final class CoreDataManager {
             completion(.failure(error))
         }
     }
+}
+
+//MARK: -Fetch Favorite Tracks.
+
+extension CoreDataManager {
     
-    //MARK: Convert:  Favorites to AlbumDetailTrackListData and Fetch Data
+    //MARK: Convert Favorites to AlbumDetailTrackListData and Fetch Data
+    
     func fetchFavoriteTracks() -> [AlbumDetailTrackListData] {
         var favoritesList: [AlbumDetailTrackListData] = []
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
@@ -109,7 +124,7 @@ final class CoreDataManager {
                 favoritesList.append(AlbumDetailTrackListData(
                     id: fav.value(forKey: "id") as! Double,
                     albumImage: fav.value(forKey: "image") as? String,
-                    trackId: fav.value(forKey: "id") as! Int,
+                    trackId: fav.value(forKey: "id") as? Int,
                     title: fav.value(forKey: "title") as? String,
                     duration: (fav.value(forKey: "duration") as? Int),
                     preview: fav.value(forKey: "preview") as? String ,
@@ -126,7 +141,6 @@ final class CoreDataManager {
 }
 
 //MARK: SaveContext
-
 
 extension CoreDataManager {
     private func saveContext() {

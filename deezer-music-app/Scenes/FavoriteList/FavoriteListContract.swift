@@ -14,7 +14,6 @@ protocol FavoriteListViewModelProtocol {
     func viewDidLoad()
     func numberOfFavorites() -> Int
     func favoriteAt(index: Int) -> AlbumDetailTrackListData?
-    func didSelectFavoriteAt(index: Int)
     func removeFavoriteById(selectTrackId:Int)
 }
 

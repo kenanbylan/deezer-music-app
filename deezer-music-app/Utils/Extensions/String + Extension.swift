@@ -21,10 +21,9 @@ extension String {
     }
 }
 
-//For UICollectionView
+//MARK: For UICollectionView
 extension String {
     func dequeueArtistAlbumCell(from collectionView: UICollectionView, for indexPath: IndexPath) -> ArtistAlbumCollectionViewCell? {
         return collectionView.dequeueReusableCell(withReuseIdentifier: self, for: indexPath) as? ArtistAlbumCollectionViewCell
     }
 }
-

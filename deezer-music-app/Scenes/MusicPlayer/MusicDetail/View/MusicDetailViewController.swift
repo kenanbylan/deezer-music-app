@@ -6,96 +6,69 @@
 //
 
 import UIKit
+import AVFoundation
 
 final class MusicDetailViewController: UIViewController {
     
     @IBOutlet weak var trackImageView: UIImageView!
     @IBOutlet weak var trackTitleLabel: UILabel!
-    @IBOutlet weak var trackArtistLabel: UILabel!
+    @IBOutlet weak var trackDuration: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var titlePage: UILabel!
     
-    lazy var miniBar: MiniBarViewController = {
-        let storyboard = UIStoryboard(name: "MiniBar", bundle: nil)
-        guard let miniBar = storyboard.instantiateViewController(withIdentifier: "MiniBarViewController") as? MiniBarViewController else {
-            fatalError("MiniBarViewController not found in the storyboard.")
-        }
-        miniBar.view.translatesAutoresizingMaskIntoConstraints = false
-        return miniBar
-    }()
-    
-    
-    var viewModel: MusicDetailViewModelProtocol! {
-        didSet { viewModel.delegate = self }
-    }
+    var viewModel: MusicDetailViewModel! { didSet { viewModel.delegate = self } }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        miniBar.delegate = self
+        setupUI()
         viewModel.viewDidLoad()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+    
     @IBAction func playButtonClicked(_ sender: Any) {
-        print("Play button clicked.")
-        
         viewModel.togglePlayback()
-        
-        if viewModel.isMusicPlaying {
-            guard let selectMusic = viewModel.selectPlayingMusic else { return }
-            playMusic(musicData: selectMusic)
-//            miniBar.delegate?.playMusic(musicData: selectMusic)
-        } else {
-            stopMusic()
-//            miniBar.delegate?.stopMusic()
-        }
-        
     }
     
     @IBAction func shareButtonTapped(_ sender: Any) {
         viewModel.shareTrack()
     }
-    
 }
 
 extension MusicDetailViewController: MusicDetailViewModelDelegate {
     
-    func handleViewModelOutput(_ output: MusicDetailViewModelOutput) {
-        switch output {
-        case .setTitle(let title):
-            trackTitleLabel.text = title
-        case .setArtist(let artist):
-            trackArtistLabel.text = artist
-        case .setAlbumImage(let imageURL):
+    func setTitle(_ title: String) {
+        trackTitleLabel.text = title
+    }
+    
+    func setArtist(_ artist: String) {
+        trackDuration.text = artist
+    }
+    
+    func setAlbumImage(_ imageURL: URL?) {
+        if let imageURL = imageURL {
             trackImageView.kf.setImage(with: imageURL)
-        case .setPlayButtonImage(let image):
-            playButton.setImage(image, for: .normal)
-        case .showLinkCopiedMessage(_):
-            self.showAlertMessage(title: "Copy Link", message: "The link has been copied to the clipboard")
-        case .setAlbumTitle(albumTitle: let albumTitle):
-            titlePage.text = albumTitle
         }
+    }
+    
+    func setAlbumTitle(_ albumTitle: String) {
+        titlePage.text = albumTitle
+    }
+    
+    func setPlayButtonImage(_ image: UIImage) {
+        playButton.setImage(image, for: .normal)
     }
 }
 
-
-extension MusicDetailViewController : MiniBarDelegate {
+extension MusicDetailViewController {
     
-    func showMusicDetailPage(selectMusicData: AlbumDetailTrackListData) {
-        
+    private func setupUI() {
+        trackImageView.contentMode = .scaleAspectFill
+        trackImageView.layer.borderWidth = 1
+        trackImageView.layer.cornerRadius = 12
+        trackImageView.layer.borderColor = UIColor.systemRed.cgColor
     }
-    
-    func miniBarDidTapButton() {
-        
-    }
-    
-    func playMusic(musicData: AlbumDetailTrackListData) {
-        miniBar.updateMusicWith(musicData: musicData)
-    }
-    
-    func stopMusic() {
-        miniBar.stopMusic()
-    }
-    
 }

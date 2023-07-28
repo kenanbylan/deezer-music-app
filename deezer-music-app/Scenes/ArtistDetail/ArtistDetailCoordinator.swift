@@ -5,9 +5,9 @@
 //  Created by Kenan Baylan on 14.07.2023.
 //
 
-import UIKit
+import UIKit.UINavigationController
 
-class ArtistDetailCoordinator: Coordinator {
+final class ArtistDetailCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
@@ -25,7 +25,6 @@ class ArtistDetailCoordinator: Coordinator {
         let artistDetailStoryboard = UIStoryboard(name: Constants.System.Storyboard.artistDetail , bundle: nil)
         let artistDetailViewController = artistDetailStoryboard.instantiateViewController(withIdentifier: Constants.System.Controller.artistDetailViewController ) as! ArtistDetailViewController
         
-        
         let artistDetailService = ArtistDetailService()
         let viewModel = ArtistDetailViewModel(artistDetailService: artistDetailService)
         
@@ -33,9 +32,7 @@ class ArtistDetailCoordinator: Coordinator {
         viewModel.coordinator = self
         artistDetailViewController.viewModel = viewModel
         navigationController.pushViewController(artistDetailViewController, animated: true)
-    
     }
-    
     
     func showArtistAlbum(albumId: Int, albumName: String) {
         let artistAlbumCoordinator = ArtistAlbumCoordinator(navigationController: navigationController, selectAlbumId: albumId, selectedAlbumName: albumName)

@@ -43,7 +43,7 @@
                                         <color key="tintColor" systemColor="systemRedColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="play.circle.fill" catalog="system"/>
-                                        <buttonConfiguration key="configuration" style="tinted" image="play.circle.fill" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="tinted" image="pause.circle.fill" catalog="system"/>
                                         <connections>
                                             <action selector="musicPauseButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="5qU-O1-PZF"/>
                                         </connections>
@@ -73,6 +73,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="pause.circle.fill" catalog="system" width="128" height="123"/>
         <image name="play.circle.fill" catalog="system" width="128" height="123"/>
         <image name="test-image" width="250" height="250"/>
         <systemColor name="secondarySystemBackgroundColor">

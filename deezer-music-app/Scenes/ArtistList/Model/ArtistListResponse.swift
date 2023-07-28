@@ -31,5 +31,3 @@ struct ArtistListResponse: Decodable {
         case nbFan = "nb_fan"
     }
 }
-
-
