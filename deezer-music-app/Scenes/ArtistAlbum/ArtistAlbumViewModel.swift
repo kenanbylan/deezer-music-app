@@ -20,6 +20,7 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
     }
     
     func viewDidLoad() {
+        let albumTitle = selectedAlbumName ?? "Unknown Album"
         self.delegate?.handleViewModelOutput(.showTitle(selectedAlbumName ?? "nil"))
         guard let selectAlbumId = selectAlbumId else { return }
         getAlbumById(albumId: selectAlbumId)
@@ -35,7 +36,7 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
         return artistAlbumDetail?[index]
     }
     
-    func didSelectAlbumAt(_ index: Int) {
+    func didSelectAlbumAt(index: Int) {
         let musicData = albumDataAt(index: index)
         guard let musicData = musicData else { return }
         miniBarDelegate?.playMusic(musicData: musicData)
@@ -46,17 +47,20 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
 
 extension ArtistAlbumViewModel {
     
-    func favoriteAlbum(_ selectTrackId: Int) {
-        guard let selectAlbum = artistAlbumDetail?.first(where: { $0.trackId == selectTrackId }) else { return print("Album data is nil or not found.") }
-        
-        CoreDataManager.shared.addFavoriteTrack(data: selectAlbum) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .failure(let error):
-                self.delegate?.handleViewModelOutput(.showError(errorDescription: error.localizedDescription))
-            case .success(_):
-                self.delegate?.handleViewModelOutput(.succesAddFavorite(true))
+    
+    func favoriteAlbum(selectTrackId: Int) {
+        if let selectAlbum = artistAlbumDetail?.first(where: { $0.trackId == selectTrackId }) {
+            CoreDataManager.shared.addFavoriteTrack(data: selectAlbum) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .failure(let error):
+                    self.delegate?.handleViewModelOutput(.showError(errorDescription: error.localizedDescription))
+                case .success(_):
+                    self.delegate?.handleViewModelOutput(.succesAddFavorite(true))
+                }
             }
+        } else {
+            print("Album data is nil or not found.")
         }
     }
     
@@ -84,7 +88,6 @@ extension ArtistAlbumViewModel {
             if let error = error {
                 delegate?.handleViewModelOutput(.showError(errorDescription: error.localizedDescription))
             } else {
-                
                 self.artistAlbumDetail = albumDetail.tracks?.data?.map({
                     AlbumDetailTrackListData(
                         id: Double(albumDetail.id),

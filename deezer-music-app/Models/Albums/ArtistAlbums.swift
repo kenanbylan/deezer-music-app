@@ -13,16 +13,17 @@ struct AlbumResponseData: Decodable {
 }
 
 struct AlbumResponse: Decodable, Hashable {
+    
     let id: Int
-    let title: String
-    let cover: String
-    let coverSmall: String
-    let coverMedium: String
-    let coverBig: String
-    let coverXl: String
-    let fans: Int
-    let releaseDate: String
-    let tracklist: String
+    let title: String?
+    let cover: String?
+    let coverSmall: String?
+    let coverMedium: String?
+    let coverBig: String?
+    let coverXl: String?
+    let fans: Int?
+    let releaseDate: String?
+    let tracklist: String?
     
     enum CodingKeys: String, CodingKey {
         case id, title, cover, fans, tracklist
@@ -34,9 +35,9 @@ struct AlbumResponse: Decodable, Hashable {
     }
 }
 
-
 //MARK: Album detail's
 struct AlbumDetailResponse: Decodable {
+    
     let id: Int
     let title: String?
     let cover: String?
@@ -47,7 +48,7 @@ struct AlbumDetailResponse: Decodable {
     let fans: Int?
     let tracks: TrackDetailDataResponse?
     let artist: ArtistResponse?
-    let releaseDate: String
+    let releaseDate: String?
     
     enum CodingKeys: String, CodingKey {
         case id, title, cover, fans,artist,tracks
@@ -72,11 +73,10 @@ struct TrackDetailResponse: Decodable {
     let link: String?
 }
 
+
 //Add to favorites appear to the model.
 struct AlbumDetailTrackListData: Hashable {
-    
     let id: Double
-    var isFavorite: Bool = false //will might delete.
     let albumImage: String?
     let trackId: Int?
     let title: String?

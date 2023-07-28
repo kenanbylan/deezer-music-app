@@ -10,7 +10,7 @@ import Foundation
 protocol ArtistAlbumViewModelProtocol {
     
     var delegate: ArtistAlbumViewModelDelegate? { get set }
-    var coordinator: ArtistAlbumCoordinator? { get set }
+    var coordinator: ArtistAlbumCoordinator? { get }
     
     var artistAlbumDetail: [AlbumDetailTrackListData]? { get }
     var selectAlbumId: Int? { get }
@@ -19,10 +19,10 @@ protocol ArtistAlbumViewModelProtocol {
     func viewDidLoad()
     func numberOfAlbum() -> Int
     func albumDataAt(index: Int) -> AlbumDetailTrackListData?
-    func didSelectAlbumAt(_ index: Int)
+    func didSelectAlbumAt(index: Int)
     
     //MARK: Core Data func.
-    func favoriteAlbum(_ id: Int)
+    func favoriteAlbum(selectTrackId: Int)
     func removeFavoriteAlbum(selectTrackId: Int)
 }
 enum ArtistAlbumViewModelOutput {

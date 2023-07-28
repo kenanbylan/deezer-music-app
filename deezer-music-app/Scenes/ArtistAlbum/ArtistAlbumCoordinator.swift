@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ArtistAlbumCoordinator: Coordinator {
+final class ArtistAlbumCoordinator: Coordinator {
     
     weak var tabBarController: TabBarController?
     var childCoordinators: [Coordinator] = []

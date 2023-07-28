@@ -13,6 +13,7 @@ final class CoreDataManager {
     
     static let shared = CoreDataManager()
     private init(){  }
+    
     let entityName = "Favorites"
     
     private var context: NSManagedObjectContext {
@@ -29,7 +30,8 @@ final class CoreDataManager {
         return container
     }()
     
-    func isTrackFavorite(id: Int) -> Bool {
+    
+    func isTrackFavorite(id: Int64) -> Bool {
         let fetchRequest = NSFetchRequest<Favorites>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         
@@ -41,6 +43,8 @@ final class CoreDataManager {
             return false
         }
     }
+
+    
     
 }
 
@@ -51,15 +55,15 @@ extension CoreDataManager {
     func addFavoriteTrack(data: AlbumDetailTrackListData, completion: @escaping (Result<String, Error>) -> Void) {
         guard let id = data.trackId else { return }
         
-        if isTrackFavorite(id: id ) {
+        if isTrackFavorite(id: Int64(id) ) {
             let errorMessage = "Already Favorites list."
             let error = NSError(domain: "Error:", code: 1001, userInfo: [NSLocalizedDescriptionKey: errorMessage])
             completion(.failure(error))
+            
         } else {
-            
             let favoriteTrack = Favorites(context: context)
-            
-            favoriteTrack.id = Double(id)
+        
+            favoriteTrack.id = Int64(id)
             favoriteTrack.albumName = data.title
             favoriteTrack.artistName = data.artistName
             favoriteTrack.image = data.albumImage
@@ -68,35 +72,36 @@ extension CoreDataManager {
             favoriteTrack.preview = data.preview
             favoriteTrack.title = data.title
             
-            do {
-                saveContext()
-                completion(.success("Succes favorites."))
-            } catch {
-                completion(.failure(error))
-            }
+            saveContext()
+            print("Favorite eklenen bilgiler:",favoriteTrack)
+            completion(.success("success track to favorite."))
         }
     }
 }
 
-
 //MARK: -Remove Favorite Tracks.
 
 extension CoreDataManager {
+    
     func removeFavoriteTrack(id: Int,completion: @escaping (Result<String, Error>) -> Void) {
+        
         let fetchRequest = NSFetchRequest<Favorites>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
-        print("İD: ", id )
-        if isTrackFavorite(id: id) {
+        
+        
+        if isTrackFavorite(id: Int64(id)) {
+            
             do {
                 let favoriteTracks = try context.fetch(fetchRequest)
                 for favoriteTrack in favoriteTracks {
                     context.delete(favoriteTrack)
                 }
-                print("Core datadan success remove", id)
                 saveContext()
                 completion(.success("Favorite removed successfully."))
+                print("Core datadan success remove", id)
             } catch {
                 completion(.failure(error))
+                print("Silinirken bir hata çıtkı: ", error)
             }
         } else {
             print("Not deleted: iD: ", id)
@@ -117,6 +122,7 @@ extension CoreDataManager {
     func fetchFavoriteTracks() -> [AlbumDetailTrackListData] {
         var favoritesList: [AlbumDetailTrackListData] = []
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        
         fetchRequest.returnsObjectsAsFaults = false
         do {
             let favoriteTracks = try context.fetch(fetchRequest)

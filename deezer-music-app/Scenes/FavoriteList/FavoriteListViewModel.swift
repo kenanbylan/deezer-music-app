@@ -34,6 +34,7 @@ final class FavoriteListViewModel: FavoriteListViewModelProtocol {
 
 //MARK: FavoriteListViewModel api response
 extension FavoriteListViewModel {
+    
     func removeFavoriteById(selectTrackId:Int) {
         CoreDataManager.shared.removeFavoriteTrack(id: selectTrackId) { [weak self] result in
             guard let self = self else { return }

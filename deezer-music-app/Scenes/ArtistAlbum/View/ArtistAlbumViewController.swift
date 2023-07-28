@@ -19,15 +19,14 @@ final class ArtistAlbumViewController: UIViewController {
         viewModel.viewDidLoad()
         
         setupCollectionView()
-        setupResreshControl()
+        setupRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupResreshControl()
+        setupRefreshControl()
         setupCollectionView()
     }
 }
-
 
 //MARK: - ArtistAlbumViewController Setup func.
 
@@ -38,10 +37,11 @@ extension ArtistAlbumViewController {
         artistTrackCollectionView.dataSource = self
         artistTrackCollectionView.register(ArtistAlbumCollectionViewCell.self)
     }
-    
-    private func setupResreshControl() {
+
+    private func setupRefreshControl() {
         artistTrackCollectionView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(refreshData), for: .allEditingEvents)
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        artistTrackCollectionView.reloadData()
     }
     
     @objc private func refreshData() {
@@ -80,21 +80,21 @@ extension ArtistAlbumViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: ArtistAlbumCollectionViewCell.self),
             for: indexPath) as? ArtistAlbumCollectionViewCell
         
-        cell?.delegate = self
-        
-        
-        guard let albumData = viewModel.albumDataAt(index: indexPath.item) else { return UICollectionViewCell() }
-        cell?.updateUIWith(albumData: albumData)
+        if let albumData = viewModel.albumDataAt(index: indexPath.item) {
+            cell?.delegate = self
+            cell?.updateUIWith(albumData: albumData)
+        }
         
         return cell ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.didSelectAlbumAt(indexPath.item)
+        viewModel.didSelectAlbumAt(index: indexPath.item)
     }
 }
 
@@ -103,12 +103,13 @@ extension ArtistAlbumViewController: UICollectionViewDelegate { }
 extension ArtistAlbumViewController: ArtistAlbumCollectionViewCellDelegate {
     
     func favoriteImageViewTapped(id: Int, isFavorite: Bool) {
-        
         if isFavorite {
-            viewModel.favoriteAlbum(id)
-            //artistTrackCollectionView.reloadData()
+            print("Favoriye eklenen Şarkı ID:", id)
+            
+            viewModel.favoriteAlbum(selectTrackId: id)
         } else {
             viewModel.removeFavoriteAlbum(selectTrackId: id)
         }
+        artistTrackCollectionView.reloadData()
     }
 }

@@ -6,37 +6,6 @@
 
 import Foundation
 
-struct AlbumTracksResponse: Decodable {
-    let data: [AlbumTracksData]?
-}
-
-struct AlbumTracksData: Decodable, Hashable {
-    
-    let id: Int?
-    let readable: Bool?
-    let title, titleShort: String?
-    let link: String?
-    let duration, rank: Int?
-    let explicitLyrics: Bool?
-    let explicitContentLyrics, explicitContentCover: Int?
-    let preview: String?
-    let md5Image: String?
-    let album: ArtistAlbums?
-    let type: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case id, readable, title
-        case titleShort = "title_short"
-        case link, duration, rank
-        case explicitLyrics = "explicit_lyrics"
-        case explicitContentLyrics = "explicit_content_lyrics"
-        case explicitContentCover = "explicit_content_cover"
-        case preview
-        case md5Image = "md5_image"
-        case album, type
-    }
-}
-
 struct ArtistAlbums: Decodable, Hashable {
     let id: Int?
     let title: String?

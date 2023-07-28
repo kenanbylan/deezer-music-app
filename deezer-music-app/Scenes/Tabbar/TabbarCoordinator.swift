@@ -26,7 +26,6 @@ final class TabbarCoordinator: Coordinator {
         var viewControllers: [UIViewController] = []
         
         //MARK: Genre Tabbar Item
-        
         let genreCoordinator = GenreListCoordinator(navigationController: UINavigationController())
         childCoordinators.append(genreCoordinator)
         genreCoordinator.start()
@@ -34,9 +33,7 @@ final class TabbarCoordinator: Coordinator {
         let genreVC = genreCoordinator.rootViewController
         let genreTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: Constants.Image.home), selectedImage: UIImage(named: "home"))
         genreVC?.tabBarItem = genreTabBarItem
-        
         if let genreVC = genreVC { viewControllers.append(genreVC) }
-        
         
         //MARK: Favorite Tabbar Item
         let favoriteCoordinator = FavoriteListCoordinator(navigationController: UINavigationController())
@@ -52,7 +49,6 @@ final class TabbarCoordinator: Coordinator {
     }
     
     func showMusicDetail(musicDetail: AlbumDetailTrackListData) {
-        
         let storyboard = UIStoryboard(name: Constants.System.Storyboard.musicDetail, bundle: nil)
         guard let musicDetailVC = storyboard.instantiateViewController(withIdentifier: Constants.System.Controller.musicDetailViewController) as? MusicDetailViewController else { return }
         

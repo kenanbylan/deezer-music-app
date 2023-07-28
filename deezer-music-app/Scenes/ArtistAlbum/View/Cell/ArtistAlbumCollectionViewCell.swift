@@ -22,8 +22,7 @@ class ArtistAlbumCollectionViewCell: UICollectionViewCell {
     weak var delegate: ArtistAlbumCollectionViewCellDelegate?
     
     var isFavorite: Bool = false
-    var id: Int = 0
-    
+    var musicId: Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,21 +30,27 @@ class ArtistAlbumCollectionViewCell: UICollectionViewCell {
         tapGesture()
     }
     
-    public func updateUIWith(albumData: AlbumDetailTrackListData) {
-        
+    
+    func updateUIWith(albumData: AlbumDetailTrackListData) {
         guard let trackId = albumData.trackId else { return }
-        self.id = trackId  //id atandı.
-        
-        self.isFavorite = CoreDataManager.shared.isTrackFavorite(id: trackId)
-        
+        self.musicId = trackId // ID atandı.
+        self.isFavorite = CoreDataManager.shared.isTrackFavorite(id: Int64(musicId))
+
         self.trackTitle.text = albumData.title
         self.durationLabel.text = (albumData.duration?.formatDuration() ?? "")
         guard let image = albumData.albumImage else { return }
         guard let url = URL(string: image) else { return }
-        self.trackImageView.kf.setImage(with: url)
-        
-        favoriteImageView.image = isFavorite ? UIImage(named: "lover") : UIImage(named: "heart")
+
+        trackImageView.kf.setImage(with: url)
+
+
+        if isFavorite {
+            favoriteImageView.image = UIImage(named: "lover")
+        } else {
+            favoriteImageView.image = UIImage(named: "heart")
+        }
     }
+
 }
 
 //MARK: Tap gesture and clicked imageView
@@ -60,8 +65,9 @@ extension ArtistAlbumCollectionViewCell {
     
     @objc func favoriteImageViewTapped() {
         isFavorite.toggle() //MARK: inpect
+        
         favoriteImageView.image = isFavorite ? UIImage(named: "lover") : UIImage(named: "heart")
-        delegate?.favoriteImageViewTapped(id: id, isFavorite: isFavorite)
+        delegate?.favoriteImageViewTapped(id: musicId, isFavorite: isFavorite)
     }
 }
 

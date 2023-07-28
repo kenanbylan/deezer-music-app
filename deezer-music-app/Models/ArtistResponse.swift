@@ -8,6 +8,7 @@
 import Foundation
 
 struct ArtistResponse: Decodable {
+    
     let id: Int
     let name: String?
     let link, share, picture: String?

@@ -31,4 +31,3 @@ class NetworkHelper {
         return (isReachable && !needsConnection)
     }
 }
-
