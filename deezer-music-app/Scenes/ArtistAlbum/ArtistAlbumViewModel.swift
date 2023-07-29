@@ -46,8 +46,7 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
 //MARK: Core-Data Function
 
 extension ArtistAlbumViewModel {
-    
-    
+
     func favoriteAlbum(selectTrackId: Int) {
         if let selectAlbum = artistAlbumDetail?.first(where: { $0.trackId == selectTrackId }) {
             CoreDataManager.shared.addFavoriteTrack(data: selectAlbum) { [weak self] result in
@@ -90,7 +89,7 @@ extension ArtistAlbumViewModel {
             } else {
                 self.artistAlbumDetail = albumDetail.tracks?.data?.map({
                     AlbumDetailTrackListData(
-                        id: Double(albumDetail.id),
+                        id: Int64(albumDetail.id),
                         albumImage: albumDetail.coverMedium,
                         trackId: $0.id,
                         title: $0.title,
@@ -106,3 +105,4 @@ extension ArtistAlbumViewModel {
         }
     }
 }
+

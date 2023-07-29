@@ -35,7 +35,6 @@ final class ArtistDetailViewModel: ArtistDetailViewModelProtocol {
     
     func didSelectArtistAlbum(_ index: Int) {
         guard let album = artistAlbumAt(index) else { return }
-        print("Seçilen album bilgileri : ", album)
         self.coordinator?.showArtistAlbum(albumId: album.id, albumName: album.title ?? "")
     }
 }

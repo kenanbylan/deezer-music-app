@@ -16,7 +16,6 @@ final class GenreListService : GenreListServiceProtocol {
             case .success(let genres):
                 completion(genres, nil)
             case .failure(let error):
-                print("Error: ", error)
                 completion(nil, APIError.requestFailed(error))
             }
         }

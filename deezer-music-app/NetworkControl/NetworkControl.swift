@@ -9,6 +9,7 @@ import UIKit
 import SystemConfiguration
 
 class NetworkHelper {
+    
     static func isConnectedToNetwork() -> Bool {
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))

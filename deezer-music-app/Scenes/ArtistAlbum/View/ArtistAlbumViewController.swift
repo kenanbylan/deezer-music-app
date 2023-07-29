@@ -29,7 +29,6 @@ final class ArtistAlbumViewController: UIViewController {
 }
 
 //MARK: - ArtistAlbumViewController Setup func.
-
 extension ArtistAlbumViewController {
     
     private func setupCollectionView() {
@@ -37,7 +36,7 @@ extension ArtistAlbumViewController {
         artistTrackCollectionView.dataSource = self
         artistTrackCollectionView.register(ArtistAlbumCollectionViewCell.self)
     }
-
+    
     private func setupRefreshControl() {
         artistTrackCollectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
@@ -85,10 +84,9 @@ extension ArtistAlbumViewController: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: ArtistAlbumCollectionViewCell.self),
             for: indexPath) as? ArtistAlbumCollectionViewCell
         
-        if let albumData = viewModel.albumDataAt(index: indexPath.item) {
-            cell?.delegate = self
-            cell?.updateUIWith(albumData: albumData)
-        }
+        guard let albumData = viewModel.albumDataAt(index: indexPath.item) else { return UICollectionViewCell() }
+        cell?.delegate = self
+        cell?.updateUIWith(albumData: albumData)
         
         return cell ?? UICollectionViewCell()
     }
@@ -104,8 +102,6 @@ extension ArtistAlbumViewController: ArtistAlbumCollectionViewCellDelegate {
     
     func favoriteImageViewTapped(id: Int, isFavorite: Bool) {
         if isFavorite {
-            print("Favoriye eklenen Şarkı ID:", id)
-            
             viewModel.favoriteAlbum(selectTrackId: id)
         } else {
             viewModel.removeFavoriteAlbum(selectTrackId: id)

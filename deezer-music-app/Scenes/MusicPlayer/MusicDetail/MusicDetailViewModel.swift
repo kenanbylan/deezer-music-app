@@ -25,7 +25,6 @@ final class MusicDetailViewModel {
     
     func viewDidLoad() {
         guard let selectPlayingMusic = selectPlayingMusic else { return }
-        
         delegate?.setTitle(selectPlayingMusic.title ?? "")
         delegate?.setArtist(selectPlayingMusic.duration?.formatDuration() ?? "")
         delegate?.setAlbumImage(URL(string: selectPlayingMusic.albumImage ?? ""))

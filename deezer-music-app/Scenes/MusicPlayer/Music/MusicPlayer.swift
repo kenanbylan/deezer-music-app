@@ -16,7 +16,6 @@ protocol MusicPlayerProtocol {
     func toggleMusicStatus()
 }
 
-
 class MusicPlayer: MusicPlayerProtocol {
     
     static let shared = MusicPlayer()
@@ -25,13 +24,11 @@ class MusicPlayer: MusicPlayerProtocol {
     
     private init() { }
     
-    
     func toggleMusicStatus() {
         if isPlaying {
             pause()
         } else {
             if let musicData = currentPlay {
-                
                 guard let previewURLString = musicData.preview, let previewURL = URL(string: previewURLString) else { return }
                 play(url: previewURL)
             }
@@ -44,7 +41,6 @@ class MusicPlayer: MusicPlayerProtocol {
         } else {
             audioPlayer = AVPlayer(url: url)
         }
-        
         audioPlayer?.play()
         isPlaying = true
     }

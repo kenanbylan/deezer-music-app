@@ -16,7 +16,6 @@ final class ArtistListService: ArtistListServiceProtocol {
             case .success(let artists):
                 completion(artists,nil)
             case .failure(let error):
-                print("Error: ", error)
                 completion(nil,APIError.requestFailed(error))
             }
         }

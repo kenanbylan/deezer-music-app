@@ -17,7 +17,9 @@ final class GenreListViewModel: GenreListViewModelProtocol {
         getGenre()
     }
 
-    var numberOfGenres: Int { return genreItems.count }
+    var numberOfGenres: Int {
+        return genreItems.count
+    }
     
     func genreAt(_ index: Int) -> GenreResponse? {
         guard index >= 0 && index < genreItems.count else { return nil }

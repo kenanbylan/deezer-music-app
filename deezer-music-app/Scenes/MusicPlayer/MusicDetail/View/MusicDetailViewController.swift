@@ -29,42 +29,26 @@ final class MusicDetailViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
-    @IBAction func playButtonClicked(_ sender: Any) {
-        viewModel.togglePlayback()
-    }
+    @IBAction func playButtonClicked(_ sender: Any) { viewModel.togglePlayback() }
+    @IBAction func shareButtonTapped(_ sender: Any) { viewModel.shareTrack() }
     
-    @IBAction func shareButtonTapped(_ sender: Any) {
-        viewModel.shareTrack()
-    }
 }
 
 extension MusicDetailViewController: MusicDetailViewModelDelegate {
     
-    func setTitle(_ title: String) {
-        trackTitleLabel.text = title
-    }
-    
-    func setArtist(_ artist: String) {
-        trackDuration.text = artist
-    }
+    func setTitle(_ title: String) { trackTitleLabel.text = title }
+    func setArtist(_ artist: String) { trackDuration.text = artist }
+    func setAlbumTitle(_ albumTitle: String) { titlePage.text = albumTitle }
+    func setPlayButtonImage(_ image: UIImage) { playButton.setImage(image, for: .normal) }
     
     func setAlbumImage(_ imageURL: URL?) {
         if let imageURL = imageURL {
             trackImageView.kf.setImage(with: imageURL)
         }
     }
-    
-    func setAlbumTitle(_ albumTitle: String) {
-        titlePage.text = albumTitle
-    }
-    
-    func setPlayButtonImage(_ image: UIImage) {
-        playButton.setImage(image, for: .normal)
-    }
 }
 
 extension MusicDetailViewController {
-    
     private func setupUI() {
         trackImageView.contentMode = .scaleAspectFill
         trackImageView.layer.borderWidth = 1

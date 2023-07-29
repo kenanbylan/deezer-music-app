@@ -8,7 +8,6 @@ import UIKit
 import Kingfisher
 import AVFoundation
 
-
 var audioPlayer: AVPlayer?
 
 protocol MiniBarDelegate {
@@ -49,7 +48,6 @@ final class MiniBarViewController: UIViewController {
         } else {
             playMusic()
         }
-        
         updatePlayPauseButtonImage()
     }
     

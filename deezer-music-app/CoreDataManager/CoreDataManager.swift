@@ -8,12 +8,10 @@
 import Foundation
 import CoreData
 
-
 final class CoreDataManager {
     
     static let shared = CoreDataManager()
-    private init(){  }
-    
+    private init() { }
     let entityName = "Favorites"
     
     private var context: NSManagedObjectContext {
@@ -21,7 +19,7 @@ final class CoreDataManager {
     }
     
     private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: entityName) // CoreData modelinizin adını buraya yazın
+        let container = NSPersistentContainer(name: entityName)
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error {
                 print("Core Data Error: \(error)")
@@ -30,28 +28,24 @@ final class CoreDataManager {
         return container
     }()
     
-    
     func isTrackFavorite(id: Int64) -> Bool {
         let fetchRequest = NSFetchRequest<Favorites>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+        fetchRequest.predicate = NSPredicate(format: "id == %@", NSNumber(value: id))
         
         do {
             let existingTracks = try context.fetch(fetchRequest)
+            print("Existint tracks:", existingTracks)
             return existingTracks.first != nil
         } catch {
             print("Error fetching existing tracks: \(error)")
             return false
         }
     }
-
-    
-    
 }
 
 //MARK: Favorite add Tracks.
 
 extension CoreDataManager {
-    
     func addFavoriteTrack(data: AlbumDetailTrackListData, completion: @escaping (Result<String, Error>) -> Void) {
         guard let id = data.trackId else { return }
         
@@ -62,18 +56,17 @@ extension CoreDataManager {
             
         } else {
             let favoriteTrack = Favorites(context: context)
-        
+            
             favoriteTrack.id = Int64(id)
-            favoriteTrack.albumName = data.title
+            favoriteTrack.albumName = data.albumName
             favoriteTrack.artistName = data.artistName
             favoriteTrack.image = data.albumImage
-            favoriteTrack.duration = data.duration?.formatDuration() //MARK: will be look.
+            favoriteTrack.duration = data.duration?.formatDuration()
             favoriteTrack.link = data.link
             favoriteTrack.preview = data.preview
             favoriteTrack.title = data.title
             
             saveContext()
-            print("Favorite eklenen bilgiler:",favoriteTrack)
             completion(.success("success track to favorite."))
         }
     }
@@ -88,7 +81,6 @@ extension CoreDataManager {
         let fetchRequest = NSFetchRequest<Favorites>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "id == %d", id)
         
-        
         if isTrackFavorite(id: Int64(id)) {
             
             do {
@@ -98,14 +90,10 @@ extension CoreDataManager {
                 }
                 saveContext()
                 completion(.success("Favorite removed successfully."))
-                print("Core datadan success remove", id)
             } catch {
                 completion(.failure(error))
-                print("Silinirken bir hata çıtkı: ", error)
             }
         } else {
-            print("Not deleted: iD: ", id)
-            
             let errorMessage = "Already not exist this music in the favorite list."
             let error = NSError(domain: "Error: ", code: 1001, userInfo: [NSLocalizedDescriptionKey: errorMessage])
             completion(.failure(error))
@@ -118,17 +106,16 @@ extension CoreDataManager {
 extension CoreDataManager {
     
     //MARK: Convert Favorites to AlbumDetailTrackListData and Fetch Data
-    
     func fetchFavoriteTracks() -> [AlbumDetailTrackListData] {
         var favoritesList: [AlbumDetailTrackListData] = []
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        
         fetchRequest.returnsObjectsAsFaults = false
+        
         do {
             let favoriteTracks = try context.fetch(fetchRequest)
             for fav in favoriteTracks as! [NSManagedObject] {
                 favoritesList.append(AlbumDetailTrackListData(
-                    id: fav.value(forKey: "id") as! Double,
+                    id: fav.value(forKey: "id") as! Int64,
                     albumImage: fav.value(forKey: "image") as? String,
                     trackId: fav.value(forKey: "id") as? Int,
                     title: fav.value(forKey: "title") as? String,
@@ -139,7 +126,6 @@ extension CoreDataManager {
                     link: (fav.value(forKey: "link") as? String)))
             }
         } catch {
-            print("Error fetching favorite tracks: \(error)")
             return []
         }
         return favoritesList
@@ -147,7 +133,6 @@ extension CoreDataManager {
 }
 
 //MARK: SaveContext
-
 extension CoreDataManager {
     private func saveContext() {
         if context.hasChanges {

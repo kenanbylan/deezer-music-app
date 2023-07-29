@@ -30,27 +30,20 @@ class ArtistAlbumCollectionViewCell: UICollectionViewCell {
         tapGesture()
     }
     
-    
     func updateUIWith(albumData: AlbumDetailTrackListData) {
         guard let trackId = albumData.trackId else { return }
-        self.musicId = trackId // ID atandı.
+        self.musicId = trackId
         self.isFavorite = CoreDataManager.shared.isTrackFavorite(id: Int64(musicId))
-
+        
         self.trackTitle.text = albumData.title
         self.durationLabel.text = (albumData.duration?.formatDuration() ?? "")
+        
         guard let image = albumData.albumImage else { return }
         guard let url = URL(string: image) else { return }
-
+        
         trackImageView.kf.setImage(with: url)
-
-
-        if isFavorite {
-            favoriteImageView.image = UIImage(named: "lover")
-        } else {
-            favoriteImageView.image = UIImage(named: "heart")
-        }
+        favoriteImageView.image = isFavorite ? UIImage(named: "lover") : UIImage(named: "heart")
     }
-
 }
 
 //MARK: Tap gesture and clicked imageView
@@ -62,10 +55,8 @@ extension ArtistAlbumCollectionViewCell {
         favoriteImageView.isUserInteractionEnabled = true
         favoriteImageView.addGestureRecognizer(tapGesture)
     }
-    
     @objc func favoriteImageViewTapped() {
         isFavorite.toggle() //MARK: inpect
-        
         favoriteImageView.image = isFavorite ? UIImage(named: "lover") : UIImage(named: "heart")
         delegate?.favoriteImageViewTapped(id: musicId, isFavorite: isFavorite)
     }

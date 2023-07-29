@@ -55,6 +55,7 @@ final class TabbarCoordinator: Coordinator {
         let musicDetailViewModel = MusicDetailViewModel(selectPlayingMusic: musicDetail)
         musicDetailVC.viewModel = musicDetailViewModel
         
+        //Next Track detail page's
         UIApplication.topViewController()?.present(musicDetailVC, animated: true, completion: nil)
     }
 }

@@ -3,7 +3,6 @@
 //  deezer-music-app
 //
 //  Created by Kenan Baylan on 12.07.2023.
-//
 
 import UIKit
 import AVFAudio
@@ -14,19 +13,16 @@ class TabBarController: UITabBarController {
     var selectMusicData: AlbumDetailTrackListData?
     
     lazy var miniBar: MiniBarViewController = {
-        let storyboard = UIStoryboard(name: "MiniBar", bundle: nil)
-        guard let miniBar = storyboard.instantiateViewController(withIdentifier: "MiniBarViewController") as? MiniBarViewController else {
-            fatalError("MiniBarViewController not found in the storyboard.")
-        }
+        let storyboard = UIStoryboard(name: Constants.System.Storyboard.miniBar , bundle: nil)
+        guard let miniBar = storyboard.instantiateViewController(withIdentifier: Constants.System.Controller.miniBarController ) as? MiniBarViewController else { fatalError("MiniBarViewController not found in the storyboard.") }
         miniBar.view.translatesAutoresizingMaskIntoConstraints = false
         return miniBar
     }()
-    
+
     lazy var musicDetailPage: MusicDetailViewController = {
-        let musicDetailStoryboard = UIStoryboard(name: "MusicDetail", bundle: nil)
-        guard let musicDetailPage = musicDetailStoryboard.instantiateViewController(withIdentifier: "MusicDetailViewController") as? MusicDetailViewController else {
-            fatalError("MiniBarViewController not found in the storyboard.") }
-        
+        let musicDetailStoryboard = UIStoryboard(name: Constants.System.Storyboard.musicDetail , bundle: nil)
+        guard let musicDetailPage = musicDetailStoryboard.instantiateViewController(withIdentifier: Constants.System.Controller.musicDetailViewController) as? MusicDetailViewController else {
+            fatalError("Music detail not found in the storyboard.") }
         musicDetailPage.view.translatesAutoresizingMaskIntoConstraints = false
         return musicDetailPage
     }()
@@ -52,12 +48,9 @@ class TabBarController: UITabBarController {
 
 extension TabBarController: MiniBarDelegate {
     
-    func miniBarDidTapButton() {
-        containerView.isHidden.toggle()
-    }
+    func miniBarDidTapButton() { containerView.isHidden.toggle() }
     
     func showMusicDetailPage(selectMusicData: AlbumDetailTrackListData) {
-        
         coordinator?.showMusicDetail(musicDetail: selectMusicData)
     }
     
@@ -66,7 +59,7 @@ extension TabBarController: MiniBarDelegate {
         miniBar.updateMusicWith(musicData: musicData)
     }
     
-    func stopMusic() { }
+    func stopMusic() {  }
 }
 
 extension TabBarController: UITabBarControllerDelegate { }
@@ -79,7 +72,6 @@ extension TabBarController {
         containerView.addSubview(miniBar.view)
         miniBar.didMove(toParent: self)
         
-        //MARK: Delete tabbarItem
         if let childIndex = viewControllers?.firstIndex(of: miniBar) {
             viewControllers?.remove(at: childIndex)
         }
