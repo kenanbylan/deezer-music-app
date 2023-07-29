@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 class HeaderCollectionReusableView: UICollectionReusableView {
-    
+
     @IBOutlet weak var artistAlbumImageView: UIImageView!
     
     override func awakeFromNib() {

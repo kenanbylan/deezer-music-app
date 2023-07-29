@@ -60,7 +60,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="zL3-iW-Irn" firstAttribute="leading" secondItem="CKY-uS-cJo" secondAttribute="leading" constant="30" id="CUe-3o-WaI"/>
                                 <constraint firstItem="xeA-70-FQl" firstAttribute="leading" secondItem="CKY-uS-cJo" secondAttribute="leading" constant="30" id="JDB-PF-2TV"/>
@@ -95,9 +95,6 @@
         </view>
     </objects>
     <resources>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -12,7 +12,7 @@ protocol ArtistAlbumCollectionViewCellDelegate: AnyObject {
     func favoriteImageViewTapped(id: Int, isFavorite: Bool)
 }
 
-class ArtistAlbumCollectionViewCell: UICollectionViewCell {
+final class ArtistAlbumCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var trackImageView: UIImageView!
     @IBOutlet weak var trackTitle: UILabel!

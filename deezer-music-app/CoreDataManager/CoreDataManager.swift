@@ -34,7 +34,6 @@ final class CoreDataManager {
         
         do {
             let existingTracks = try context.fetch(fetchRequest)
-            print("Existint tracks:", existingTracks)
             return existingTracks.first != nil
         } catch {
             print("Error fetching existing tracks: \(error)")
@@ -72,7 +71,7 @@ extension CoreDataManager {
     }
 }
 
-//MARK: -Remove Favorite Tracks.
+//MARK: - Remove Favorite Tracks.
 
 extension CoreDataManager {
     
@@ -101,7 +100,7 @@ extension CoreDataManager {
     }
 }
 
-//MARK: -Fetch Favorite Tracks.
+//MARK: - Fetch Favorite Tracks.
 
 extension CoreDataManager {
     

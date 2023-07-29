@@ -20,7 +20,6 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
     }
     
     func viewDidLoad() {
-        let albumTitle = selectedAlbumName ?? "Unknown Album"
         self.delegate?.handleViewModelOutput(.showTitle(selectedAlbumName ?? "nil"))
         guard let selectAlbumId = selectAlbumId else { return }
         getAlbumById(albumId: selectAlbumId)
@@ -46,7 +45,7 @@ final class ArtistAlbumViewModel: ArtistAlbumViewModelProtocol {
 //MARK: Core-Data Function
 
 extension ArtistAlbumViewModel {
-
+    
     func favoriteAlbum(selectTrackId: Int) {
         if let selectAlbum = artistAlbumDetail?.first(where: { $0.trackId == selectTrackId }) {
             CoreDataManager.shared.addFavoriteTrack(data: selectAlbum) { [weak self] result in
@@ -76,7 +75,7 @@ extension ArtistAlbumViewModel {
     }
 }
 
-//MARK: - api get response
+//MARK: - API GET response
 
 extension ArtistAlbumViewModel {
     private func getAlbumById(albumId: Int) {
@@ -105,4 +104,3 @@ extension ArtistAlbumViewModel {
         }
     }
 }
-

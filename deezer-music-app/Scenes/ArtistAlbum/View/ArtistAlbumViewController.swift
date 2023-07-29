@@ -79,7 +79,6 @@ extension ArtistAlbumViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: ArtistAlbumCollectionViewCell.self),
             for: indexPath) as? ArtistAlbumCollectionViewCell

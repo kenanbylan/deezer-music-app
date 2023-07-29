@@ -51,8 +51,6 @@ extension MusicDetailViewController: MusicDetailViewModelDelegate {
 extension MusicDetailViewController {
     private func setupUI() {
         trackImageView.contentMode = .scaleAspectFill
-        trackImageView.layer.borderWidth = 1
         trackImageView.layer.cornerRadius = 12
-        trackImageView.layer.borderColor = UIColor.systemRed.cgColor
     }
 }

@@ -49,15 +49,13 @@ extension GenreListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: CategoryCollectionViewCell.self),
             for: indexPath) as! CategoryCollectionViewCell
         
+        guard let genre = viewModel.genreAt(indexPath.item) else { return UICollectionViewCell() }
+        cell.updateUIWith(genre: genre)
         
-        if let genre = viewModel.genreAt(indexPath.item) {
-            cell.updateUIWith(genre: genre)
-        }
         return cell
     }
     

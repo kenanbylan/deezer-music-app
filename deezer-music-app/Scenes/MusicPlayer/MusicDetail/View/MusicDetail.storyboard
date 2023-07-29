@@ -56,9 +56,8 @@
                                             <constraint firstAttribute="width" constant="80" id="gkS-Ol-BNF"/>
                                             <constraint firstAttribute="height" constant="80" id="wmx-h9-yBp"/>
                                         </constraints>
-                                        <buttonConfiguration key="configuration" style="gray" image="square.and.arrow.up" catalog="system">
-                                            <color key="baseForegroundColor" systemColor="systemRedColor"/>
-                                        </buttonConfiguration>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                        <buttonConfiguration key="configuration" style="tinted" image="square.and.arrow.up" catalog="system"/>
                                         <connections>
                                             <action selector="shareButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="zez-rp-dq6"/>
                                         </connections>

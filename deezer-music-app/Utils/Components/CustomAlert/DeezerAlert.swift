@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 final class DeezerAlert: UIView {
     @IBOutlet var parentView: UIView!
     @IBOutlet weak var alertView: UIView!
@@ -31,8 +30,13 @@ final class DeezerAlert: UIView {
     func showAlert(title: String, message: String, onCancelTapped: (() -> Void)?) {
         self.alertTitle.text = title
         self.alertDescriptionLabel.text = message
-        let keyWindow = UIApplication.shared.windows.first { $0.isKeyWindow }
-        keyWindow?.addSubview(parentView)
+        
+        if let keyWindowScene = UIApplication.shared.connectedScenes.first(where: {
+            $0.activationState == .foregroundActive }) as? UIWindowScene {
+            if let keyWindow = keyWindowScene.windows.first(where: { $0.isKeyWindow }) {
+                keyWindow.addSubview(parentView)
+            }
+        }
         
         parentView.alpha = 0.0
         parentView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
@@ -60,7 +64,6 @@ final class DeezerAlert: UIView {
 extension DeezerAlert {
     
     func setupUI() {
-        alertView.backgroundColor = .lightGray
         parentView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         parentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         alertView.layer.cornerRadius = 10
