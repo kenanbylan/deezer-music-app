@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeezerAlert" customModule="deezer_music_app" customModuleProvider="target">
+            <connections>
+                <outlet property="alertCancelButtonTapped" destination="zL3-iW-Irn" id="9w3-qT-vGg"/>
+                <outlet property="alertDescriptionLabel" destination="xeA-70-FQl" id="BjI-Xn-MYl"/>
+                <outlet property="alertTitle" destination="rdc-41-iKO" id="Nla-Tp-6zx"/>
+                <outlet property="alertView" destination="CKY-uS-cJo" id="9Fm-Kr-MI9"/>
+                <outlet property="parentView" destination="iN0-l3-epB" id="0Zr-KS-woe"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sa6-h4-F7b">
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKY-uS-cJo">
+                            <rect key="frame" x="50" y="80" width="300" height="240"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success copy link " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdc-41-iKO">
+                                    <rect key="frame" x="30" y="20" width="240" height="29"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="21"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zL3-iW-Irn">
+                                    <rect key="frame" x="30" y="175" width="240" height="45"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="45" id="LpV-OQ-8R2"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="19"/>
+                                    <color key="tintColor" systemColor="systemRedColor"/>
+                                    <state key="normal" title="Cancel">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <buttonConfiguration key="configuration" style="tinted" title="Cancel">
+                                        <fontDescription key="titleFontDescription" name="Avenir-Black" family="Avenir" pointSize="19"/>
+                                        <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="alertCancelButtonTapped:" destination="-1" eventType="touchUpInside" id="81J-B8-wu1"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="messagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessagemessa" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeA-70-FQl">
+                                    <rect key="frame" x="30" y="79" width="240" height="69.666666666666686"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="zL3-iW-Irn" firstAttribute="leading" secondItem="CKY-uS-cJo" secondAttribute="leading" constant="30" id="CUe-3o-WaI"/>
+                                <constraint firstItem="xeA-70-FQl" firstAttribute="leading" secondItem="CKY-uS-cJo" secondAttribute="leading" constant="30" id="JDB-PF-2TV"/>
+                                <constraint firstAttribute="height" constant="240" id="OOA-2n-bPy"/>
+                                <constraint firstAttribute="trailing" secondItem="xeA-70-FQl" secondAttribute="trailing" constant="30" id="Osb-va-a2U"/>
+                                <constraint firstAttribute="trailing" secondItem="rdc-41-iKO" secondAttribute="trailing" constant="30" id="PfP-Zu-s0o"/>
+                                <constraint firstItem="rdc-41-iKO" firstAttribute="top" secondItem="CKY-uS-cJo" secondAttribute="top" constant="20" id="VxI-2f-sb7"/>
+                                <constraint firstItem="xeA-70-FQl" firstAttribute="top" secondItem="rdc-41-iKO" secondAttribute="bottom" constant="30" id="WuD-JZ-VZP"/>
+                                <constraint firstAttribute="trailing" secondItem="zL3-iW-Irn" secondAttribute="trailing" constant="30" id="joK-ol-dy1"/>
+                                <constraint firstAttribute="bottom" secondItem="zL3-iW-Irn" secondAttribute="bottom" constant="20" id="ufh-o0-IeG"/>
+                                <constraint firstItem="rdc-41-iKO" firstAttribute="leading" secondItem="CKY-uS-cJo" secondAttribute="leading" constant="30" id="wNG-Cq-L1Y"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="CKY-uS-cJo" firstAttribute="centerX" secondItem="sa6-h4-F7b" secondAttribute="centerX" id="MD9-G3-UQf"/>
+                        <constraint firstItem="CKY-uS-cJo" firstAttribute="leading" secondItem="sa6-h4-F7b" secondAttribute="leading" constant="50" id="V7K-LB-DVN"/>
+                        <constraint firstAttribute="trailing" secondItem="CKY-uS-cJo" secondAttribute="trailing" constant="50" id="eGJ-gV-AcN"/>
+                        <constraint firstItem="CKY-uS-cJo" firstAttribute="centerY" secondItem="sa6-h4-F7b" secondAttribute="centerY" id="zMP-xf-E1Y"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="sa6-h4-F7b" secondAttribute="bottom" id="C9g-Un-tZb"/>
+                <constraint firstItem="sa6-h4-F7b" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VIR-Qs-n6B"/>
+                <constraint firstItem="sa6-h4-F7b" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="X9t-Tk-xGo"/>
+                <constraint firstItem="sa6-h4-F7b" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="ric-UN-DT6"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="122.13740458015266" y="87.323943661971839"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
