@@ -19,6 +19,7 @@ enum Constants {
             static let favorites = "FavoriteList"
             static let settings = "Settings"
             static let login = "Login"
+            static let register = "Register"
         }
         
         enum Controller {
@@ -31,8 +32,8 @@ enum Constants {
             static let musicDetailViewController = "MusicDetailViewController"
             static let settingViewController = "SettingViewController"
             static let loginViewController = "LoginViewController"
+            static let registerViewController = "RegisterViewController"
         }
-        
         enum CollectionViewCell {
             static let albumCollectionViewCell = "AlbumCollectionViewCell"
             static let favoriteCollectionViewCell = "FavoriteCollectionViewCell"
@@ -45,6 +46,7 @@ enum Constants {
         static let settings = "setting"
         static let active_fav = "lover"
         static let inactive_fav = "heart"
+        static let authLogo = "text-logo"
     }
     
     enum Text {

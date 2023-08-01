@@ -9,18 +9,27 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    var viewModel: LoginViewModelProtocol! {
-        didSet {
-            viewModel.delegate = self
-        }
-    }
-
+    //MARK: - Properties
+    @IBOutlet weak var emailTextfield: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    
+    //MARK: Delegate
+    var viewModel: LoginViewModelProtocol! { didSet { viewModel.delegate = self } }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewDidLoad()
     }
     
-
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        guard let password = passwordTextfield.text , let email = emailTextfield.text else { return }
+        viewModel.loginControl(email: email, password: password)
+    }
+    
+    @IBAction func registerButtonTapped(_ sender: Any) {
+        viewModel.coordinator?.showRegister()
+    }
 }
 
 extension LoginViewController: LoginViewModelDelegate {
@@ -30,7 +39,13 @@ extension LoginViewController: LoginViewModelDelegate {
             break
         case .setLoading(_):
             break
+            
+        case .loginSuccess(_):
+            //showAlertMessage(title: "Success", message: "Success login")
+            viewModel.coordinator?.showTabbar()
+            
+        case .loginError(let error):
+            DeezerAlert.shared.showAlert(title: "Error"  , message: error, onCancelTapped: nil)
         }
     }
 }
-

@@ -18,7 +18,7 @@ class TabBarController: UITabBarController {
         miniBar.view.translatesAutoresizingMaskIntoConstraints = false
         return miniBar
     }()
-
+    
     lazy var musicDetailPage: MusicDetailViewController = {
         let musicDetailStoryboard = UIStoryboard(name: Constants.System.Storyboard.musicDetail , bundle: nil)
         guard let musicDetailPage = musicDetailStoryboard.instantiateViewController(withIdentifier: Constants.System.Controller.musicDetailViewController) as? MusicDetailViewController else {
@@ -59,7 +59,7 @@ extension TabBarController: MiniBarDelegate {
         miniBar.updateMusicWith(musicData: musicData)
     }
     
-    func stopMusic() {  }
+    func stopMusic() {  }    
 }
 
 extension TabBarController: UITabBarControllerDelegate { }

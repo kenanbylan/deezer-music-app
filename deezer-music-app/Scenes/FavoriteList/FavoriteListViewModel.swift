@@ -5,6 +5,7 @@
 //  Created by Kenan Baylan on 17.07.2023.
 
 import Foundation
+import FirebaseDatabase
 
 final class FavoriteListViewModel: FavoriteListViewModelProtocol {
     
@@ -25,6 +26,7 @@ final class FavoriteListViewModel: FavoriteListViewModelProtocol {
     func numberOfFavorites() -> Int {
         return favoriteList.count
     }
+    
     
     func favoriteAt(index: Int) -> AlbumDetailTrackListData? {
         guard index >= 0, index < favoriteList.count else { return nil }

@@ -21,15 +21,16 @@ final class TabbarCoordinator: Coordinator {
         tabbarController.viewControllers = setupViewControllers()
         navigationController.navigationBar.tintColor = .red
     }
-
     
     func setupViewControllers() -> [UIViewController] {
+        
         var viewControllers: [UIViewController] = []
         
         //MARK: Genre Tabbar Item
         let genreCoordinator = GenreListCoordinator(navigationController: UINavigationController())
         childCoordinators.append(genreCoordinator)
         genreCoordinator.start()
+        
         
         let genreVC = genreCoordinator.rootViewController
         let genreTabBarItem = UITabBarItem(title: "DEEZER".localizable , image: UIImage(named: Constants.Image.home), selectedImage: UIImage(named: "home"))

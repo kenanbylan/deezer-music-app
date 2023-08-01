@@ -12,7 +12,7 @@ final class LoginCoordinator: Coordinator {
     var navigationController: UINavigationController
     var rootViewController: UIViewController?
     
-    var tabBarController: TabBarController?
+    var tabbarController = TabBarController()
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -20,7 +20,6 @@ final class LoginCoordinator: Coordinator {
     
     func start() {
         navigationController.navigationBar.tintColor = .red
-        
         let storyboard = UIStoryboard(name: Constants.System.Storyboard.login , bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: Constants.System.Controller.loginViewController) as! LoginViewController
         
@@ -32,11 +31,17 @@ final class LoginCoordinator: Coordinator {
         rootViewController = navigationController
     }
     
-    func showTabBar() {
-        tabBarController = TabBarController()
-        navigationController.setViewControllers([tabBarController!], animated: true)
-        rootViewController = navigationController
+    func showRegister() {
+        let registerCoordinator = RegisterCoordinator(navigationController: navigationController)
+        childCoordinators.append(registerCoordinator)
+        registerCoordinator.start()
     }
-
     
+    func showTabbar() {
+        print("Clicked show tabbar")
+        //        let tabbarCoordinator = TabbarCoordinator(tabbarController: tabbarController, navigationController: navigationController)
+        //        tabbarCoordinator.start()
+        
+        rootViewController = tabbarController
+    }
 }
