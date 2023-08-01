@@ -1,13 +1,12 @@
-//
 //  String + Extension.swift
 //  deezer-music-app
-//
 //  Created by Kenan Baylan on 20.07.2023.
 //
 
 import UIKit
 
 extension String {
+    
     func formatReleaseDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -16,14 +15,12 @@ extension String {
             dateFormatter.dateFormat = "dd MMMM yyyy"
             return dateFormatter.string(from: releaseDate)
         } else {
-            return self //MARK: -If the fails we return the original date.
+            return self //MARK: - If the fails we return the original date.
         }
     }
-}
-
-//MARK: For UICollectionView
-extension String {
-    func dequeueArtistAlbumCell(from collectionView: UICollectionView, for indexPath: IndexPath) -> ArtistAlbumCollectionViewCell? {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: self, for: indexPath) as? ArtistAlbumCollectionViewCell
+    
+    //For Localizable string.
+    var localizable: String {
+        return NSLocalizedString(self, comment: self)
     }
 }

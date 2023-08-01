@@ -21,6 +21,7 @@ final class TabbarCoordinator: Coordinator {
         tabbarController.viewControllers = setupViewControllers()
         navigationController.navigationBar.tintColor = .red
     }
+
     
     func setupViewControllers() -> [UIViewController] {
         var viewControllers: [UIViewController] = []
@@ -31,7 +32,7 @@ final class TabbarCoordinator: Coordinator {
         genreCoordinator.start()
         
         let genreVC = genreCoordinator.rootViewController
-        let genreTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: Constants.Image.home), selectedImage: UIImage(named: "home"))
+        let genreTabBarItem = UITabBarItem(title: "DEEZER".localizable , image: UIImage(named: Constants.Image.home), selectedImage: UIImage(named: "home"))
         genreVC?.tabBarItem = genreTabBarItem
         if let genreVC = genreVC { viewControllers.append(genreVC) }
         
@@ -41,11 +42,25 @@ final class TabbarCoordinator: Coordinator {
         favoriteCoordinator.start()
         
         let favoriteVC = favoriteCoordinator.rootViewController
-        let favoriteTabBarItem = UITabBarItem(title: "Favorite", image: UIImage(named: Constants.Image.favorites), selectedImage: UIImage(named: "fav"))
+        let favoriteTabBarItem = UITabBarItem(title: "TABBAR_FAVORITE".localizable, image: UIImage(named: Constants.Image.favorites), selectedImage: UIImage(named: Constants.Image.favorites))
         favoriteVC?.tabBarItem = favoriteTabBarItem
         
         if let favoriteVC = favoriteVC { viewControllers.append(favoriteVC) }
+        
+        
+        //MARK: Settings Tabbar Item
+        let settingsCoordinator = SettingCoordinator(navigationController: UINavigationController())
+        childCoordinators.append(settingsCoordinator)
+        settingsCoordinator.start()
+        let settingsVC = settingsCoordinator.rootViewController
+        let settingTabbarItem = UITabBarItem(title: "TABBAR_SETTINGS".localizable , image: UIImage(named: Constants.Image.settings), selectedImage: UIImage(named: Constants.Image.settings ))
+        
+        settingsVC?.tabBarItem = settingTabbarItem
+        guard let settingsVC = settingsVC else { return [UIViewController()] }
+        viewControllers.append(settingsVC)
+        
         return viewControllers
+        
     }
     
     func showMusicDetail(musicDetail: AlbumDetailTrackListData) {

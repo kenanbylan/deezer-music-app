@@ -54,3 +54,5 @@ extension MusicDetailViewController {
         trackImageView.layer.cornerRadius = 12
     }
 }
+
+

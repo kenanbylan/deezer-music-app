@@ -10,11 +10,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     var tabbarController = TabBarController()
+    var loginController = LoginViewController()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
+        
+        let isDarkModeEnabled = UserDefaults.standard.bool(forKey: "isDarkModeEnabled")
+        ChangeTheme.switchTheme(isDarkMode: isDarkModeEnabled)
+        
         self.window = window
         window.rootViewController = tabbarController
         window.makeKeyAndVisible()

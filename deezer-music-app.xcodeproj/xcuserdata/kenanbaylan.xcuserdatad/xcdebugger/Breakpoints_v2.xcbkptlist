@@ -65,6 +65,36 @@
                   endingLineNumber = "54"
                   offsetFromSymbolStart = "180">
                </Location>
+               <Location
+                  uuid = "2526C1B7-443E-4021-BD7D-08BDFAA88AFD - 32829c986687d1bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "deezer_music_app.CoreDataManager.addFavoriteTrack(data: deezer_music_app.AlbumDetailTrackListData, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "deezer-music-app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenanbaylan/Desktop/software/mobile/deezer-music-app/deezer-music-app/CoreDataManager/CoreDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  uuid = "2526C1B7-443E-4021-BD7D-08BDFAA88AFD - 32829c986687d1bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "deezer_music_app.CoreDataManager.addFavoriteTrack(data: deezer_music_app.AlbumDetailTrackListData, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "deezer-music-app"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kenanbaylan/Desktop/software/mobile/deezer-music-app/deezer-music-app/CoreDataManager/CoreDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "136">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>

@@ -46,7 +46,7 @@ final class MusicDetailViewModel {
     
     func shareTrack() {
         guard let trackLink = selectPlayingMusic?.link, let url = URL(string: trackLink) else { return }
-        DeezerAlert.shared.showAlert(title: "Success Copy", message: "The link has been copied to thee clipboard successfully.") {
+        DeezerAlert.shared.showAlert(title: "Music_alert_title".localizable , message: "Music_alert_msg".localizable) {
             print("Clicked cancel button")
         }
         UIPasteboard.general.url = url

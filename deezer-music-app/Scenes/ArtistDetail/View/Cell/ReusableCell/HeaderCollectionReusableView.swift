@@ -9,7 +9,6 @@ import UIKit
 import Kingfisher
 
 class HeaderCollectionReusableView: UICollectionReusableView {
-
     @IBOutlet weak var artistAlbumImageView: UIImageView!
     
     override func awakeFromNib() {
@@ -24,7 +23,6 @@ class HeaderCollectionReusableView: UICollectionReusableView {
 }
 
 extension HeaderCollectionReusableView {
-    
     private func setupUI() {
         artistAlbumImageView.contentMode = .scaleAspectFill
         artistAlbumImageView.layer.cornerRadius = 12

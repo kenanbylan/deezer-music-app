@@ -17,6 +17,7 @@ final class FavoriteListViewController: UIViewController {
     //MARK: Lifecycle.
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         viewModel.viewDidLoad()
         setupCollectionView()
         setupRefreshControl()
@@ -101,7 +102,7 @@ extension FavoriteListViewController: UICollectionViewDataSource {
         
         cell?.delegate = self
         
-        
+
         //TODO: WİLL BE FİXED.
         if let favoriteData = viewModel.favoriteAt(index: indexPath.item) {
             cell?.id = Int(favoriteData.id)
@@ -124,6 +125,13 @@ extension FavoriteListViewController: FavoriteCollectionViewCellDelegate {
 //MARK: Lottie animation setup.
 
 extension FavoriteListViewController {
+    
+    func setupUI() {
+        self.navigationItem.title = "Favorite_title".localizable
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+    }
+    
     private func showEmptyStateAnimationIfNeeded() {
         if viewModel.numberOfFavorites() == 0 {
             if animationView == nil {

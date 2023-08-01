@@ -1,0 +1,35 @@
+
+//MARK: - GenreList
+"GENRE_TITLE" = "Genre List";
+
+//MARK: - Tabbar Controller
+"DEEZER" = "Deezer";
+"TABBAR_FAVORITE" = "Favorites";
+"TABBAR_SETTINGS" = "Settings";
+
+//MARK: - Artist List
+"Artist_title" = "Artist List";
+
+
+//Favorite List
+"Favorite_title" = "Favorite List";
+
+//Setting List
+"Settings_title" = "Settings";
+"Settings_change_theme" = "Change Theme";
+"Settings_change_lang" = "Change Language";
+"Settings_logout" = "Logout";
+
+
+//MARK: -Link Copy Alert
+
+"Music_alert_title" = "Success Copy";
+"Music_alert_msg" = "The link has been copied to the clipboard successfully.";
+"Music_alert_cancel" = "Cancel";
+
+//Internet Control Alert
+"Controll_alert_title" = "No Internet Connection";
+"Controll_alert_msg" = "Please check your device's internet connection.";
+
+
+"ToJ-Zf-vhU.text" = "Change Theme";

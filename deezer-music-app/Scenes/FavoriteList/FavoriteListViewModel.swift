@@ -14,7 +14,7 @@ final class FavoriteListViewModel: FavoriteListViewModelProtocol {
     
     func viewDidLoad() {
         loadFavoriteList()
-        delegate?.handleViewModelOutput(.setTitle("Favorite List"))
+        delegate?.handleViewModelOutput(.setTitle("Favorite_title".localizable))
     }
     
     private func loadFavoriteList() {

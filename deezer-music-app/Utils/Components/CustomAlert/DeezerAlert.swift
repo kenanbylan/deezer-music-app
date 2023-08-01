@@ -21,8 +21,9 @@ final class DeezerAlert: UIView {
         super.init(frame: frame)
         Bundle.main.loadNibNamed("DeezerAlert", owner: self, options: nil)
         setupUI()
+
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -62,7 +63,6 @@ final class DeezerAlert: UIView {
 //MARK: - SetupUI
 
 extension DeezerAlert {
-    
     func setupUI() {
         parentView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         parentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]

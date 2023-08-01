@@ -2,12 +2,10 @@
 //  MusicListViewController.swift
 //  deezer-music-app
 //
-//  Created by Kenan Baylan on 10.07.2023.
 
 import UIKit
 
 final class GenreListViewController: UIViewController {
-    
     @IBOutlet private weak var genreCollectionView: UICollectionView! {
         didSet {
             genreCollectionView.delegate = self
@@ -18,14 +16,14 @@ final class GenreListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if !NetworkHelper.isConnectedToNetwork() {
             showNoInternetAlert()
+            
             return
         }
-        
         viewModel?.viewDidLoad()
         genreCollectionView.register(CategoryCollectionViewCell.self)
+        setupUI()
     }
 }
 
@@ -68,8 +66,12 @@ extension GenreListViewController: UICollectionViewDelegateFlowLayout { }
 
 extension GenreListViewController {
     private func showNoInternetAlert() {
-        DeezerAlert.shared.showAlert(title: "No Internet Connection", message: "Please check your device's internet connection.") {
+        DeezerAlert.shared.showAlert(title: "No internet connection" , message: "Controll_alert_msg".localizable) {
             self.viewModel.coordinator?.start()
         }
+    }
+    func setupUI() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
     }
 }

@@ -78,7 +78,7 @@ extension CoreDataManager {
     func removeFavoriteTrack(id: Int,completion: @escaping (Result<String, Error>) -> Void) {
         
         let fetchRequest = NSFetchRequest<Favorites>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+        fetchRequest.predicate = NSPredicate(format: "id == %@", NSNumber(value: id))
         
         if isTrackFavorite(id: Int64(id)) {
             

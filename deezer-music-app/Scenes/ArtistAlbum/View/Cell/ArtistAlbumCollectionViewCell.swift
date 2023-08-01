@@ -14,15 +14,18 @@ protocol ArtistAlbumCollectionViewCellDelegate: AnyObject {
 
 final class ArtistAlbumCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var trackImageView: UIImageView!
-    @IBOutlet weak var trackTitle: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var favoriteImageView: UIImageView!
+    //MARK: - Properties
+    @IBOutlet private weak var trackImageView: UIImageView!
+    @IBOutlet private weak var trackTitle: UILabel!
+    @IBOutlet private weak var durationLabel: UILabel!
+    @IBOutlet private weak var favoriteImageView: UIImageView!
     
+    //MARK: - Variable's
+    private var isFavorite: Bool = false
+    private var musicId: Int = 0
+    
+    //MARK: - Delegate
     weak var delegate: ArtistAlbumCollectionViewCellDelegate?
-    
-    var isFavorite: Bool = false
-    var musicId: Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,12 +45,11 @@ final class ArtistAlbumCollectionViewCell: UICollectionViewCell {
         guard let url = URL(string: image) else { return }
         
         trackImageView.kf.setImage(with: url)
-        favoriteImageView.image = isFavorite ? UIImage(named: "lover") : UIImage(named: "heart")
+        favoriteImageView.image = isFavorite ? UIImage(named: Constants.Image.active_fav) : UIImage(named: Constants.Image.inactive_fav)
     }
 }
 
 //MARK: Tap gesture and clicked imageView
-
 extension ArtistAlbumCollectionViewCell {
     
     private func tapGesture() {
@@ -55,9 +57,10 @@ extension ArtistAlbumCollectionViewCell {
         favoriteImageView.isUserInteractionEnabled = true
         favoriteImageView.addGestureRecognizer(tapGesture)
     }
+    
     @objc func favoriteImageViewTapped() {
         isFavorite.toggle() //MARK: inpect
-        favoriteImageView.image = isFavorite ? UIImage(named: "lover") : UIImage(named: "heart")
+        favoriteImageView.image = isFavorite ? UIImage(named: Constants.Image.active_fav) : UIImage(named: Constants.Image.inactive_fav)
         delegate?.favoriteImageViewTapped(id: musicId, isFavorite: isFavorite)
     }
 }

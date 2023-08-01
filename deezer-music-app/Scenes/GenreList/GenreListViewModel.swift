@@ -13,10 +13,10 @@ final class GenreListViewModel: GenreListViewModelProtocol {
     
     func viewDidLoad() {
         delegate?.handleViewModelOutput(.setLoading(true))
-        delegate?.handleViewModelOutput(.setTitle("Deezer"))
+        delegate?.handleViewModelOutput(.setTitle("Deezer".localizable))
         getGenre()
     }
-
+    
     var numberOfGenres: Int {
         return genreItems.count
     }

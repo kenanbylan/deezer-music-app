@@ -17,7 +17,6 @@ final class ArtistAlbumViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.viewDidLoad()
-        
         setupCollectionView()
         setupRefreshControl()
     }
@@ -29,6 +28,7 @@ final class ArtistAlbumViewController: UIViewController {
 }
 
 //MARK: - ArtistAlbumViewController Setup func.
+
 extension ArtistAlbumViewController {
     
     private func setupCollectionView() {
