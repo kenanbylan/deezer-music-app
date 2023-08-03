@@ -24,7 +24,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         guard let password = passwordTextfield.text , let email = emailTextfield.text else { return }
+        viewModel.delegate?.handleViewModelOutput(.buttonInactive(false))
         viewModel.loginControl(email: email, password: password)
+       
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
@@ -39,13 +41,16 @@ extension LoginViewController: LoginViewModelDelegate {
             break
         case .setLoading(_):
             break
-            
         case .loginSuccess(_):
             //showAlertMessage(title: "Success", message: "Success login")
             viewModel.coordinator?.showTabbar()
-            
         case .loginError(let error):
             DeezerAlert.shared.showAlert(title: "Error"  , message: error, onCancelTapped: nil)
+            
+        case .buttonInactive(_
+        ):
+            break
+//            loginButton.isEnabled = status
         }
     }
 }

@@ -29,10 +29,9 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
-
+        
     }
 }
-
 
 extension RegisterViewController: RegisterViewModelDelegate {
     func handleViewModelOutput(_ output: RegisterViewModelOutput) {

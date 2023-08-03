@@ -10,9 +10,8 @@ import FirebaseAuth
 final class LoginViewModel: LoginViewModelProtocol {
     var delegate: LoginViewModelDelegate?
     var coordinator: LoginCoordinator?
-    
     var loginUser: User?
-
+    
     func viewDidLoad() {
         print("Login view connected.")
     }
@@ -24,7 +23,8 @@ final class LoginViewModel: LoginViewModelProtocol {
             if let authResult = authResult {
                 loginUser?.email = authResult.user.email ?? "test"
                 loginUser?.id = authResult.user.uid
-                print("login user ", loginUser)
+                self.coordinator?.showTabbar()
+                
             } else {
                 guard let error = error else { return }
                 delegate?.handleViewModelOutput(.loginError(error.localizedDescription))

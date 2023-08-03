@@ -39,4 +39,5 @@ final class ArtistDetailCoordinator: Coordinator {
         childCoordinators.append(artistAlbumCoordinator)
         artistAlbumCoordinator.start()
     }
+    
 }

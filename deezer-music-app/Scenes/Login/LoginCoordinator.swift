@@ -8,11 +8,14 @@
 import UIKit.UINavigationController
 
 final class LoginCoordinator: Coordinator {
+    
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     var rootViewController: UIViewController?
     
     var tabbarController = TabBarController()
+    var window: UIWindow?
+    
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -29,6 +32,7 @@ final class LoginCoordinator: Coordinator {
         
         navigationController.setViewControllers([viewController], animated: true)
         rootViewController = navigationController
+        
     }
     
     func showRegister() {
@@ -38,10 +42,15 @@ final class LoginCoordinator: Coordinator {
     }
     
     func showTabbar() {
-        print("Clicked show tabbar")
-        //        let tabbarCoordinator = TabbarCoordinator(tabbarController: tabbarController, navigationController: navigationController)
-        //        tabbarCoordinator.start()
+        let navigationController = UINavigationController()
+        let coordinator = TabbarCoordinator(tabbarController: tabbarController, navigationController: navigationController)
+        window?.rootViewController = coordinator.tabbarController
+        window?.makeKeyAndVisible()
+        coordinator.start()
         
-        rootViewController = tabbarController
     }
+    
+    
 }
+
+

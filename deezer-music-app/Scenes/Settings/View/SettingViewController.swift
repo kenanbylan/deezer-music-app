@@ -3,23 +3,26 @@
 //  deezer-music-app
 //
 //  Created by Kenan Baylan on 29.07.2023.
-//
 
 import UIKit
+import FirebaseAuth
 
 final class SettingViewController: UIViewController {
     
     @IBOutlet weak var changeThemeSwitch: UISwitch!
+    @IBOutlet weak var currentUser: UILabel!
+    
     var viewModel: SettingViewModelProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         viewModel.delegate = self
         setupUI()
         setupSwitch()
+        
+        if let userEmail = Auth.auth().currentUser?.email {
+            currentUser.text = userEmail
+        }
     }
     
     @IBAction func changeSwitch(_ sender: UISwitch) {
@@ -34,7 +37,14 @@ final class SettingViewController: UIViewController {
     }
     
     @IBAction func logOutTapped(_ sender: Any) {
-        
+        print("Logout button tapped")
+        do {
+            try Auth.auth().signOut()
+            viewModel.coordinator?.navigateToLogin()
+            //            viewModel.coordinator?.popBack(animated: true)
+        } catch {
+            print("error: ", error.localizedDescription)
+        }
     }
     
     func setupSwitch() {
@@ -60,19 +70,15 @@ final class SettingViewController: UIViewController {
 extension SettingViewController {
     
     func showLanguageSelectionActionSheet() {
-        
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
         let turkishAction = UIAlertAction(title: "Türkçe", style: .default) { _ in
             self.changeAppLanguage(to: "tr")
         }
         
         let englishAction = UIAlertAction(title: "English", style: .default) { _ in
-            self.changeAppLanguage(to: "en")
-        }
+            self.changeAppLanguage(to: "en") }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
         actionSheet.addAction(turkishAction)
         actionSheet.addAction(englishAction)
         actionSheet.addAction(cancelAction)

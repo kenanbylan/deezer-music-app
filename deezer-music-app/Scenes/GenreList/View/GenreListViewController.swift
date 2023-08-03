@@ -51,6 +51,7 @@ extension GenreListViewController: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: CategoryCollectionViewCell.self),
             for: indexPath) as! CategoryCollectionViewCell
         
+        
         guard let genre = viewModel.genreAt(indexPath.item) else { return UICollectionViewCell() }
         cell.updateUIWith(genre: genre)
         

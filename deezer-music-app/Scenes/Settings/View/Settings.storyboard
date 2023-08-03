@@ -82,10 +82,18 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title=""/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giriş yapan kullanıcı : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8k-ZI-1Hk">
+                                <rect key="frame" x="115.00000000000001" y="416" width="163.33333333333337" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="d8k-ZI-1Hk" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="08S-S1-MGA"/>
+                            <constraint firstItem="d8k-ZI-1Hk" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="XSc-kl-Ij8"/>
                             <constraint firstItem="Veh-U3-4J2" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="48" id="a3l-aK-5Ef"/>
                             <constraint firstItem="Veh-U3-4J2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="bsl-Yc-K5D"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Veh-U3-4J2" secondAttribute="trailing" constant="24" id="gWp-vu-1ih"/>
@@ -93,6 +101,7 @@
                     </view>
                     <connections>
                         <outlet property="changeThemeSwitch" destination="762-TG-JhY" id="eVy-6M-T8Z"/>
+                        <outlet property="currentUser" destination="d8k-ZI-1Hk" id="Hqk-R7-Que"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

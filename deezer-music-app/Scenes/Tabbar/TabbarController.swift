@@ -44,6 +44,7 @@ class TabBarController: UITabBarController {
         coordinator = TabbarCoordinator(tabbarController: self, navigationController: UINavigationController())
         coordinator?.start()
     }
+    
 }
 
 extension TabBarController: MiniBarDelegate {
@@ -59,7 +60,7 @@ extension TabBarController: MiniBarDelegate {
         miniBar.updateMusicWith(musicData: musicData)
     }
     
-    func stopMusic() {  }    
+    func stopMusic() {  }
 }
 
 extension TabBarController: UITabBarControllerDelegate { }

@@ -10,9 +10,8 @@ import Foundation
 protocol LoginViewModelProtocol: AnyObject {
     var delegate: LoginViewModelDelegate? { get set }
     var coordinator: LoginCoordinator? { get }
-    
     var loginUser: User? { get set }
-
+    
     func viewDidLoad()
     func loginControl(email: String, password: String)
 }
@@ -22,7 +21,7 @@ enum LoginViewModelOutput {
     case setTitle(String)
     case loginError(String)
     case loginSuccess(Bool)
-    
+    case buttonInactive(Bool)
 }
 
 protocol LoginViewModelDelegate: AnyObject {

@@ -7,159 +7,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "63F666FA-10AB-4E0E-99FA-73CD061FA3CE"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "deezer-music-app/Scenes/ArtistDetail/View/Cell/HeaderCollectionReusableView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "updateUI(with:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2526C1B7-443E-4021-BD7D-08BDFAA88AFD"
+            uuid = "0465C49D-143E-4C11-87E9-2548AB9DEC45"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "deezer-music-app/CoreDataManager/CoreDataManager.swift"
+            filePath = "deezer-music-app/Scenes/Settings/SettingCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "addFavoriteTrack(data:completion:)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "navigateToLogin()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "2526C1B7-443E-4021-BD7D-08BDFAA88AFD - 32829c986687d15a"
+                  uuid = "0465C49D-143E-4C11-87E9-2548AB9DEC45 - 4c05b074d6c32cf5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "deezer_music_app.CoreDataManager.addFavoriteTrack(data: deezer_music_app.AlbumDetailTrackListData, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "deezer_music_app.SettingCoordinator.navigateToLogin() -&gt; ()"
                   moduleName = "deezer-music-app"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kenanbaylan/Desktop/software/mobile/deezer-music-app/deezer-music-app/CoreDataManager/CoreDataManager.swift"
+                  urlString = "file:///Users/kenanbaylan/Desktop/software/mobile/deezer-music-app/deezer-music-app/Scenes/Settings/SettingCoordinator.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "132">
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "280">
                </Location>
                <Location
-                  uuid = "2526C1B7-443E-4021-BD7D-08BDFAA88AFD - 32829c986687d15a"
+                  uuid = "0465C49D-143E-4C11-87E9-2548AB9DEC45 - 4c05b074d6c32d12"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "deezer_music_app.CoreDataManager.addFavoriteTrack(data: deezer_music_app.AlbumDetailTrackListData, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  symbolName = "deezer_music_app.SettingCoordinator.navigateToLogin() -&gt; ()"
                   moduleName = "deezer-music-app"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kenanbaylan/Desktop/software/mobile/deezer-music-app/deezer-music-app/CoreDataManager/CoreDataManager.swift"
+                  urlString = "file:///Users/kenanbaylan/Desktop/software/mobile/deezer-music-app/deezer-music-app/Scenes/Settings/SettingCoordinator.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "180">
-               </Location>
-               <Location
-                  uuid = "2526C1B7-443E-4021-BD7D-08BDFAA88AFD - 32829c986687d1bf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "deezer_music_app.CoreDataManager.addFavoriteTrack(data: deezer_music_app.AlbumDetailTrackListData, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "deezer-music-app"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kenanbaylan/Desktop/software/mobile/deezer-music-app/deezer-music-app/CoreDataManager/CoreDataManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "92">
-               </Location>
-               <Location
-                  uuid = "2526C1B7-443E-4021-BD7D-08BDFAA88AFD - 32829c986687d1bf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "deezer_music_app.CoreDataManager.addFavoriteTrack(data: deezer_music_app.AlbumDetailTrackListData, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "deezer-music-app"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kenanbaylan/Desktop/software/mobile/deezer-music-app/deezer-music-app/CoreDataManager/CoreDataManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "136">
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "44">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F1329CA5-01F0-4E61-9D23-09F569F865EA"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "deezer-music-app/CoreDataManager/CoreDataManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "addFavoriteTrack(data:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "959C09D9-3A8A-4488-90B1-DEBF9C65FE06"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "deezer-music-app/CoreDataManager/CoreDataManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "addFavoriteTrack(data:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "59F2C341-787A-4556-A060-50B35325E49B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "deezer-music-app/CoreDataManager/CoreDataManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "addFavoriteTrack(data:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1DB7FD51-3F5C-497A-B003-8D885AE0211C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "deezer-music-app/CoreDataManager/CoreDataManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "fetchFavoriteTracks()"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

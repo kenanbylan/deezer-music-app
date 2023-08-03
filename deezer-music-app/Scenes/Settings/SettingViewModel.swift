@@ -25,6 +25,4 @@ final class SettingViewModel: SettingViewModelProtocol {
         UserDefaults.standard.set([languageCode], forKey: "AppleLanguages")
         UserDefaults.standard.synchronize()
     }
-    
-    
 }

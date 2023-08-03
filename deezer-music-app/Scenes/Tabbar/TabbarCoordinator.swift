@@ -31,7 +31,6 @@ final class TabbarCoordinator: Coordinator {
         childCoordinators.append(genreCoordinator)
         genreCoordinator.start()
         
-        
         let genreVC = genreCoordinator.rootViewController
         let genreTabBarItem = UITabBarItem(title: "DEEZER".localizable , image: UIImage(named: Constants.Image.home), selectedImage: UIImage(named: "home"))
         genreVC?.tabBarItem = genreTabBarItem
