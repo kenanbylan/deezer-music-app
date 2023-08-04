@@ -49,7 +49,8 @@ final class TabbarCoordinator: Coordinator {
         
         
         //MARK: Settings Tabbar Item
-        let settingsCoordinator = SettingCoordinator(navigationController: UINavigationController())
+        let settingsCoordinator = SettingCoordinator(navigationController: UINavigationController(), tabbarController: tabbarController as! TabBarController)
+        
         childCoordinators.append(settingsCoordinator)
         settingsCoordinator.start()
         let settingsVC = settingsCoordinator.rootViewController
@@ -60,7 +61,6 @@ final class TabbarCoordinator: Coordinator {
         viewControllers.append(settingsVC)
         
         return viewControllers
-        
     }
     
     func showMusicDetail(musicDetail: AlbumDetailTrackListData) {

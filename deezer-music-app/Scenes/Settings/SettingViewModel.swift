@@ -14,7 +14,6 @@ final class SettingViewModel: SettingViewModelProtocol {
     let title = "Settings_title".localizable
     
     func viewDidload() {
-        
     }
     
     func setThemeMode(isDarkMode: Bool) {

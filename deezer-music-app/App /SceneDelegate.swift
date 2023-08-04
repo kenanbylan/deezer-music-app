@@ -34,10 +34,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
         } else {
             let navigationController = UINavigationController()
+            let tabbarCoordinator = TabbarCoordinator(tabbarController: tabbarController, navigationController: navigationController)
+            tabbarController.viewControllers = tabbarCoordinator.setupViewControllers()
+            
             navigationController.isNavigationBarHidden = true
             window.rootViewController = navigationController
             window.makeKeyAndVisible()
-            let coordinator = LoginCoordinator(navigationController: navigationController)
+            let coordinator = LoginCoordinator(navigationController: navigationController,tabbarController: tabbarController)
             coordinator.start()
         }
     }

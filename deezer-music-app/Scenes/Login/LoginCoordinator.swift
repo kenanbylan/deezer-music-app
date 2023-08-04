@@ -13,12 +13,12 @@ final class LoginCoordinator: Coordinator {
     var navigationController: UINavigationController
     var rootViewController: UIViewController?
     
-    var tabbarController = TabBarController()
+    var tabbarController: TabBarController
     var window: UIWindow?
     
-    
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, tabbarController: TabBarController) {
         self.navigationController = navigationController
+        self.tabbarController = tabbarController
     }
     
     func start() {
@@ -42,6 +42,8 @@ final class LoginCoordinator: Coordinator {
     }
     
     func showTabbar() {
+        
+        
         let navigationController = UINavigationController()
         let coordinator = TabbarCoordinator(tabbarController: tabbarController, navigationController: navigationController)
         window?.rootViewController = coordinator.tabbarController
@@ -49,8 +51,4 @@ final class LoginCoordinator: Coordinator {
         coordinator.start()
         
     }
-    
-    
 }
-
-
