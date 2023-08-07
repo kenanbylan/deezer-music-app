@@ -5,7 +5,13 @@
   
 </p>
 
+
+
 <p align="row">
+<img height="500" alt="Screenshot 2023-08-04 at 16 39 39" src="https://github.com/kenanbylan/deezer-music-app/assets/76161957/68a35165-fe7b-4bce-bd26-19885c7b51fc">
+
+<img height="500" alt="Screenshot 2023-08-04 at 16 39 41" src="https://github.com/kenanbylan/deezer-music-app/assets/76161957/a4289d66-dd43-4d0c-ab0f-62eb8ab3e7f0">
+    
 <img height="500" alt="Screenshot 2023-07-31 at 16 26 48" src="https://github.com/kenanbylan/deezer-music-app/assets/76161957/171e3a6b-b40d-4133-8088-6cad4eede36f">
 <img height="500" alt="Screenshot 2023-07-31 at 16 26 53" src="https://github.com/kenanbylan/deezer-music-app/assets/76161957/3e10a186-a7d1-4ef2-92e2-366477bfff53">
 <img height="500" alt="Screenshot 2023-07-31 at 16 26 57" src="https://github.com/kenanbylan/deezer-music-app/assets/76161957/c22020cc-08db-42c0-8f5c-ffaf57429747">
