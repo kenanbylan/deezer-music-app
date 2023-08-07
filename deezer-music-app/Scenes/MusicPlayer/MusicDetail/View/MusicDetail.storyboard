@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Music Detail View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="MusicDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="MusicDetailViewController" customModule="deezer_music_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Bq-b3-UBg">
+                                <rect key="frame" x="36" y="136" width="321" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="321" id="7fE-15-tPq"/>
+                                    <constraint firstAttribute="height" constant="300" id="Llh-3u-RnT"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LUd-o5-USU">
+                                <rect key="frame" x="36" y="472" width="321" height="62.333333333333371"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Çamurdan dibim görünmüyor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wc-1a-Tyw">
+                                        <rect key="frame" x="0.0" y="0.0" width="321" height="29"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toygar Işıklı" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBk-8B-h9T">
+                                        <rect key="frame" x="0.0" y="39" width="321" height="23.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Biraz pop Biraz sezen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oor-hu-naK">
+                                <rect key="frame" x="36" y="83" width="321" height="33"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="ZU3-rK-gQv">
+                                <rect key="frame" x="96.666666666666686" y="584.33333333333337" width="200" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uB8-XL-QgO">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="gkS-Ol-BNF"/>
+                                            <constraint firstAttribute="height" constant="80" id="wmx-h9-yBp"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                        <buttonConfiguration key="configuration" style="tinted" image="square.and.arrow.up" catalog="system"/>
+                                        <connections>
+                                            <action selector="shareButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="zez-rp-dq6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPa-SX-bt5">
+                                        <rect key="frame" x="120" y="0.0" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="YOx-Ma-GHe"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="pUW-6r-Xu0"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="play.circle.fill" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="tinted" image="play.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="playButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="OYk-7n-7XO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LUd-o5-USU" firstAttribute="top" secondItem="7Bq-b3-UBg" secondAttribute="bottom" constant="36" id="7iS-wi-vjj"/>
+                            <constraint firstItem="oor-hu-naK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="36" id="99Z-KZ-Ahr"/>
+                            <constraint firstItem="7Bq-b3-UBg" firstAttribute="top" secondItem="oor-hu-naK" secondAttribute="bottom" constant="20" id="C8w-MZ-945"/>
+                            <constraint firstItem="LUd-o5-USU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="36" id="DpN-Sf-VYv"/>
+                            <constraint firstItem="7Bq-b3-UBg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="36" id="LGd-ka-f3d"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ZU3-rK-gQv" secondAttribute="trailing" constant="96.5" id="OdN-vp-ShA"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7Bq-b3-UBg" secondAttribute="trailing" constant="36" id="YrV-iU-8uE"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="oor-hu-naK" secondAttribute="trailing" constant="36" id="ejN-3l-JMn"/>
+                            <constraint firstItem="ZU3-rK-gQv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="96.5" id="jEn-hV-eZN"/>
+                            <constraint firstItem="oor-hu-naK" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="24" id="kSu-qu-WE3"/>
+                            <constraint firstItem="ZU3-rK-gQv" firstAttribute="top" secondItem="LUd-o5-USU" secondAttribute="bottom" constant="50" id="r0z-eZ-hhr"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LUd-o5-USU" secondAttribute="trailing" constant="36" id="tXp-gv-9t0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="playButton" destination="rPa-SX-bt5" id="UMt-in-adr"/>
+                        <outlet property="shareButton" destination="uB8-XL-QgO" id="uNc-Ma-n3j"/>
+                        <outlet property="titlePage" destination="oor-hu-naK" id="Lvj-4P-hhP"/>
+                        <outlet property="trackDuration" destination="QBk-8B-h9T" id="WT6-Wu-ypc"/>
+                        <outlet property="trackImageView" destination="7Bq-b3-UBg" id="2nT-ZG-jqH"/>
+                        <outlet property="trackTitleLabel" destination="2wc-1a-Tyw" id="G5J-YH-rAP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-340" y="-46"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="play.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

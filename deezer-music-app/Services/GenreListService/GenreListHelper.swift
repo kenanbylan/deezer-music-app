@@ -10,7 +10,3 @@ import Foundation
 protocol GenreListServiceProtocol {
     func getGenre(completion: @escaping((GenreData?, Error?)->()))
 }
-
-struct GenreListEndpoints {
-    static let genre = "https://api.deezer.com/genre"
-}

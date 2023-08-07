@@ -8,21 +8,21 @@
 import Foundation
 
 protocol ArtistListViewModelProtocol: AnyObject {
+    var coordinator: ArtistListCoordinator? { get set }
     var delegate: ArtistListViewModelDelegate? { get set }
-    var artistList: [ArtistResponse] { get set }
+    var artistList: [ArtistListResponse] { get }
     
     func viewDidLoad()
-
-    func numberOfArtist() -> Int
-    func artistAtIndex(_ index: Int) -> ArtistResponse?
+    func artistAt(_ index: Int) -> ArtistListResponse?
     func didSelectArtistAtIndex(_ index: Int)
 }
 
 enum ArtistListViewModelOutput {
-    case showArtistList([ArtistResponse])
+    case showArtistList([ArtistListResponse])
     case setLoading(Bool)
+    case showTitle(String)
+    case showError(errorDescription: String)
 }
-
 
 protocol ArtistListViewModelDelegate: AnyObject {
     func handleViewModelOutput(_ output: ArtistListViewModelOutput)

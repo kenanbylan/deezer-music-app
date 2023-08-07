@@ -8,20 +8,19 @@
 import Foundation
 
 protocol GenreListViewModelProtocol: AnyObject {
-    
     var delegate: GenreListViewModelDelegate? { get set }
     var genreItems: [GenreResponse] { get set}
-    var artistCoordinator: ArtistListCoordinator? { get set }
+    var coordinator: GenreListCoordinator? { get set }
     
     func viewDidLoad()
-    func numberOfGenres() -> Int
-    func genreAtIndex(_ index: Int) -> GenreResponse?
-    func didSelectGenreAtIndex(_ index: Int)
+    func genreAt(_ index: Int) -> GenreResponse?
+    func didSelectGenreAt(_ index: Int)
 }
 
 enum GenreListViewModelOutput {
     case showGenreList([GenreResponse])
     case setLoading(Bool)
+    case setTitle(String)
 }
 
 protocol GenreListViewModelDelegate: AnyObject {

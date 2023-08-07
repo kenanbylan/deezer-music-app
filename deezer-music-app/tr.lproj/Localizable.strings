@@ -1,0 +1,44 @@
+/* 
+ Localizable.strings
+ deezer-music-appd
+ Created by Kenan Baylan on 31.07.2023.
+ */
+
+
+//MARK: - GenreList
+"GENRE_TITLE" = "Türler";
+
+//MARK: - Tabbar Controller
+"DEEZER" = "Deezer";
+"TABBAR_FAVORITE" = "Favoriler";
+"TABBAR_SETTINGS" = "Ayarlar";
+
+//MARK: - Artist List
+"Artist_title" = "Artistler";
+
+
+//MARK: - Favorite List
+"Favorite_title" = "Favori Şarkılar";
+
+
+//MARK: -Setting List
+"Settings_title" = "Ayarlar";
+"Settings_change_theme" = "Temayı değiştir";
+"Settings_change_lang" = "Dili değiştir";
+"Settings_logout" = "Çıkış";
+
+
+//MARK: - Link Copy Alert
+
+"Music_alert_title" = "Başarılı ";
+"Music_alert_msg" = "Şarkı link başarılı bir şekilde kopyalandı.";
+"Music_alert_cancel" = "İptal";
+
+
+//MARK: - Internet Control Alert
+"Controll_alert_title" = "İnternet bağlantısı yok.";
+"Controll_alert_msg" = "Lütfen internet bağlantınızı kontrol edin.";
+
+
+//MARK: - TEST
+"ToJ-Zf-vhU.text" = "Temayı değiştir";

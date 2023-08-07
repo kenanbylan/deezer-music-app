@@ -14,7 +14,6 @@ protocol Coordinator {
     func start()
 }
 
-
 extension Coordinator {
     func popBack(animated: Bool = true) {
         navigationController.popViewController(animated: animated)

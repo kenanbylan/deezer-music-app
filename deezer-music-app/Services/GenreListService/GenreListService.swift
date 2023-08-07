@@ -9,21 +9,15 @@ import Foundation
 
 final class GenreListService : GenreListServiceProtocol {
     
-    static let shared = GenreListService()
-    
     func getGenre(completion: @escaping ((GenreData?, Error?) -> ())) {
-        let url = GenreListEndpoints.genre
-        
+        let url =  Endpoints.baseURL + "genre"
         NetworkService.shared.request(type: GenreData.self, url: url, method: .get) { response in
             switch response {
             case .success(let genres):
                 completion(genres, nil)
             case .failure(let error):
-                print("Error: ", error)
                 completion(nil, APIError.requestFailed(error))
             }
         }
     }
-
-    
 }

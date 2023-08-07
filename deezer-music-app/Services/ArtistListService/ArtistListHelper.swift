@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+protocol ArtistListServiceProtocol {
+    func getArtistList(genreId: Int, completion:@escaping( (ArtistData?, Error?) -> Void))
+}
+
+struct ArtistListEndpoints {
+    static let baseUrl = "https://api.deezer.com/genre/"
+}

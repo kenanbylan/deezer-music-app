@@ -1,29 +1,49 @@
-//
-//  MusicListViewController.swift
-//  deezer-music-app
-//
-//  Created by Kenan Baylan on 10.07.2023.
-//
+import UIKit
 
-import Foundation
-
-class GenreListViewModel: GenreListViewModelProtocol {
-    
+final class GenreListViewModel: GenreListViewModelProtocol {
+  
     var delegate: GenreListViewModelDelegate?
     private let service: GenreListServiceProtocol
-    internal var genreItems: [GenreResponse] = []
-    var artistCoordinator: ArtistListCoordinator?
-   
-    init(service: GenreListServiceProtocol, artistCoordinator: ArtistListCoordinator) {
+    var genreItems: [GenreResponse] = []
+    var coordinator: GenreListCoordinator?
+    
+    init(service: GenreListServiceProtocol) {
         self.service = service
-        self.artistCoordinator = artistCoordinator
     }
     
     func viewDidLoad() {
         delegate?.handleViewModelOutput(.setLoading(true))
+        delegate?.handleViewModelOutput(.setTitle("Deezer".localizable))
         getGenre()
     }
     
+    var numberOfGenres: Int {
+        return genreItems.count
+    }
+    
+    func genreAt(_ index: Int) -> GenreResponse? {
+        guard index >= 0 && index < genreItems.count else { return nil }
+        return genreItems[index]
+    }
+    
+    func didSelectGenreAt(_ index: Int) {
+        guard let genre = self[index] else { return }
+        guard let coordinator = coordinator else { return }
+        coordinator.showArtistList(genre: genre)
+    }
+}
+
+extension GenreListViewModelProtocol {
+    var numberOfGenres: Int { return genreItems.count }
+    
+    subscript(index: Int) -> GenreResponse? {
+        guard index >= 0 && index < genreItems.count else { return nil }
+        return genreItems[index]
+    }
+}
+
+//MARK: Get endpoint services
+extension GenreListViewModel {
     private func getGenre() {
         service.getGenre { [weak self] genres, error in
             guard let self = self else { return }
@@ -35,26 +55,5 @@ class GenreListViewModel: GenreListViewModelProtocol {
                 self.delegate?.handleViewModelOutput(.showGenreList(self.genreItems))
             }
         }
-    }
-    
-    func numberOfGenres() -> Int {
-        return genreItems.count
-    }
-    
-    func genreAtIndex(_ index: Int) -> GenreResponse? {
-        guard index >= 0 && index < genreItems.count else {
-            return nil
-        }
-        return genreItems[index]
-    }
-    
-    func didSelectGenreAtIndex(_ index: Int) {
-        guard let genre = genreAtIndex(index) else {
-            return
-        }
-        
-        // TODO: Handle genre selection
-        //artistCoordinator?.start()
-        
     }
 }
